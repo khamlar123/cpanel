@@ -1,0 +1,209 @@
+   <!-- Content Row -->
+   <div class="row" *ngIf="Permistion == 'admin'">
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4" [routerLink]="['CompanyList']" >
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            <h3>ບໍລິສັດ</h3>
+                            </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{count?.company}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-building fa-2x text-gray-300"></i>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4" [routerLink]="['MemberList']" >
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            <h3>ສະມາຊີກ</h3>
+                            </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{count?.member}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4"  [routerLink]="['PostJobsList']">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            <h3>Post ວຽກ</h3>
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{count?.post}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pending Requests Card Example MemberApply -->
+    <div class="col-xl-3 col-md-6 mb-4" [routerLink]="['MemberApply']"> 
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            <h3>ໃບສະໝັກ</h3>
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{count?.apply}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-user-friends fa-2x text-gray-300"></i>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+      <!-- Content Row -->
+    <div class="row"  *ngIf="Permistion == 'company'">
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4" [routerLink]="['PostJobsList']" >
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                <h3>ໂພດວຽກ</h3>
+                                </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{count?.post}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4"  [routerLink]="['MemberApply']">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                <h3>ໃບສະໝັກ</h3>
+                                </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{count?.applyAll}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4"  [routerLink]="['Member-Apply-acepted']">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                <h3>ນັດສຳພາດ</h3>
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{count?.applyAccept}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-friends fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example Member-Apply-No-acepted -->
+        <div class="col-xl-3 col-md-6 mb-4"  [routerLink]="['Member-Apply-No-acepted']">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                <h3>ຍັງບໍ່ນັດສຳພາດ</h3>
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{count?.applyNotAccept}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-friends fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+    </div>
+
+<!-- Content Row -->
+
+<div class="row" >
+
+    <!-- Area Chart -->
+    <div class="col-md-12">
+       
+        <div class="card">
+            <!-- Card Header - Dropdown -->
+            <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary"> ໂພດວຽກ </h6>
+               
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="chart-area">
+                    <div id="chart" style="height: 300px; width: 100%;"></div>
+                    <!-- <app-chart-canvusjs [data]="chart_data" ></app-chart-canvusjs> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+ 
+
+
+   
+    
+
+
+    
+</div>
+
+
+
+
+
+
+

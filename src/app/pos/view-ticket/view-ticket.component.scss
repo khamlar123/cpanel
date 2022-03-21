@@ -1,0 +1,126 @@
+#wrapper {
+      padding: 10px;
+    /* padding-left:10px; */
+    margin: 0.1px;
+    background-color: #f3f3f3;
+   
+    width: 100%;
+    /* height: 900px; */
+    color: black;
+  
+    .content {
+      height: 90vh;
+      // height: 780px;
+    }
+  
+    .card {
+      border-color: #cecece;
+    }
+  
+  
+    #header {
+  
+      #brand {
+        padding-left: 15px;
+        padding-top: 5px;
+  
+        span {
+          color: #04bfd8;
+          font-size: 20px;
+        }
+      }
+  
+      #time {
+        padding-top: 8px;
+        padding-right: -5px;
+        text-align: right;
+        color: #8f8f8f;
+        font-size: 18px;
+      }
+    }
+    
+    #order{
+      height: 90vh;
+     
+    }
+  
+    #layout1 {
+  
+      #content1 {
+        padding-right: 0;
+        //   background-color: red;
+  
+        .button {
+          margin-bottom: 10px;
+          width: 100%;
+          height: 70px;
+          background-color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 0;
+        }
+      }
+  
+      #content2 {
+        padding-right: 0;
+        height: 90vh;
+        justify-content:space-around;
+        //   background-color: green;
+  
+        .card-header {
+          background-color: #e0e0e0;
+          width: 100%;
+          min-height: 70px;
+          border-radius: 0;
+        }
+
+        .card-footer {
+          background-color: #e0e0e0;
+          width: 100%;
+          min-height: 70px;
+          border-radius: 0;
+        }
+  
+        .card-content {
+          width: 100%;
+          height: 100%;
+          max-height: 60vh;
+          border-radius: 0;
+         
+        }
+  
+        .button-bill,
+        .button-cancel {
+          margin-top: 10px;
+          width: 100%;
+          height: 68px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 0;
+          font-size: 27px;
+        }
+        
+  
+        .button-bill {
+          background-color: #ffffff
+        }
+  
+        .button-cancel {
+          background-color: #a81212;
+          color: white;
+        }
+  
+      }
+
+      // .ticket_footer{
+      //   position: fixed;
+      //   bottom: 0;
+      //   // margin-bottom: 5px;
+      // }
+    }
+
+  
+  }
+  

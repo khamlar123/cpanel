@@ -1,0 +1,19 @@
+.header_bander {
+  height: 30px;
+  //background-color: red;
+  display: flex;
+  justify-content: space-between;
+  padding: 3px;
+   background-color: #f5f5f5;
+
+  .img_banner {
+    img {
+      height: 20px;
+    }
+  }
+
+  .timenow {
+      padding: 5px;
+    color: #636769;
+  }
+}

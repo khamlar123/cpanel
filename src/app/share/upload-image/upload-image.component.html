@@ -1,0 +1,7 @@
+<div class="card" style="width: 120px;">
+                                            
+    <img class="card-img-top" *ngIf="!new_image"  (click)="OpenAddFilesDialog()" src="./assets/img/image_logo.png" alt="Card image cap">
+    <img class="card-img-top" *ngIf="new_image"   (click)="OpenAddFilesDialog()" [src]="new_image?.img" alt="Card image cap">
+    <input #FileSelectInputDialog style="display: none" (change)="changeFileListener($event)" type="file">
+    
+</div>

@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+.golbalflex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    border-radius: 20%;
+}
+
+.background-orange{
+    background-color: rgb(247, 202, 6);
+}
+
+.background-white{
+    background-color: rgb(245, 245, 245);
+}
+
+
+.background-Scarlet{
+    background-color: rgb(100, 3, 3);
+    color: white;
+}
+body{
+    background-color: #f3f3f3;
+}

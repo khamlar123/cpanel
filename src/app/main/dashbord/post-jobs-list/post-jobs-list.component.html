@@ -1,0 +1,66 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">ໂພດວຽກ</h1>
+    <button (click)="print()"  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> <i class="fas fa-print"></i> ພືມ</button>
+    <a routerLink="../" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> ກັບຄືນ</a>
+</div>
+<div class="card shadow mb-4">
+    <div class="card-header py-3 golbalflex">
+            <div>
+            <h3>ໂພດວຽກ </h3> 
+              <!-- <select class="form-control" [(ngModel)]="remit" (change)="change_remit()">
+                        <option  value="10" >10 </option> 
+                        <option  value="20" >20 </option> 
+                        <option  value="50" >50 </option> 
+                        <option  value="100" >100 </option> 
+                    </select> -->
+            </div>
+            <div >
+              <div class="input-group mr-sm-2">
+                  <input type="text" class="form-control" placeholder="Search" (keyup)="searchItems($event)" >
+                  <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2"> ຄົ້ນຫາ</span>
+                  </div>
+              </div>
+            </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ຫນ້າວຽກ</th>
+                        <th>ຕຳແໜ່ງ</th>
+                        <th>ເງີນເດືອນ</th>
+                        <th *ngIf="Permistion == 'admin'">ປູ່ນ</th>
+                       
+                    </tr>
+                </thead>
+              
+                <tbody>
+                    <tr *ngFor="let item of data_list?.Data">
+                        <td>{{item.jobDetail[0]?.jobName}}</td>
+                        <td>{{item.jobDetail[0]?.position}}</td>
+                        <td>{{item.jobDetail[0]?.salaryRate}}</td>
+                        <td *ngIf="Permistion == 'admin'">
+                            <button routerLink="../../post-job/Remove" [queryParams]="{id: item.id}"  type="button" class="btn btn-danger   btn-icon btn-pill"><i class="fas fa-edit"></i> ລົບ</button> 	&nbsp;
+                        </td>
+                        
+                  
+                      
+                    </tr>
+                  
+                </tbody>
+            </table>
+        </div>
+       
+    </div>
+
+    <div class="card-footer ">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+           
+            <button (click)="click_page(button?.page)" *ngFor="let button of pageingtations" type="button" [ngClass]="{'btn-primary ': button?.active === 1 , 'btn-outline-primary' : button?.active !== 1 }" class="btn btn-outline-primary">{{button.name}}</button>
+           
+           
+        </div>
+    </div>
+</div>

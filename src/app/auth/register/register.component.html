@@ -1,0 +1,94 @@
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block logo ">
+                    <img src="assets/logo.jpeg" width="250px" class="logo" alt="" srcset="">
+                    
+                </div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">ສະມັກສະມາຊິກ!</h1>
+                        </div>
+                        
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control "  placeholder="ຊື່ບໍລິສັດ"  (keyup)="keycompanyName($event)" >
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="email" class="form-control "  placeholder="ເບີໂທ "  (keyup)="keycompanyPhonenumber($event)">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control "  placeholder="ອີເມວ "  (keyup)="keycompanyEmail($event)">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="email" class="form-control "  placeholder="ເບີໂທຜູ້ປະສານງານ "  (keyup)="keycoordinatorPhonenumber($event)">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <select class="form-control " [(ngModel)]="Provinces_id" (change)="select_provin()" >
+                                        <option  value="0" > ເລືອກແຂວງ </option> 
+                                        <option  [value]="item.id" *ngFor="let item of Provinces_list" >{{item.province}} </option> 
+                                       
+                                     </select>
+                                </div>
+
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <select class="form-control " [(ngModel)]="district_id"  >
+                                        <option  value="0" > ເລືອກເມືອງ </option> 
+                                        <option  [value]="item.district_id" *ngFor="let item of District_list_by_provin" >{{item.district}} </option> 
+                                       
+                                     </select>
+                                </div>
+                               
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control "  placeholder="ບ້ານ" (keyup)="keyaddress($event)">
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control "  placeholder="password" (keyup)="keypassword($event)">
+                                </div>
+                                
+                            </div>
+                           
+                            <div class="form-group row">
+ 
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    <textarea (keyup)="keyContactInfo($event)" type="text" placeholder="ຂໍ້ມູນກ່ຽວກັບບໍລິສັດ" class="form-control "></textarea>
+                                </div>
+                               
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    <app-upload-image class="logo2" (image)="set_image($event)"></app-upload-image>
+                                    <!-- <app-upload-file class="logo2" (image)="set_image($event)"></app-upload-file> -->
+                                </div>
+                              
+                               
+                            </div>
+                            <button (click)="register()" class="btn btn-primary btn-user btn-block">
+                                ສະມັກສະມາຊິກ
+                            </button>
+                          
+                      
+                        <hr>
+                        <!-- <div class="text-center">
+                            <a class="small" href="forgot-password.html">Forgot Password?</a>
+                        </div> -->
+                        <div class="text-center">
+                            <a class="small" routerLink="../login">ເຂົື້າສູ່ລະບົບ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

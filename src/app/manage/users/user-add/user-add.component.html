@@ -1,0 +1,73 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3 golbalflex">
+        ເພີ້ມຂໍ້ມູນ
+    </div>
+    <div class="card-body">
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ຊື່ແທ້</label>
+                <input type="text" class="form-control "  placeholder="ຊື່ແທ້" (keyup)="keyname($event)" >
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >ນາມສະກຸນ</label>
+                <input type="text" class="form-control "  placeholder="ນາມສະກຸນ" (keyup)="keylastname($event)" >
+                
+            </div>
+           
+        </div>
+      
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ອີເມວ</label>
+                <input type="text" class="form-control "  placeholder="ອີເມວ" (keyup)="keyemail($event)" >
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >ເບີໂທ</label>
+                <input type="text" class="form-control "  placeholder="ເບີໂທ" (keyup)="keyphonenumber($event)" >
+                
+            </div>
+           
+        </div>
+
+        <div class="form-row">
+
+            <div class="col-md-8 mb-3">
+                <label >ທີຢູ່</label>
+                <textarea  type="text" class="form-control "  placeholder="ທີຢູ່" (keyup)="keyaddress($event)"></textarea>
+                
+            </div>
+
+          
+           
+        </div>
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >Username</label>
+                <input type="text" class="form-control "  placeholder="Username" (keyup)="keyusername($event)" >
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >Password</label>
+                <input type="password" class="form-control "  placeholder="password" (keyup)="keypassword($event)" >
+                
+            </div>
+           
+        </div>
+       
+    </div>
+
+    <div class="card-footer ">
+        <button (click)="save()" type="button" class="btn btn-primary"> ບັນທືກ </button>&nbsp;
+        <button routerLink="../" type="button" class="btn btn-secondary "> ກັບຄືນ </button>
+    </div>
+</div>
