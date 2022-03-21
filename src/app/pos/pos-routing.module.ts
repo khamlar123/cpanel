@@ -6,6 +6,7 @@ import { ViewTicketComponent } from './view-ticket/view-ticket.component';
 
 
 const routes: Routes = [
+
   { path:"",component:POSComponent},
   { path:"tables",component:TableComponent},
   { path:"ViewTicket",component:ViewTicketComponent}

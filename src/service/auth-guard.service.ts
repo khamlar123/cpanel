@@ -13,11 +13,10 @@ export class AuthGuardService {
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     
     const token = localStorage.getItem('token');
-    console.log('check token');
     
     if (!token) {
-      // this.router.navigate(['./Login']);
-      // return false;
+      this.router.navigate(['./Login']);
+      return false;
     }
 
     return true;

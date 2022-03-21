@@ -1,0 +1,57 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3 golbalflex">
+        ແກ້ໄຂ
+    </div>
+    <div class="card-body">
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ອໍເດີອີນເດັກ</label>
+                <input type="number" class="form-control "  placeholder="ອໍເດີອີນເດັກ" [(ngModel)]="vm.bannerDetail.orderIndex">
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >ປະເພດແບນເນີ</label>
+                <br>
+                <select class="form-select" aria-label="Disabled select example" id="sl1" [(ngModel)]="vm.bannerDetail.ref_id">
+                 
+                    <option value="1">ແບນເນີ</option>
+                    <option value="2">ຮູບພາບການເຄຶ່ອນໄຫວ</option>
+                  </select>
+                
+            </div>
+           
+        </div>
+
+
+        <div class="form-row">
+
+            <div class="col-md-8 mb-3">
+                <label >ລາຍລະອຽດ</label>
+                <textarea  type="text" class="form-control "  placeholder="ລາຍລະອຽດ" [(ngModel)]="vm.bannerDetail.dsc"></textarea>
+                
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ຮູບພາບ</label>
+                <input type="file" class="form-control"  placeholder="ຮູບພາບ"  (change)="handleFileInput($event.target)">
+                
+            </div>
+
+
+           
+        </div>
+       
+    </div>
+
+    <div class="card-footer ">
+        <button  type="button" class="btn btn-primary" (click)="updateBanner()"> ບັນທືກ </button>&nbsp;
+        <button [routerLink]="['/main/Manage/Banner/List']" routerLinkActive="router-link-active"  type="button" class="btn btn-secondary "> ກັບຄືນ </button>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component,Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,17 +12,14 @@ export class HeaderComponent implements OnInit {
   permistion:string;
   toggled_sidebar:boolean = true;
   username:string;
-  constructor(@Inject(DOCUMENT) private document: Document) { }
+  constructor(@Inject(DOCUMENT) private document: Document,private router: Router) { }
 
   ngOnInit(): void {
     this.permistion = localStorage.getItem('Permistion');
     this.username = localStorage.getItem('User')
   }
 
-  sidebarToggleTop(){
-
-    console.log('click');
-    
+  sidebarToggleTop(){    
 
     if(this.toggled_sidebar){
       
@@ -36,6 +34,12 @@ export class HeaderComponent implements OnInit {
       this.toggled_sidebar = true
     }
 
+  }
+
+
+  logout(): void{
+    localStorage.clear();
+    this.router.navigate(['/auth/login']);
   }
 
 }

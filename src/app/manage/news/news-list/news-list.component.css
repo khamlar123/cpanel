@@ -1,0 +1,34 @@
+.img-wap{
+    width: 150px;
+    height: 60px;
+    overflow: hidden;
+
+}
+
+.img-wap img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.dsc{
+    height: 50px;
+    font-weight: normal;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    width: 300px;
+}
+
+.name{
+    height: 50px;
+    font-weight: normal;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    width: 150px;
+}

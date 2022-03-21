@@ -1,0 +1,60 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3 golbalflex">
+            <div>
+              <select class="form-control" [(ngModel)]="tableCount">
+                  <option  value="10" >10 </option> 
+                  <option  value="20" >20 </option> 
+                  <option  value="50" >50 </option> 
+                  <option  value="100" >100 </option> 
+               </select>
+            </div>
+            <div >
+              <div class="input-group mr-sm-2">
+                  <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchValue" (keyup.enter)="searchFunc()">
+                  <div class="input-group-append" (click)="searchFunc()">
+                      <span class="input-group-text" id="basic-addon2"> ຄົ້ນຫາ</span>
+                  </div>
+              </div>
+            </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ລະຫັດ</th>
+                        <th>ວີດີໂອ</th>
+                        <th>ຊື່ວີດີໂອ</th>
+                        <th>ລາຍລະອຽດວີດີໂອ</th>
+    
+                        <th>Action</th>
+                    </tr>
+                </thead>
+               
+                <tbody>
+                    <tr *ngFor="let item of tableCountFunc(); let i = index">
+                        <td>{{item.video_id}}</td>
+                        <td> <iframe  [src]="safeSrc[i]"  frameborder="0" allowfullscreen style="height: 150px;"></iframe></td>
+                        <td>{{item.video_name}}</td>
+                        <td>{{item.video_description}}</td>
+                   
+                        <td>
+                            <!-- <button routerLink="../Update"   type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button> 	&nbsp; -->
+                            <button (click)="deleteVdio(item.video_id)"  type="button" class="btn btn-danger   btn-icon btn-pill"><i class="fas fa-edit"></i> ລົບ</button> 	&nbsp;
+                        </td>
+                    </tr>
+                
+                </tbody>
+            </table>
+        </div>
+       
+    </div>
+
+    <div class="card-footer ">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+          
+            <!-- <button (click)="click_page(button?.page)" *ngFor="let button of pageingtations" type="button" [ngClass]="{'btn-primary ': button?.active === 1 , 'btn-outline-primary' : button?.active !== 1 }" class="btn btn-outline-primary">{{button.name}}</button> -->
+           
+        </div>
+    </div>
+</div>

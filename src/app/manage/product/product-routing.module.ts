@@ -15,7 +15,7 @@ const routes: Routes = [
         {path:"",redirectTo:"List",pathMatch:"full"},
         {path:"List",component:ProductListComponent},
         {path:"Add",component:ProductAddComponent},
-        {path:"Update",component:ProductUpdateComponent},
+        {path:"Update/:id",component:ProductUpdateComponent},
        
       ]
 

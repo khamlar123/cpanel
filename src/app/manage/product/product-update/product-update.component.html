@@ -1,1 +1,71 @@
-<p>product-update works!</p>
+<div class="card shadow mb-4">
+    <div class="card-header py-3 golbalflex">
+        ເພີ້ມຂໍ້ມູນ
+    </div>
+    <div class="card-body">
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ຊື່ສີນຄ້າ</label>
+                <input type="text" class="form-control "  placeholder="ຊື່ສີນຄ້າ" [(ngModel)]="addProductModal.prodName">
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >ລາຄາ</label>
+                <input type="number" class="form-control "  placeholder="ລາຄາ" [(ngModel)]="addProductModal.price" >
+                
+            </div>
+           
+        </div>
+      
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ລາຄາຂາຍ</label>
+                <input type="number" class="form-control "  placeholder="ອີເມວ" [(ngModel)]="addProductModal.salsePrice">
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >ຈໍານວນສີນຄ້າ</label>
+                <input type="number" class="form-control "  placeholder="ຈໍານວນສີນຄ້າ"  [(ngModel)]="addProductModal.qty">
+                
+            </div>
+           
+        </div>
+
+        <div class="form-row">
+
+            <div class="col-md-8 mb-3">
+                <label >ລາຍລະອຽດສີນຄ້າ</label>
+                <textarea  type="text" class="form-control "  placeholder="ລາຍລະອຽດສີນຄ້າ" [(ngModel)]="addProductModal.dsc"></textarea>
+                
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ອໍເດີອີນເດັກ</label>
+                <input type="number" class="form-control "  placeholder="ອໍເດີອີນເດັກ"  [(ngModel)]="addProductModal.ranking">
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >ຮູບພາບ</label>
+                <input type="file" class="form-control "  placeholder="ຮູບພາບ"  (change)="handleFileInput($event.target)">
+                
+            </div>
+           
+        </div>
+       
+    </div>
+
+    <div class="card-footer ">
+        <button  type="button" class="btn btn-primary" (click)="updateProduct()"> ບັນທືກ </button>&nbsp;
+        <button [routerLink]="['/main/Manage/Product/List']" routerLinkActive="router-link-active"  type="button" class="btn btn-secondary "> ກັບຄືນ </button>
+    </div>
+</div>

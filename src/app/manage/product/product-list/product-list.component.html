@@ -1,7 +1,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3 golbalflex">
             <div>
-              <select class="form-control" >
+              <select class="form-control" [(ngModel)]="tableCount">
                   <option  value="10" >10 </option> 
                   <option  value="20" >20 </option> 
                   <option  value="50" >50 </option> 
@@ -10,9 +10,9 @@
             </div>
             <div >
               <div class="input-group mr-sm-2">
-                  <input type="text" class="form-control" placeholder="Search" >
+                  <input type="text" class="form-control" placeholder="ຄົ້ນຫາ" [(ngModel)]="searchValue" (keyup.enter)="searchFunc()">
                   <div class="input-group-append">
-                      <span class="input-group-text" id="basic-addon2"> ຄົ້ນຫາ</span>
+                      <span class="input-group-text" id="basic-addon2" (click)="searchFunc()"> ຄົ້ນຫາ</span>
                   </div>
               </div>
             </div>
@@ -22,30 +22,38 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>ຊື່ແທ້</th>
-                        <th>ນາມສະກຸນ</th>
-                        <th>ອີເມວ</th>
-                        <th>ທີຢູ່</th>
-                        <th>ເບີໂທ</th>
+                        <th>ລະຫັດ</th>
+                        <th>ຮູບພາບ</th>
+                        <th>ຊື່ສີນຄ້າ</th>
+                        <th>ຈໍານວນສີນຄ້າ</th>
+                        <th>ລາຄາຂາຍ</th>
+                        <th>ລາຄາ</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                
                 <tbody>
-                    <tr >
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <button routerLink="../Update"   type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button> 	&nbsp;
-                            <button routerLink="../Remove"   type="button" class="btn btn-danger   btn-icon btn-pill"><i class="fas fa-edit"></i> ລົບ</button> 	&nbsp;
-                        </td>
-                    </tr>
+                    <ng-container *ngFor="let item of tableCountFunc()">
+                        <tr >
+                            <td>{{item.prod_id}}</td>
+                            <td> 
+                                <div class="img-wap">
+                                    <img src="{{url + getImgUrl(item.imgUrl)}}" alt="">
+                                </div>
+                            </td>
+                            <td>{{item.prodName}}</td>
+                            <td>{{item.qty}}</td>
+                            <td>{{item.salsePrice | currency: '':'':'1.0-0'}}</td>
+                            <td>{{item.price | currency: '':'':'1.0-0'}}</td>
+                            <td>
+                                <button routerLink="../Update/{{item.prod_id}}"   type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button> 	&nbsp;
+                                <button  type="button" class="btn btn-danger   btn-icon btn-pill" (click)="deleteProduct(item.prod_id)"><i class="fas fa-edit"></i> ລົບ</button> 	&nbsp;
+                            </td>
+                        </tr>
+                    </ng-container>
                     
-                    
-                    
+          
+                
                 </tbody>
             </table>
         </div>
