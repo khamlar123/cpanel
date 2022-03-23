@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from 'src/service/auth-guard.service';
+import { DepamentInfoModule } from './depament-info/depament-info.module';
 import { ManageComponent } from './manage.component';
+import { SitelinkUpdateComponent } from './sitelink/sitelink-update/sitelink-update.component';
+import { SitelinkModule } from './sitelink/sitelink.module';
 
 
 const routes: Routes = [
@@ -16,6 +19,8 @@ const routes: Routes = [
       { path:'News',loadChildren: ()=> import('./news/news.module').then(m=>m.NewsModule)},
       { path:'Notice',loadChildren: ()=> import('./notice/notice.module').then(m=>m.NoticeModule)},
       { path:'Vdio',loadChildren: ()=> import('./vdio/vdio.module').then(m=>m.VdioModule)},
+      { path:'Site',loadChildren: ()=> import('./sitelink/sitelink.module').then(m => SitelinkModule)},
+      { path:'Depament',loadChildren: ()=> import('./depament-info/depament-info.module').then(m => DepamentInfoModule)},
     ]
 
   },

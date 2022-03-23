@@ -1,0 +1,34 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3 golbalflex">
+        ແກ້ໄຂ
+    </div>
+    <div class="card-body">
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ຊື່</label>
+                <input type="text" class="form-control "  placeholder="ຊື່" [(ngModel)]="addModal.slName">
+                
+            </div>
+        </div>
+
+
+        <div class="form-row">
+
+            <div class="col-md-8 mb-3">
+                <label >ລິ້ງ</label>
+                <textarea  type="text" class="form-control "  placeholder="ລິ້ງ" [(ngModel)]="addModal.slLink"></textarea>
+                
+            </div>
+
+        </div>
+
+       
+    </div>
+
+    <div class="card-footer ">
+        <button  type="button" class="btn btn-primary" (click)="updateLink()"> ບັນທືກ </button>&nbsp;
+        <button [routerLink]="['/main/Manage/Site/List']" routerLinkActive="router-link-active"  type="button" class="btn btn-secondary "> ກັບຄືນ </button>
+    </div>
+</div>
