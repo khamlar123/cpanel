@@ -24,9 +24,9 @@ export class SitelinkUpdateComponent implements OnInit {
 
   loadDetail(id): void{
     this.subs.sink = this.api.getDetailSiteLink(id, 'listOneSitelinks').subscribe(res => {
-      console.log(res);
-      
-    })
+      this.addModal.slLink = res.data[0].slLink;
+      this.addModal.slName = res.data[0].slName;      
+    });
   }
 
   updateLink(): void{
