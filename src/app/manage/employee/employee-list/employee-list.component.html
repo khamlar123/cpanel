@@ -23,12 +23,12 @@
                 <thead>
                     <tr>
                         <th>ລໍາດັບ</th>
-                        <th>ຊື່ ແລະ ນາມສະກຸນ</th>
-                        <th>ວັນທີ</th>
-                        <th>ໂທລະສັບ</th>
-                        <th>ຫົວຂ້ຄໍາຮອງ</th>
-                        <th>ລາຍລະອຽດ</th>
-                 
+                        <th>ຊື່ ແລະ ນາມສະກັນ</th>
+                        <th>ຕໍາແໜ່ງ</th>
+                        <th>ປະເພດທຸລະກິດ</th>
+                        <th>ທີຢູ່</th>
+                        <th>ເບີໂທ</th>
+                        <th>ວັນເດືອນປີເຂົ້າສະມາຊິກ</th>
                         <th style="width: 200px;">Action</th>
                     </tr>
                 </thead>
@@ -36,15 +36,16 @@
                 <tbody>
                     <tr *ngFor="let item of tableCountFunc();let i = index">
                         <td>{{i+1}}</td>
-                     
-                        <td>{{item.proposName + ' '+ item.proposeLastName}}</td>
-                        <td>{{item.createDate}}</td>
-                        <td>{{item.phone}}</td>
-                        <td>{{item.stTitle}}</td>
-                        <td>{{item.contactDsc}}</td>
+                        <td>{{item.emName+ ' ' +item.emLastName}}</td>
+                        <td>{{item.emPosition}}</td>
+                        <td></td>
+                        <td>{{item.emAddress}}</td>
+                        <td>{{item.emPhone}}</td>
+                        <td>{{item.emJoinDate}}</td>
+
                         <td>
-                            <button     type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button>     &nbsp;
-                            <button  type="button" class="btn btn-danger   btn-icon btn-pill" (click)="deleteFunc(item.prpId)"><i class="fas fa-edit"></i> ລົບ</button>     &nbsp;
+                            <button [routerLink]="['/main/Manage/Employee/Update',item.emId]" routerLinkActive="router-link-active"   type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button>     &nbsp;
+                            <button  type="button" class="btn btn-danger   btn-icon btn-pill" (click)="deleteFun(item.emId)"><i class="fas fa-edit"></i> ລົບ</button>     &nbsp;
                         </td>
                     </tr>
                 

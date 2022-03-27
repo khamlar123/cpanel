@@ -1,7 +1,9 @@
+table
+
 <div class="card shadow mb-4">
     <div class="card-header py-3 golbalflex">
             <div>
-              <select class="form-control" [(ngModel)]="tableCount">
+              <select class="form-control" >
                   <option  value="10" >10 </option> 
                   <option  value="20" >20 </option> 
                   <option  value="50" >50 </option> 
@@ -10,8 +12,8 @@
             </div>
             <div >
               <div class="input-group mr-sm-2">
-                  <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchValue" (keyup.enter)="searchFunc()">
-                  <div class="input-group-append" (click)="searchFunc()">
+                  <input type="text" class="form-control" placeholder="Search" >
+                  <div class="input-group-append" >
                       <span class="input-group-text" id="basic-addon2"> ຄົ້ນຫາ</span>
                   </div>
               </div>
@@ -22,29 +24,30 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>ລໍາດັບ</th>
-                        <th>ຊື່ ແລະ ນາມສະກຸນ</th>
-                        <th>ວັນທີ</th>
-                        <th>ໂທລະສັບ</th>
-                        <th>ຫົວຂ້ຄໍາຮອງ</th>
+                        <th>ລະຫັດ</th>
+                        <th>ຮູບພາບ</th>
+                        <th>ຫົວຂໍ້ແຈ້ງການ</th>
                         <th>ລາຍລະອຽດ</th>
                  
-                        <th style="width: 200px;">Action</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                
                 <tbody>
-                    <tr *ngFor="let item of tableCountFunc();let i = index">
-                        <td>{{i+1}}</td>
-                     
-                        <td>{{item.proposName + ' '+ item.proposeLastName}}</td>
-                        <td>{{item.createDate}}</td>
-                        <td>{{item.phone}}</td>
-                        <td>{{item.stTitle}}</td>
-                        <td>{{item.contactDsc}}</td>
+                    <tr >
+                        <td></td>
+                        <td>
+                            <div class="img-wap">
+                                
+
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                
                         <td>
                             <button     type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button>     &nbsp;
-                            <button  type="button" class="btn btn-danger   btn-icon btn-pill" (click)="deleteFunc(item.prpId)"><i class="fas fa-edit"></i> ລົບ</button>     &nbsp;
+                            <button  type="button" class="btn btn-danger   btn-icon btn-pill" ><i class="fas fa-edit"></i> ລົບ</button>     &nbsp;
                         </td>
                     </tr>
                 

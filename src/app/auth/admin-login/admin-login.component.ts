@@ -18,8 +18,8 @@ export class AdminLoginComponent implements OnInit {
     this.document.body.classList.add('sidebar-toggled');
   }
 
-
-  
+  // Nueng
+  // 1234563
   public username: string="";
   public password: string="";
 

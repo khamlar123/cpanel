@@ -6,13 +6,15 @@ import { FormComponent } from './form.component';
 import { FormListComponent } from './form-list/form-list.component';
 import { FormAddComponent } from './form-add/form-add.component';
 import { FormUpdateComponent } from './form-update/form-update.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [FormComponent, FormListComponent, FormAddComponent, FormUpdateComponent],
   imports: [
     CommonModule,
-    FormRoutingModule
+    FormRoutingModule,
+    FormsModule
   ]
 })
 export class FormModule { }

@@ -1,0 +1,76 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3 golbalflex">
+        ເພີ້ມຂໍ້ມູນ
+    </div>
+    <div class="card-body">
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ຊື່</label>
+                <input type="text" class="form-control "  placeholder="ຊື່" [(ngModel)]="editModal.emName">
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >ນາມສະກັນ</label>
+                <input type="text" class="form-control "  placeholder="ນາມສະກັນ" [(ngModel)]="editModal.emLastName">
+                
+            </div>
+
+        
+        </div>
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ຕໍາແໜ່ງ</label>
+                <input type="text" class="form-control "  placeholder="ຕໍາແໜ່ງ" [(ngModel)]="editModal.emPosition">
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >ທີຢູ່</label>
+                <input type="text" class="form-control "  placeholder="ທີຢູ່" [(ngModel)]="editModal.emAddress">
+                
+            </div>
+
+        
+        </div>
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ເບີໂທ</label>
+                <input type="text" class="form-control "  placeholder="ເບີໂທ" [(ngModel)]="editModal.emPhone">
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >ວັນເດືອນປີເຂົ້າສະມາຊິກ</label>
+                <input type="Date" class="form-control "  placeholder="ວັນເດືອນປີເຂົ້າສະມາຊິກ" [(ngModel)]="editModal.emJoinDate">
+                
+            </div>
+
+        
+        </div>
+
+
+        <div class="form-row">
+
+            <div class="col-md-8 mb-3">
+                <label >ປະເພດທຸລະກິດ</label>
+                <textarea  type="text" class="form-control "  placeholder="ປະເພດທຸລະກິດ" ></textarea>
+                
+            </div>
+
+        </div>
+
+       
+    </div>
+
+    <div class="card-footer ">
+        <button  type="button" class="btn btn-primary" (click)="updateFunc()"> ບັນທືກ </button>&nbsp;
+        <button [routerLink]="['/main/Manage/Employee/List']" routerLinkActive="router-link-active" type="button" class="btn btn-secondary "> ກັບຄືນ </button>
+    </div>
+</div>
