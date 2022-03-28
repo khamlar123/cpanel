@@ -11,25 +11,24 @@ import { SiteLinkService } from '../api/site-link.service';
 export class SitelinkAddComponent implements OnInit {
   private subs = new SubSink();
   addModal = {
-    slName: '', 
-    slLink: '', 
+    slName: '',
+    slLink: '',
     createDate: '',
-  }
+  };
   siteLinkId = 0;
-  constructor(private api: SiteLinkService, private route: Router,    private routes : ActivatedRoute,) { }
+  constructor(private api: SiteLinkService, private route: Router, private routes: ActivatedRoute) { }
 
-  ngOnInit(): void { 
-   
-  }
+  ngOnInit(): void { }
 
-  addSiteLink(): void{
-  
+  addSiteLink(): void {
+
     const newData = new Date();
-    this.addModal.createDate =  newData.getFullYear().toString()+'-'+ (newData.getMonth() + 1).toString()+'-'+newData.getDate().toString();
-   this.subs.sink = this.api.addSiteLink(this.addModal, 'addSitelinks').subscribe(res => {
+    // tslint:disable-next-line:max-line-length
+    this.addModal.createDate = newData.getFullYear().toString() + '-' + (newData.getMonth() + 1).toString() + '-' + newData.getDate().toString();
+    this.subs.sink = this.api.addSiteLink(this.addModal, 'addSitelinks').subscribe(res => {
       alert('Add Data Successfully.');
       this.route.navigate(['/main/Manage/Site/List']);
-    })
+    });
   }
 
 }

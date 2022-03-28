@@ -12,25 +12,25 @@ export class SitelinkUpdateComponent implements OnInit {
   private subs = new SubSink();
   addModal = {
     slid: 0,
-    slName: '', 
-    slLink:''
-  }
-  constructor(private api: SiteLinkService,  private route: Router,    private routes : ActivatedRoute,) { }
+    slName: '',
+    slLink: '',
+  };
+  constructor(private api: SiteLinkService, private route: Router, private routes: ActivatedRoute,) { }
 
   ngOnInit(): void {
     this.addModal.slid = Number(this.routes.snapshot.paramMap.get('id'));
     this.loadDetail(this.routes.snapshot.paramMap.get('id'));
   }
 
-  loadDetail(id): void{
+  loadDetail(id): void {
     this.subs.sink = this.api.getDetailSiteLink(id, 'listOneSitelinks').subscribe(res => {
       this.addModal.slLink = res.data[0].slLink;
-      this.addModal.slName = res.data[0].slName;      
+      this.addModal.slName = res.data[0].slName;
     });
   }
 
-  updateLink(): void{
-   this.subs.sink = this.api.updateSiteLink(this.addModal, 'updateSitelinks').subscribe(res => {
+  updateLink(): void {
+    this.subs.sink = this.api.updateSiteLink(this.addModal, 'updateSitelinks').subscribe(res => {
       alert('Edit Data Successfully.');
       this.route.navigate(['/main/Manage/Site/List']);
     })

@@ -1,60 +1,60 @@
 <div class="card shadow mb-4">
-    <div class="card-header py-3 golbalflex">
-        ເພີ້ມຂໍ້ມູນ
-    </div>
-    <div class="card-body">
+  <div class="card-header py-3 golbalflex">
+    ເພີ້ມຂໍ້ມູນ
+  </div>
+  <div class="card-body">
 
-        <div class="form-row">
+    <div class="form-row">
 
-            <div class="col-md-4 mb-3">
-                <label >ຊື່</label>
-                <input type="text" class="form-control "  placeholder="ຊື່" >
-                
-            </div>
+      <div class="col-md-4 mb-3">
+        <label>ຊື່</label>
+        <input type="text" class="form-control " placeholder="ຊື່" [(ngModel)]="modal.proposName">
 
-            <div class="col-md-4 mb-3">
-                <label >ນາມສະກຸນ</label>
-                <input type="text" class="form-control "  placeholder="ນາມສະກຸນ" >
-                
-            </div>
+      </div>
 
-        
-        </div>
+      <div class="col-md-4 mb-3">
+        <label>ນາມສະກຸນ</label>
+        <input type="text" class="form-control " placeholder="ນາມສະກຸນ" [(ngModel)]="modal.proposeLastName">
 
-        <div class="form-row">
-
-            <div class="col-md-4 mb-3">
-                <label >ໂທລະສັບ</label>
-                <input type="text" class="form-control "  placeholder="ຊື່" >
-                
-            </div>
-
-            <div class="col-md-4 mb-3">
-                <label >ຫົວຂ້ຄໍາຮອງ</label>
-                <input type="text" class="form-control "  placeholder="ນາມສະກຸນ" >
-                
-            </div>
-
-        
-        </div>
+      </div>
 
 
-        <div class="form-row">
-
-            <div class="col-md-8 mb-3">
-                <label >ລາຍລະອຽດ</label>
-                <textarea  type="text" class="form-control "  placeholder="ລາຍລະອຽດ" ></textarea>
-                
-            </div>
-
-        </div>
-
-    
-       
     </div>
 
-    <div class="card-footer ">
-        <button  type="button" class="btn btn-primary" > ບັນທືກ </button>&nbsp;
-        <button routerLink="../" type="button" class="btn btn-secondary "> ກັບຄືນ </button>
+    <div class="form-row">
+
+      <div class="col-md-4 mb-3">
+        <label>ໂທລະສັບ</label>
+        <input type="text" class="form-control " placeholder="ໂທລະສັບ" [(ngModel)]="modal.phone">
+
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label>ຫົວຂ້ຄໍາຮອງ</label>
+        <input type="text" class="form-control " placeholder="ຫົວຂ້ຄໍາຮອງ" [(ngModel)]="modal.stTitle">
+
+      </div>
+
+
     </div>
+
+
+    <div class="form-row">
+
+      <div class="col-md-8 mb-3">
+        <label>ລາຍລະອຽດ</label>
+        <textarea type="text" class="form-control " placeholder="ລາຍລະອຽດ" [(ngModel)]="modal.contactDsc"></textarea>
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+  <div class="card-footer ">
+    <button type="button" class="btn btn-primary" (click)="addProposFunc()"> ບັນທືກ </button>&nbsp;
+    <button routerLink="../" type="button" class="btn btn-secondary "> ກັບຄືນ </button>
+  </div>
 </div>
