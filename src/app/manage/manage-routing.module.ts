@@ -2,8 +2,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from 'src/service/auth-guard.service';
+import { AssistanceModule } from './assistance/assistance.module';
 import { ContactModule } from './contact/contact.module';
 import { DepamentInfoModule } from './depament-info/depament-info.module';
+import { DevelopmentPlanComponent } from './development-plan/development-plan.component';
+import { DevelopmentPlanModule } from './development-plan/development-plan.module';
+import { DevelopmentReportModule } from './development-report/development-plan.module';
 import { DocumentModule } from './document/document.module';
 import { EmployeeModule } from './employee/employee.module';
 import { FormModule } from './form/form.module';
@@ -12,6 +16,7 @@ import { ProcessModule } from './process/process.module';
 import { ProductTeaModule } from './product-tea/product-tea.module';
 import { SitelinkUpdateComponent } from './sitelink/sitelink-update/sitelink-update.component';
 import { SitelinkModule } from './sitelink/sitelink.module';
+import { StatisticsModule } from './statistics/statistics.module';
 
 
 const routes: Routes = [
@@ -35,6 +40,11 @@ const routes: Routes = [
       { path: 'Document', loadChildren: () => import('./document/document.module').then(m => DocumentModule) },
       { path: 'Form', loadChildren: () => import('./form/form.module').then(m => FormModule) },
       { path: 'ProductTea', loadChildren: () => import('./product-tea/product-tea.module').then(m => ProductTeaModule) },
+      { path: 'Assistance', loadChildren: () => import('./assistance/assistance.module').then(m => AssistanceModule) },
+      { path: 'DevelopmentPlan', loadChildren: () => import('./development-plan/development-plan.module').then(m => DevelopmentPlanModule) },
+     
+      { path: 'DevelopmentReport', loadChildren: () => import('./development-report/development-plan.module').then(m => DevelopmentReportModule) },
+      { path: 'Statistics', loadChildren: () => import('./statistics/statistics.module').then(m => StatisticsModule) },
     ]
 
   },

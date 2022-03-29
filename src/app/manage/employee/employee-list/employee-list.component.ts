@@ -19,6 +19,7 @@ export class EmployeeListComponent implements OnInit {
     emName: string;
     emPhone: string;
     emPosition: string;
+    businessType : string;
 }[] = [];
 
 masterEmployeeData: {
@@ -30,6 +31,7 @@ masterEmployeeData: {
   emName: string;
   emPhone: string;
   emPosition: string;
+  businessType : string;
 }[] = [];
   constructor(private api: ApiService) { }
 

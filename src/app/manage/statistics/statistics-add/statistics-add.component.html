@@ -1,1 +1,70 @@
-<p>statistics-add works!</p>
+<div class="card shadow mb-4">
+    <div class="card-header py-3 golbalflex">
+        ເພີ້ມຂໍ້ມູນ
+    </div>
+    <div class="card-body">
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ຫົວຂໍ້</label>
+                <input type="text" class="form-control "  placeholder="ຫົວຂໍ້" [(ngModel)]="modal.stTitle">
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >ສະຖິຕິ</label>
+                <br>
+                <!-- <input type="text" class="form-control "  placeholder="ຫົວຂໍ້" [(ngModel)]="modal.stTitle"> -->
+             
+
+                <select class="form-select" aria-label="Disabled select example" id="sl1" [(ngModel)]="modal.refId">
+                 
+                    <option [ngValue]="1">ສະຖິຕິພະນັກງານລັດຖະກອນ</option>
+                    <option [ngValue]="2">ສະຖິຕິອຸດສາຫະກໍາ ແລະ ຫັດຖະກໍາ</option>
+                    <option [ngValue]="3">ສະຖິຕິການຄ້າພາຍໃນ</option>
+                    <option [ngValue]="4">ສະຖິຕິທະບຽນວິສາຫະກິດ</option>
+                    <option [ngValue]="5">ສະຖິຕິນໍາເຂົ້າ ແລະ ສົ່ງອອກ</option>
+                    <option [ngValue]="6">ສະຖິຕິວິສາຫະກິດຂະໜາດນ້ອຍ ແລະ ກາງ</option>
+                  </select>
+
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ເອກະສານພາສາລາວ</label>
+                <input type="file" class="form-control "  placeholder="ເອກະສານ" (change)="handleFileInput($event.target)">
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >ເອກະສານພາສາອັງກິດ</label>
+                <input type="file" class="form-control "  placeholder="ເອກະສານ" (change)="handleFileInput2($event.target)">
+                
+            </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+            <div class="col-md-8 mb-3">
+                <label >ລາຍລະອຽດ</label>
+                <textarea  type="text" class="form-control "  placeholder="ລາຍລະອຽດ"  [(ngModel)]="modal.spDsc"></textarea>
+                
+            </div>
+
+        </div>
+
+
+       
+    </div>
+
+    <div class="card-footer ">
+        <button  type="button" class="btn btn-primary" (click)="addFunc()"> ບັນທືກ </button>&nbsp;
+        <button routerLink="../" type="button" class="btn btn-secondary "> ກັບຄືນ </button>
+    </div>
+</div>

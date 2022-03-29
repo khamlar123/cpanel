@@ -6,13 +6,15 @@ import { StatisticsComponent } from './statistics.component';
 import { StatisticsListComponent } from './statistics-list/statistics-list.component';
 import { StatisticsAddComponent } from './statistics-add/statistics-add.component';
 import { StatisticsUpdateComponent } from './statistics-update/statistics-update.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [StatisticsComponent, StatisticsListComponent, StatisticsAddComponent, StatisticsUpdateComponent],
   imports: [
     CommonModule,
-    StatisticsRoutingModule
+    StatisticsRoutingModule,
+    FormsModule
   ]
 })
 export class StatisticsModule { }

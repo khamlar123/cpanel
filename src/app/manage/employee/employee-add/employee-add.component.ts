@@ -16,6 +16,7 @@ export class EmployeeAddComponent implements OnInit {
     emAddress: '', 
     createDate: '',
     emJoinDate: '',
+    businessType : '',
   }
   constructor(private api: ApiService, private route: Router,    private routes : ActivatedRoute,) { }
 
