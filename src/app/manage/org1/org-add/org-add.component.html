@@ -1,0 +1,47 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3 golbalflex">
+    ເພີ້ມຂໍ້ມູນ
+  </div>
+  <div class="card-body">
+
+    <div class="form-row">
+
+      <div class="col-md-4 mb-3">
+        <label>ຊື່</label>
+        <input type="text" class="form-control " placeholder="ຫົວຂໍ້" [(ngModel)]="modal.name">
+
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label>Parent</label>
+        <br>
+        <select class="form-select" aria-label="Disabled select example" id="sl1" [(ngModel)]="modal.parent">
+          <option [ngValue]="0">Parent </option>
+          <ng-container *ngIf="Parent.length > 0">
+            <option *ngFor="let item of Parent" [ngValue]="item.stId">{{item.name}}</option>
+          </ng-container>
+
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <div class="form-row">
+
+      <div class="col-md-8 mb-3">
+        <label>ຕໍາແໜ່ງ</label>
+        <!-- <textarea type="text" class="form-control " placeholder="ລາຍລະອຽດ" [(ngModel)]="modal.dsc"></textarea> -->
+        <input type="text" class="form-control " placeholder="ຕໍາແໜ່ງ" [(ngModel)]="modal.type">
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="card-footer ">
+    <button type="button" class="btn btn-primary" (click)="addFunc()"> ບັນທືກ </button>&nbsp;
+    <button routerLink="../" type="button" class="btn btn-secondary "> ກັບຄືນ </button>
+  </div>
+</div>

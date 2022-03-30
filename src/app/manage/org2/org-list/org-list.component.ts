@@ -46,7 +46,7 @@ export class OrgListComponent implements OnInit {
 
   tableCountFunc(): any {
     const fillterItems = (this.orgList) ? this.orgList.slice(0, this.tableCount) : null;
-    return fillterItems.filter(f => f.org_id  === "1");
+    return fillterItems.filter(f => f.org_id === "3");
   }
 
   searchFunc(): void {

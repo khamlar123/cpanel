@@ -13,7 +13,7 @@ export class OrgAddComponent implements OnInit {
     type: '',
     parent: 0,
     createDate: '',
-    org_id: 1,
+    org_id: 2,
   };
 
   Parent: {
@@ -36,7 +36,8 @@ export class OrgAddComponent implements OnInit {
   loadParent(): void {
     this.api.loadAllStructures('listAllStructures').subscribe(res => {
       if (res.status === '1') {
-        this.Parent = res.data.filter(f => f.org_id === "1");;
+        this.Parent = res.data.filter(f => f.org_id === "2");
+      
       }
     });
   }
@@ -48,7 +49,7 @@ export class OrgAddComponent implements OnInit {
     this.api.addStructures(this.modal, 'addStructures').subscribe(res => {
       if (res.status === '1') {
         alert('Add Data Successfully.');
-        this.route.navigate(['/main/Manage/Org/List']);
+        this.route.navigate(['/main/Manage/Org1/List']);
       }
     });
   }

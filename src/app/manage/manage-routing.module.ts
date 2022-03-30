@@ -9,11 +9,14 @@ import { DevelopmentPlanComponent } from './development-plan/development-plan.co
 import { DevelopmentPlanModule } from './development-plan/development-plan.module';
 import { DevelopmentReportModule } from './development-report/development-plan.module';
 import { DocumentModule } from './document/document.module';
+import { DonorModule } from './donor/donor.module';
 import { EmployeeModule } from './employee/employee.module';
 import { FormModule } from './form/form.module';
 import { LawModule } from './law/law.module';
 import { ManageComponent } from './manage.component';
 import { OrgModule } from './org/org.module';
+import { Org1Module } from './org1/org.module';
+import { Org2Module } from './org2/org.module';
 import { ProcessModule } from './process/process.module';
 import { ProductTeaModule } from './product-tea/product-tea.module';
 import { SitelinkUpdateComponent } from './sitelink/sitelink-update/sitelink-update.component';
@@ -50,6 +53,9 @@ const routes: Routes = [
       { path: 'Statistics', loadChildren: () => import('./statistics/statistics.module').then(m => StatisticsModule) },
       { path: 'Law', loadChildren: () => import('./law/law.module').then(m => LawModule) },
       { path: 'Org', loadChildren: () => import('./org/org.module').then(m => OrgModule) },
+      { path: 'Org1', loadChildren: () => import('./org1/org.module').then(m => Org1Module) },
+      { path: 'Org2', loadChildren: () => import('./org2/org.module').then(m => Org2Module) },
+      { path: 'Donor', loadChildren: () => import('./donor/donor.module').then(m => DonorModule) },
     ]
 
   },
