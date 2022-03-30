@@ -8,21 +8,23 @@
 
       <div class="col-md-4 mb-3">
         <label>ຊື່</label>
-        <input type="text" class="form-control " placeholder="ຊື່">
+        <input type="text" class="form-control " placeholder="ຊື່" [(ngModel)]="modal.teaTitle">
 
       </div>
 
+      <div class="col-md-4 mb-3">
+        <label>ຮູບພາບ</label>
+        <input type="file" class="form-control " placeholder="ຮູບພາບ" (change)="handleFileInput($event.target)">
 
-
-
+      </div>
     </div>
 
 
     <div class="form-row">
 
       <div class="col-md-8 mb-3">
-        <label>ລິ້ງ</label>
-        <textarea type="text" class="form-control " placeholder="ລິ້ງ"></textarea>
+        <label>ລາຍລະອຽດ</label>
+        <textarea type="text" class="form-control " placeholder="ລາຍລະອຽດ" [(ngModel)]="modal.teaDsc"></textarea>
 
       </div>
 
@@ -32,7 +34,7 @@
   </div>
 
   <div class="card-footer ">
-    <button type="button" class="btn btn-primary"> ບັນທືກ </button>&nbsp;
+    <button type="button" class="btn btn-primary" (click)="addFunc()"> ບັນທືກ </button>&nbsp;
     <button routerLink="../" type="button" class="btn btn-secondary "> ກັບຄືນ </button>
   </div>
 </div>

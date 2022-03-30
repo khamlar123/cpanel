@@ -11,6 +11,7 @@ import { DevelopmentReportModule } from './development-report/development-plan.m
 import { DocumentModule } from './document/document.module';
 import { EmployeeModule } from './employee/employee.module';
 import { FormModule } from './form/form.module';
+import { LawModule } from './law/law.module';
 import { ManageComponent } from './manage.component';
 import { ProcessModule } from './process/process.module';
 import { ProductTeaModule } from './product-tea/product-tea.module';
@@ -41,10 +42,12 @@ const routes: Routes = [
       { path: 'Form', loadChildren: () => import('./form/form.module').then(m => FormModule) },
       { path: 'ProductTea', loadChildren: () => import('./product-tea/product-tea.module').then(m => ProductTeaModule) },
       { path: 'Assistance', loadChildren: () => import('./assistance/assistance.module').then(m => AssistanceModule) },
-      { path: 'DevelopmentPlan', loadChildren: () => import('./development-plan/development-plan.module').then(m => DevelopmentPlanModule) },
-     
-      { path: 'DevelopmentReport', loadChildren: () => import('./development-report/development-plan.module').then(m => DevelopmentReportModule) },
+      // tslint:disable-next-line:max-line-length
+      { path: 'DevelopmentPlan', loadChildren: () => import('./development-plan/development-plan.module').then(() => DevelopmentPlanModule) },
+      // tslint:disable-next-line:max-line-length
+      { path: 'DevelopmentReport', loadChildren: () => import('./development-report/development-plan.module').then(() => DevelopmentReportModule) },
       { path: 'Statistics', loadChildren: () => import('./statistics/statistics.module').then(m => StatisticsModule) },
+      { path: 'Law', loadChildren: () => import('./law/law.module').then(m => LawModule) },
     ]
 
   },

@@ -24,32 +24,33 @@
         <thead>
           <tr>
             <th>ລໍາດັບ</th>
-            <th>ຮູບພາບ</th>
-            <th>ຊື່</th>
-            <th>ວັນທີ</th>
+            <th>ວັນທີສ້າງ</th>
+            <th>ຫົວຂໍ້</th>
             <th>ລາຍລະອຽດ</th>
-            <th>Action</th>
+            <th>ປະເພດເອກະສານ</th>
+            <th>ເອກະສານ</th>
+            <th style="width: 200px;">Action</th>
           </tr>
         </thead>
 
         <tbody>
           <tr *ngFor="let item of tableCountFunc(); let i = index">
             <td>{{i+1}}</td>
+            <td>{{item.createDate}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.dsc}}</td>
+            <th>{{getname(item.refId)}}</th>
             <td>
-              <div class="img-wap">
-                <img [src]="url + imgUrl(item.teacLogo)" alt="">
-              </div>
+              <a href="{{getImgUrl(item.fileLa)}}" target="_blank">ພາສາລາວ</a> |
+              <a href="{{getImgUrl(item.fileEn)}}" target="_blank">ພາສາອັງກິດ</a>
 
             </td>
-            <td>{{item.teaTitle}}</td>
-            <td>{{item.createDate}}</td>
-            <td>{{item.teaDsc}}</td>
-            <td style="width: 200px;">
-              <button type="button" class="btn btn-primary  btn-icon btn-pill"
-                [routerLink]="['/main/Manage/ProductTea/Update',item.teaId]" routerLinkActive="router-link-active"><i
-                  class="fas fa-edit"></i>
-                ແກ້ໄຂ</button> &nbsp;
-              <button type="button" class="btn btn-danger   btn-icon btn-pill" (click)="deleteFunc(item.teaId)"><i
+
+            <td>
+              <button [routerLink]="['/main/Manage/Law/Update',item.docId]" routerLinkActive="router-link-active"
+                type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button>
+              &nbsp;
+              <button type="button" class="btn btn-danger   btn-icon btn-pill" (click)="deleteFunc(item.docId)"><i
                   class="fas fa-edit"></i> ລົບ</button>
               &nbsp;
             </td>
