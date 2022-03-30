@@ -13,6 +13,7 @@ import { EmployeeModule } from './employee/employee.module';
 import { FormModule } from './form/form.module';
 import { LawModule } from './law/law.module';
 import { ManageComponent } from './manage.component';
+import { OrgModule } from './org/org.module';
 import { ProcessModule } from './process/process.module';
 import { ProductTeaModule } from './product-tea/product-tea.module';
 import { SitelinkUpdateComponent } from './sitelink/sitelink-update/sitelink-update.component';
@@ -48,6 +49,7 @@ const routes: Routes = [
       { path: 'DevelopmentReport', loadChildren: () => import('./development-report/development-plan.module').then(() => DevelopmentReportModule) },
       { path: 'Statistics', loadChildren: () => import('./statistics/statistics.module').then(m => StatisticsModule) },
       { path: 'Law', loadChildren: () => import('./law/law.module').then(m => LawModule) },
+      { path: 'Org', loadChildren: () => import('./org/org.module').then(m => OrgModule) },
     ]
 
   },
