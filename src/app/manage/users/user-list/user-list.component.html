@@ -1,62 +1,62 @@
 <div class="card shadow mb-4">
-    <div class="card-header py-3 golbalflex">
-            <div>
-              <select class="form-control" [(ngModel)]="remit" (change)="change_remit()">
-                  <option  value="10" >10 </option> 
-                  <option  value="20" >20 </option> 
-                  <option  value="50" >50 </option> 
-                  <option  value="100" >100 </option> 
-               </select>
-            </div>
-            <div >
-              <div class="input-group mr-sm-2">
-                  <input type="text" class="form-control" placeholder="Search" (keyup)="searchItems($event)" >
-                  <div class="input-group-append">
-                      <span class="input-group-text" id="basic-addon2"> ຄົ້ນຫາ</span>
-                  </div>
-              </div>
-            </div>
+  <div class="card-header py-3 golbalflex">
+    <div>
+      <select class="form-control">
+        <option value="10">10 </option>
+        <option value="20">20 </option>
+        <option value="50">50 </option>
+        <option value="100">100 </option>
+      </select>
     </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>ຊື່ແທ້</th>
-                        <th>ນາມສະກຸນ</th>
-                        <th>ອີເມວ</th>
-                        <th>ທີຢູ່</th>
-                        <th>ເບີໂທ</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-               
-                <tbody>
-                    <tr *ngFor="let item of data_list?.Data">
-                        <td>{{item.name}}</td>
-                        <td>{{item.lastname}}</td>
-                        <td>{{item.email}}</td>
-                        <td>{{item.address}}</td>
-                        <td>{{item.phonenumber}}</td>
-                        <td>
-                            <button routerLink="../Update" [queryParams]="{id: item.id}"  type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button> 	&nbsp;
-                            <button routerLink="../Remove" [queryParams]="{id: item.id}"  type="button" class="btn btn-danger   btn-icon btn-pill"><i class="fas fa-edit"></i> ລົບ</button> 	&nbsp;
-                        </td>
-                    </tr>
-                    
-                    
-                    
-                </tbody>
-            </table>
+    <div>
+      <div class="input-group mr-sm-2">
+        <input type="text" class="form-control" placeholder="Search">
+        <div class="input-group-append">
+          <span class="input-group-text" id="basic-addon2"> ຄົ້ນຫາ</span>
         </div>
-       
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>ຊື່ແທ້</th>
+            <th>ນາມສະກຸນ</th>
+            <th>ອີເມວ</th>
+            <th>ທີຢູ່</th>
+            <th>ເບີໂທ</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <button routerLink="../Update" type="button" class="btn btn-primary  btn-icon btn-pill"><i
+                  class="fas fa-edit"></i> ແກ້ໄຂ</button> &nbsp;
+              <button routerLink="../Remove" type="button" class="btn btn-danger   btn-icon btn-pill"><i
+                  class="fas fa-edit"></i> ລົບ</button> &nbsp;
+            </td>
+          </tr>
+
+
+
+        </tbody>
+      </table>
     </div>
 
-    <div class="card-footer ">
-        <div class="btn-group mr-2" role="group" aria-label="First group">
-          
-            <button (click)="click_page(button?.page)" *ngFor="let button of pageingtations" type="button" [ngClass]="{'btn-primary ': button?.active === 1 , 'btn-outline-primary' : button?.active !== 1 }" class="btn btn-outline-primary">{{button.name}}</button>
-           
-        </div>
+  </div>
+
+  <div class="card-footer ">
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+
     </div>
+  </div>
 </div>
