@@ -28,6 +28,7 @@
             <th>ວັນທີ</th>
             <th>ໂທລະສັບ</th>
             <th>ຫົວຂ້ຄໍາຮອງ</th>
+            <th>ເອກະສານ</th>
             <th>ລາຍລະອຽດ</th>
 
             <th style="width: 200px;">Action</th>
@@ -42,6 +43,10 @@
             <td>{{item.createDate}}</td>
             <td>{{item.phone}}</td>
             <td>{{item.stTitle}}</td>
+            <td>
+              <a href="{{getImgUrl(item.imgUrl)}}" target="_blank">ເອກະສານ</a>
+             
+            </td>
             <td>{{item.contactDsc}}</td>
             <td>
               <button [routerLink]="['/main/Manage/Form/Update',item.prpId]" routerLinkActive="router-link-active"

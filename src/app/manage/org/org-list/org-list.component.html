@@ -24,7 +24,7 @@
         <thead>
           <tr>
             <th>ລໍາດັບ</th>
-            <th>ວັນທີ</th>
+            <!-- <th>ວັນທີ</th> -->
             <th>ຊື່</th>
             <th>ຕໍາແໜ່ງ</th>
 
@@ -35,11 +35,11 @@
         <tbody>
           <tr *ngFor="let item of tableCountFunc(); let i = index">
             <td>{{i+1}}</td>
-            <td>{{item.createDate}}</td>
+            <!-- <td>{{item.createDate}}</td> -->
             <td>{{item.name}}</td>
             <td>{{item.type}}</td>
             <td>
-              <button [routerLink]="['/main/Manage/Org/Update',item.stId]" routerLinkActive="router-link-active"
+              <button [routerLink]="['/main/Manage/Org1/Update',item.stId]" routerLinkActive="router-link-active"
                 type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button>
               &nbsp;
               <button type="button" class="btn btn-danger   btn-icon btn-pill" (click)="deleteFunc(item.stId)"><i

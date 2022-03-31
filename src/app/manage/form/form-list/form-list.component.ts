@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from 'src/service/main.service';
 import { ApiService } from '../api/api.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class FormListComponent implements OnInit {
       phone:string; 
       age:string;
       createDate: string;
+      imgUrl : string[];
   }[] =[];
 
   masterFormList: {
@@ -30,9 +32,12 @@ export class FormListComponent implements OnInit {
     phone:string; 
     age:string;
     createDate: string;
+    imgUrl : string[];
 }[] =[];
-
-  constructor(private api: ApiService) { }
+  url ='';
+  constructor(private api: ApiService, private main: MainService) { 
+    this.url = this.main.getEnpoin();
+  }
 
   ngOnInit(): void {
     this.loadForm();
@@ -66,6 +71,15 @@ export class FormListComponent implements OnInit {
     }else{
       this.formList  =  this.masterFormList;
     }
+  }
+
+  getImgUrl(url: string): string {
+    const str = JSON.parse(url)[0];
+
+    if (JSON.parse(url)[0] === null) {
+      return '';
+    }
+    return this.url + str.slice(7, str.length);
   }
 
 }
