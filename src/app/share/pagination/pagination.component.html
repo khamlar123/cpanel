@@ -1,0 +1,12 @@
+<main>
+    <div class="container">
+      <button class="btn btn-prev" (click)="nextFunc(-1)">
+        <span class="material-icons"><</span>
+      </button>
+      <input type="number" value="{{pos + 1}}" (change)="onPosChange($event.target)" (click)="autoSelect($event.target)">
+      <button class="btn btn-next" (click)="nextFunc(1)">
+        <span class="material-icons">></span>
+      </button>
+      <p class="page-count" style="margin-left: 10px; margin-top: 15px; "> Pages: {{totalPage() || 0}}</p>
+    </div>
+  </main>

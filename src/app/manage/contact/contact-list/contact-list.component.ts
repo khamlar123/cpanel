@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { SubSink } from 'subsink';
 import { ApiService } from '../api/api.service';
 
@@ -50,6 +51,32 @@ export class ContactListComponent implements OnInit {
        this.contactList = this.contactList.filter(f => f.dpcId !== id);
      }
    })
+  }
+
+  changeTableRow(po: number):void{
+    this.tableCount =  po;
+    this.getData()
+    this.pos = 0;
+  }
+
+  getData(): Observable<any[]> {
+    let dataList: any[] = [];
+
+    const copyItems = Object.assign([], this.contactList);
+    if (copyItems.length > 9) {
+      dataList = copyItems.splice(this.pos * this.tableCount, this.tableCount);
+    } else {
+      dataList = copyItems;
+    }
+    return of(dataList);
+  }
+
+  update(o){
+    this.pos = o;
+  }
+
+  getCountItems():number{
+    return this.contactList.length;
   }
 
 }

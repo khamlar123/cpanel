@@ -1,0 +1,61 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3 golbalflex">
+            <div>
+              <select class="form-control" [(ngModel)]="tableCount" (change)="changeTableRow(tableCount)">
+                  <option  value="10" >10 </option> 
+                  <option  value="20" >20 </option> 
+                  <option  value="50" >50 </option> 
+                  <option  value="100" >100 </option> 
+               </select>
+            </div>
+            <div >
+              <div class="input-group mr-sm-2">
+                  <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchValue" (keyup.enter)="searchFunc()">
+                  <div class="input-group-append" (click)="searchFunc()">
+                      <span class="input-group-text" id="basic-addon2"> ຄົ້ນຫາ</span>
+                  </div>
+              </div>
+            </div>
+    </div>
+    <div class="card-body" style="min-height: 745px;">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th style="width: 80px;">ລໍາດັບ</th>
+                        <th style="width: 130px;">ວັນທີ</th>
+                        <th>ຫົວຂໍ້</th>
+                        <th>ລາຍລະອຽດ</th>
+               
+                        <th style="width: 200px;">Action</th>
+                    </tr>
+                </thead>
+               
+                <tbody>
+                    <tr *ngFor="let item of getData() | async; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.createDate}}</td>
+                        <td>{{item.prTitle}}</td>
+                        <td>{{item.prDsc}}</td>
+                
+                        <td>
+                            <button [routerLink]="[ '/main/Manage/Process2/Update', item.prId ]" type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button>     &nbsp;
+                            <button  type="button" class="btn btn-danger   btn-icon btn-pill" (click)="deleteFunc(item.prId)"><i class="fas fa-edit"></i> ລົບ</button>     &nbsp;
+                        </td>
+                    </tr>
+                
+                </tbody>
+            </table>
+        </div>
+       
+    </div>
+
+    <div class="card-footer ">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+          
+            <app-pagination [itemCount]="getCountItems()" [pos]="pos" [pageCount]="this.tableCount"
+            (posChange)="update($event)"></app-pagination>  
+           
+        </div>
+    </div>
+</div>

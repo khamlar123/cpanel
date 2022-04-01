@@ -18,10 +18,16 @@ import { OrgModule } from './org/org.module';
 import { Org1Module } from './org1/org.module';
 import { Org2Module } from './org2/org.module';
 import { ProcessModule } from './process/process.module';
+import { Process2Module } from './process2/process.module';
 import { ProductTeaModule } from './product-tea/product-tea.module';
 import { SitelinkUpdateComponent } from './sitelink/sitelink-update/sitelink-update.component';
 import { SitelinkModule } from './sitelink/sitelink.module';
 import { StatisticsModule } from './statistics/statistics.module';
+import { Statistics2Module } from './statistics2/statistics.module';
+import { Statistics3Module } from './statistics3/statistics.module';
+import { Statistics4Module } from './statistics4/statistics.module';
+import { Statistics5Module } from './statistics5/statistics.module';
+import { Statistics6Module } from './statistics6/statistics.module';
 
 
 const routes: Routes = [
@@ -41,6 +47,8 @@ const routes: Routes = [
       { path: 'Depament', loadChildren: () => import('./depament-info/depament-info.module').then(m => DepamentInfoModule) },
       { path: 'Contact', loadChildren: () => import('./contact/contact.module').then(m => ContactModule) },
       { path: 'Process', loadChildren: () => import('./process/process.module').then(m => ProcessModule) },
+      { path: 'Process2', loadChildren: () => import('./process2/process.module').then(m => Process2Module) },
+      
       { path: 'Employee', loadChildren: () => import('./employee/employee.module').then(m => EmployeeModule) },
       { path: 'Document', loadChildren: () => import('./document/document.module').then(m => DocumentModule) },
       { path: 'Form', loadChildren: () => import('./form/form.module').then(m => FormModule) },
@@ -51,6 +59,11 @@ const routes: Routes = [
       // tslint:disable-next-line:max-line-length
       { path: 'DevelopmentReport', loadChildren: () => import('./development-report/development-plan.module').then(() => DevelopmentReportModule) },
       { path: 'Statistics', loadChildren: () => import('./statistics/statistics.module').then(m => StatisticsModule) },
+      { path: 'Statistics2', loadChildren: () => import('./statistics2/statistics.module').then(m => Statistics2Module) },
+      { path: 'Statistics3', loadChildren: () => import('./statistics3/statistics.module').then(m => Statistics3Module) },
+      { path: 'Statistics4', loadChildren: () => import('./statistics4/statistics.module').then(m => Statistics4Module) },
+      { path: 'Statistics5', loadChildren: () => import('./statistics5/statistics.module').then(m => Statistics5Module) },
+      { path: 'Statistics6', loadChildren: () => import('./statistics6/statistics.module').then(m => Statistics6Module) },
       { path: 'Law', loadChildren: () => import('./law/law.module').then(m => LawModule) },
       { path: 'Org', loadChildren: () => import('./org/org.module').then(m => OrgModule) },
       { path: 'Org1', loadChildren: () => import('./org1/org.module').then(m => Org1Module) },

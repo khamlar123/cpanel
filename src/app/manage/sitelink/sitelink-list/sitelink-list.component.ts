@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { SubSink } from 'subsink';
 import { SiteLinkService } from '../api/site-link.service';
 
@@ -62,6 +63,33 @@ export class SitelinkListComponent implements OnInit {
     }else{
       this.siteLink  =  this.masterSiteLink;
     }
+  }
+
+
+  changeTableRow(po: number):void{
+    this.tableCount =  po;
+    this.getData()
+    this.pos = 0;
+  }
+
+  getData(): Observable<any[]> {
+    let dataList: any[] = [];
+
+    const copyItems = Object.assign([], this.siteLink);
+    if (copyItems.length > 9) {
+      dataList = copyItems.splice(this.pos * this.tableCount, this.tableCount);
+    } else {
+      dataList = copyItems;
+    }
+    return of(dataList);
+  }
+
+  update(o){
+    this.pos = o;
+  }
+
+  getCountItems():number{
+    return this.siteLink.length;
   }
 
 

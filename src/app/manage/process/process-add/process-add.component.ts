@@ -14,7 +14,7 @@ export class ProcessAddComponent implements OnInit {
     
     prDsc:'', 
     prTitle:'', 
-    refId:'',
+    refId:1,
     createDate: ''
   }
   constructor(private api :ApiService,private route: Router,    private routes : ActivatedRoute,) { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { MainService } from 'src/service/main.service';
 import { ApiService } from '../api/api.service';
 @Component({
@@ -78,6 +79,33 @@ export class DevelopmentListComponent implements OnInit {
    getImgUrl(url: string):string{
     let str = JSON.parse(url)[0];
     return this.url + str.slice(7, str.length);
+  }
+
+
+  changeTableRow(po: number):void{
+    this.tableCount =  po;
+    this.getData()
+    this.pos = 0;
+  }
+
+  getData(): Observable<any[]> {
+    let dataList: any[] = [];
+
+    const copyItems = Object.assign([], this.assistanceList.filter(f => f.refId === "3"));
+    if (copyItems.length > 9) {
+      dataList = copyItems.splice(this.pos * this.tableCount, this.tableCount);
+    } else {
+      dataList = copyItems;
+    }
+    return of(dataList);
+  }
+
+  update(o){
+    this.pos = o;
+  }
+
+  getCountItems():number{
+    return this.assistanceList.length;
   }
 
 }

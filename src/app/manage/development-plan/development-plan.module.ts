@@ -7,6 +7,7 @@ import { DevelopmentAddComponent } from './development-add/development-add.compo
 import { DevelopmentUpdateComponent } from './development-update/development-update.component';
 import { DevelopmentPlanComponent } from './development-plan.component';
 import { FormsModule } from '@angular/forms';
+import { PaginationModule } from 'src/app/share/pagination/pagination.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     DevelopmentPlanRoutingModule,
-    FormsModule
+    FormsModule,
+    PaginationModule
   ]
 })
 export class DevelopmentPlanModule { }

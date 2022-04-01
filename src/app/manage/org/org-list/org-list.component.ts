@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { ApiService } from '../api/api.service';
 
 @Component({
@@ -7,11 +8,11 @@ import { ApiService } from '../api/api.service';
   styleUrls: ['./org-list.component.css']
 })
 export class OrgListComponent implements OnInit {
-  pos = 0;
+
   tableCount = 10;
   searchValue = '';
   url: any;
-
+  pos = 0;
   orgList: {
     createDate: string;
     name: string;
@@ -32,6 +33,7 @@ export class OrgListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadOrg();
+
   }
 
   loadOrg(): void {
@@ -44,10 +46,10 @@ export class OrgListComponent implements OnInit {
   }
 
 
-  tableCountFunc(): any {
-    const fillterItems = (this.orgList) ? this.orgList.slice(0, this.tableCount) : null;
-    return fillterItems.filter(f => f.org_id === "1");
-  }
+  // tableCountFunc(): any {
+  //   const fillterItems = (this.orgList) ? this.orgList.slice(0, this.tableCount) : null;
+  //   return fillterItems.filter(f => f.org_id === "1");
+  // }
 
   searchFunc(): void {
     if (this.searchValue !== '') {
@@ -85,6 +87,32 @@ export class OrgListComponent implements OnInit {
     } else {
       return url;
     }
+  }
+
+  changeTableRow(po: number):void{
+    this.tableCount =  po;
+    this.getData()
+    this.pos = 0;
+  }
+
+  getData(): Observable<any[]> {
+    let dataList: any[] = [];
+
+    const copyItems = Object.assign([], this.orgList.filter(f => f.org_id === "1"));
+    if (copyItems.length > 9) {
+      dataList = copyItems.splice(this.pos * this.tableCount, this.tableCount);
+    } else {
+      dataList = copyItems;
+    }
+    return of(dataList);
+  }
+
+  update(o){
+    this.pos = o;
+  }
+
+  getCountItems():number{
+    return this.orgList.filter(f => f.org_id === "1").length;
   }
 
 }

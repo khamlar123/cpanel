@@ -7,6 +7,7 @@ import { DepamentListComponent } from './depament-list/depament-list.component';
 import { DepamentAddComponent } from './depament-add/depament-add.component';
 import { DepamentUpdateComponent } from './depament-update/depament-update.component';
 import { FormsModule } from '@angular/forms';
+import { PaginationModule } from 'src/app/share/pagination/pagination.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     DepamentInfoRoutingModule,
-    FormsModule
+    FormsModule,
+    PaginationModule
   ]
 })
 export class DepamentInfoModule { }

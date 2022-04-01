@@ -7,6 +7,7 @@ import { AssistanceListComponent } from './assistance-list/assistance-list.compo
 import { AssistanceAddComponent } from './assistance-add/assistance-add.component';
 import { AssistanceUpdateComponent } from './assistance-update/assistance-update.component';
 import { FormsModule } from '@angular/forms';
+import { PaginationModule } from 'src/app/share/pagination/pagination.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AssistanceRoutingModule,
-    FormsModule
+    FormsModule,
+    PaginationModule
   ]
 })
 export class AssistanceModule { }

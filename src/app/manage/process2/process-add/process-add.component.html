@@ -1,0 +1,46 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3 golbalflex">
+        ເພີ້ມຂໍ້ມູນ
+    </div>
+    <div class="card-body">
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ຫົວຂໍ້ແຈ້ງການ</label>
+                <input type="text" class="form-control "  placeholder="ຫົວຂໍ້ແຈ້ງການ" [(ngModel)]="addModal.prTitle">
+                
+            </div>
+
+            <!-- <div class="col-md-4 mb-3">
+                <label >ໝວດໝູ່</label>
+                <br>
+             
+                <select class="form-select" aria-label="Disabled select example" id="sl1" [(ngModel)]="addModal.refId" >
+                 
+                    <option value="1">ຂະແໜງການ</option>
+                    <option value="2">ຫ້ອງການ ອຄ ເມືອງ</option>
+                  </select>
+            </div> -->
+
+        
+        </div>
+
+
+        <div class="form-row">
+
+            <div class="col-md-8 mb-3">
+                <label >ລາຍລະອຽດ</label>
+                <textarea  type="text" class="form-control "  placeholder="ລາຍລະອຽດ" [(ngModel)]="addModal.prDsc" ></textarea>
+                
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card-footer ">
+        <button  type="button" class="btn btn-primary" (click)="addFunc()"> ບັນທືກ </button>&nbsp;
+        <button routerLink="../" type="button" class="btn btn-secondary "> ກັບຄືນ </button>
+    </div>
+</div>

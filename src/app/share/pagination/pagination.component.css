@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    font-size: 18px;
+    align-items: center;
+}
+.container .btn, .container input {
+    height: 25px;
+    width: 25px;
+    padding: 0;
+    margin: 0;
+}
+.container .btn span, .container input span {
+    font-size: 16px;
+}
+.container input {
+    border: 1px solid #e5e5e5;
+    width: 30px;
+    height: 25px;
+    border-left: none;
+    border-right: none;
+}
+.container button {
+    background: #f2f3f7;
+    color: #7e7777;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e5e5e5;
+}
+.container .btn-prev {
+    border-radius: 4px 0 0 4px;
+    border-right: none;
+}
+.container .btn-next {
+    border-radius: 0 4px 4px 0;
+    border-left: none;
+}
+.container .page-count {
+    width: 25px;
+    min-width: 25px;
+    font-size: 13px;
+    white-space: nowrap;
+    text-align: right;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+    text-align: center;
+}

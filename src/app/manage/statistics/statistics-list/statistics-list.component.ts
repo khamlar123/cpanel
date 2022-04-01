@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { MainService } from 'src/service/main.service';
 import { ApiService } from '../api/api.service';
 
@@ -104,6 +105,32 @@ export class StatisticsListComponent implements OnInit {
     }
     return '';
 
+  }
+
+  changeTableRow(po: number):void{
+    this.tableCount =  po;
+    this.getData()
+    this.pos = 0;
+  }
+
+  getData(): Observable<any[]> {
+    let dataList: any[] = [];
+
+    const copyItems = Object.assign([], this.statisticsList.filter(f => f.refId === "1"));
+    if (copyItems.length > 9) {
+      dataList = copyItems.splice(this.pos * this.tableCount, this.tableCount);
+    } else {
+      dataList = copyItems;
+    }
+    return of(dataList);
+  }
+
+  update(o){
+    this.pos = o;
+  }
+
+  getCountItems():number{
+    return this.statisticsList.filter(f => f.refId === "1").length;
   }
 
 

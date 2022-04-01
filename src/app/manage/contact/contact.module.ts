@@ -7,6 +7,7 @@ import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactAddComponent } from './contact-add/contact-add.component';
 import { ContactUpdateComponent } from './contact-update/contact-update.component';
 import { FormsModule } from '@angular/forms';
+import { PaginationModule } from 'src/app/share/pagination/pagination.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ContactRoutingModule,
-    FormsModule
+    FormsModule,
+    PaginationModule
   ]
 })
 export class ContactModule { }

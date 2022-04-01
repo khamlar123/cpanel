@@ -7,6 +7,7 @@ import { StatisticsListComponent } from './statistics-list/statistics-list.compo
 import { StatisticsAddComponent } from './statistics-add/statistics-add.component';
 import { StatisticsUpdateComponent } from './statistics-update/statistics-update.component';
 import { FormsModule } from '@angular/forms';
+import { PaginationModule } from 'src/app/share/pagination/pagination.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     StatisticsRoutingModule,
-    FormsModule
+    FormsModule,
+    PaginationModule
   ]
 })
 export class StatisticsModule { }
