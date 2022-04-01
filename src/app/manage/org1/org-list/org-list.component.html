@@ -1,7 +1,7 @@
 <div class="card shadow mb-4">
   <div class="card-header py-3 golbalflex">
     <div>
-      <select class="form-control" [(ngModel)]="tableCount">
+      <select class="form-control" [(ngModel)]="tableCount" (change)="changeTableRow(tableCount)">
         <option value="10">10 </option>
         <option value="20">20 </option>
         <option value="50">50 </option>
@@ -18,7 +18,7 @@
       </div>
     </div>
   </div>
-  <div class="card-body">
+  <div class="card-body" style="min-height: 745px;">
     <div class="table-responsive">
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
@@ -33,7 +33,7 @@
         </thead>
 
         <tbody>
-          <tr *ngFor="let item of tableCountFunc(); let i = index">
+          <tr *ngFor="let item of getData() | async;  let i = index">
             <td>{{i+1}}</td>
             <!-- <td>{{item.createDate}}</td> -->
             <td>{{item.name}}</td>
@@ -57,7 +57,8 @@
   <div class="card-footer ">
     <div class="btn-group mr-2" role="group" aria-label="First group">
 
-
+      <app-pagination [itemCount]="getCountItems()" [pos]="pos" [pageCount]="this.tableCount"
+      (posChange)="update($event)"></app-pagination>
 
     </div>
   </div>

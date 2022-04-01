@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { SubSink } from 'subsink';
 import { ApiService } from '../API/api.service';
 import { VmService } from '../view-model/vm.service';
@@ -137,6 +137,34 @@ export class ProductListComponent implements OnInit,OnDestroy {
     
     return (this.vm.proList)? this.vm.proList.slice(0, this.tableCount) : null;
    }
+
+
+   changeTableRow(po: number):void{
+    this.tableCount =  po;
+    this.getData()
+    this.pos = 0;
+  }
+
+  getData(): Observable<any[]> {
+    let dataList: any[] = [];
+
+    const copyItems = Object.assign([], this.vm.proList);
+    if (copyItems.length > 9) {
+      dataList = copyItems.splice(this.pos * this.tableCount, this.tableCount);
+    } else {
+      dataList = copyItems;
+    }
+    return of(dataList);
+  }
+
+  update(o){
+    this.pos = o;
+  }
+
+  getCountItems():number{
+    return this.vm.proList.length;
+  }
+
 
 
 }

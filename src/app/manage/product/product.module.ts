@@ -7,6 +7,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductUpdateComponent } from './product-update/product-update.component';
 import { FormsModule } from '@angular/forms';
+import { PaginationModule } from 'src/app/share/pagination/pagination.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ProductRoutingModule,
-    FormsModule
+    FormsModule,
+    PaginationModule
   ]
 })
 export class ProductModule { }
