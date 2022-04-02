@@ -7,6 +7,7 @@ import { VdioAddComponent } from './vdio-add/vdio-add.component';
 import { VdioUpdateComponent } from './vdio-update/vdio-update.component';
 import { VdioComponent } from './vdio.component';
 import { FormsModule } from '@angular/forms';
+import { PaginationModule } from 'src/app/share/pagination/pagination.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     VdioRoutingModule,
-    FormsModule
+    FormsModule,
+    PaginationModule
   ]
 })
 export class VdioModule { }

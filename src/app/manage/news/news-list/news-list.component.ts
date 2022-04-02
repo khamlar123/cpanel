@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 import { ApiService } from '../api/api.service';
 import { NewsService } from '../vm/news.service';
 
@@ -78,6 +79,32 @@ export class NewsListComponent implements OnInit {
     }else{
       this.vm.newsList =  this.vm.masterNew;
     }
+  }
+
+  changeTableRow(po: number):void{
+    this.tableCount =  po;
+    this.getData()
+    this.pos = 0;
+  }
+
+  getData(): Observable<any[]> {
+    let dataList: any[] = [];
+
+    const copyItems = Object.assign([], this.vm.newsList);
+    if (copyItems.length > 9) {
+      dataList = copyItems.splice(this.pos * this.tableCount, this.tableCount);
+    } else {
+      dataList = copyItems;
+    }
+    return of(dataList);
+  }
+
+  update(o){
+    this.pos = o;
+  }
+
+  getCountItems():number{
+    return this.vm.newsList.length;
   }
 
 }

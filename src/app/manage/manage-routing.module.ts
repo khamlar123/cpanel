@@ -13,6 +13,11 @@ import { DonorModule } from './donor/donor.module';
 import { EmployeeModule } from './employee/employee.module';
 import { FormModule } from './form/form.module';
 import { LawModule } from './law/law.module';
+import { Law2Module } from './law2/law.module';
+import { Law3Module } from './law3/law.module';
+import { Law4Module } from './law4/law.module';
+import { Law5Module } from './law5/law.module';
+import { Law6Module } from './law6/law.module';
 import { ManageComponent } from './manage.component';
 import { OrgModule } from './org/org.module';
 import { Org1Module } from './org1/org.module';
@@ -40,6 +45,7 @@ const routes: Routes = [
       { path: 'Product', loadChildren: () => import('./product/product.module').then(m => m.ProductModule) },
       { path: 'Users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
       { path: 'Banner', loadChildren: () => import('./banner/banner.module').then(m => m.BannerModule) },
+      { path: 'Banner2', loadChildren: () => import('./banner2/banner.module').then(m => m.Banner2Module) },
       { path: 'News', loadChildren: () => import('./news/news.module').then(m => m.NewsModule) },
       { path: 'Notice', loadChildren: () => import('./notice/notice.module').then(m => m.NoticeModule) },
       { path: 'Vdio', loadChildren: () => import('./vdio/vdio.module').then(m => m.VdioModule) },
@@ -65,6 +71,11 @@ const routes: Routes = [
       { path: 'Statistics5', loadChildren: () => import('./statistics5/statistics.module').then(m => Statistics5Module) },
       { path: 'Statistics6', loadChildren: () => import('./statistics6/statistics.module').then(m => Statistics6Module) },
       { path: 'Law', loadChildren: () => import('./law/law.module').then(m => LawModule) },
+      { path: 'Law2', loadChildren: () => import('./law2/law.module').then(m => Law2Module) },
+      { path: 'Law3', loadChildren: () => import('./law3/law.module').then(m => Law3Module) },
+      { path: 'Law4', loadChildren: () => import('./law4/law.module').then(m => Law4Module) },
+      { path: 'Law5', loadChildren: () => import('./law5/law.module').then(m => Law5Module) },
+      { path: 'Law6', loadChildren: () => import('./law6/law.module').then(m => Law6Module) },
       { path: 'Org', loadChildren: () => import('./org/org.module').then(m => OrgModule) },
       { path: 'Org1', loadChildren: () => import('./org1/org.module').then(m => Org1Module) },
       { path: 'Org2', loadChildren: () => import('./org2/org.module').then(m => Org2Module) },

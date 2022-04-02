@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 import { SubSink } from 'subsink';
 import { NoticeService } from '../api/notice.service';
 import { NoticeViewModueService } from '../vm/notice-view-modue.service';
@@ -92,6 +93,30 @@ export class NoticeListComponent implements OnInit, OnDestroy {
   }
 
   
+  changeTableRow(po: number):void{
+    this.tableCount =  po;
+    this.getData()
+    this.pos = 0;
+  }
 
+  getData(): Observable<any[]> {
+    let dataList: any[] = [];
+
+    const copyItems = Object.assign([], this.vm.noticeList);
+    if (copyItems.length > 9) {
+      dataList = copyItems.splice(this.pos * this.tableCount, this.tableCount);
+    } else {
+      dataList = copyItems;
+    }
+    return of(dataList);
+  }
+
+  update(o){
+    this.pos = o;
+  }
+
+  getCountItems():number{
+    return this.vm.noticeList.length;
+  }
 
 }

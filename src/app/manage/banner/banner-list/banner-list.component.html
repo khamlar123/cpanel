@@ -1,7 +1,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3 golbalflex">
             <div>
-              <select class="form-control" [(ngModel)]="tableCount">
+              <select class="form-control" [(ngModel)]="tableCount" (change)="changeTableRow(tableCount)">
                   <option  value="10" >10 </option> 
                   <option  value="20" >20 </option> 
                   <option  value="50" >50 </option> 
@@ -25,23 +25,21 @@
                         <th>ລະຫັດ</th>
                         <th>ຮູບພາບ</th>
                         <th>ອໍເດີອີນເດັກ</th>
-                        <th>ປະເພດແບນເນີ</th>
+                  
                         <th>Action</th>
                     </tr>
                 </thead>
                
                 <tbody>
-                    <tr *ngFor="let item of tableCountFunc()">
-                        <td>{{item.bann_id}}</td>
+                    <tr *ngFor="let item of getData() | async; let i = index">
+                        <td>{{i + 1}}</td>
                         <td>
                             <div class="img-wap">
                                 <img [src]="url + getImgUrl(item.imgUrl)" alt="img">
                             </div>
                         </td>
                         <td>{{item.orderIndex}}</td>
-                        <td>
-                            <P>{{(item.ref_id == 1)? 'ແບນເນີ': 'ຮູບພາບການເຄື່ອນໄຫວ'}}</P>
-                        </td>
+                   
                         <td>
                             <button [routerLink]="['/main/Manage/Banner/Update', item.bann_id]" routerLinkActive="router-link-active"    type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button> 	&nbsp;
                             <button  type="button" class="btn btn-danger   btn-icon btn-pill" (click)="deleteFunc(item.bann_id)"><i class="fas fa-edit"></i> ລົບ</button> 	&nbsp;
@@ -57,7 +55,8 @@
     <div class="card-footer ">
         <div class="btn-group mr-2" role="group" aria-label="First group">
           
-            <!-- <button (click)="click_page(button?.page)" *ngFor="let button of pageingtations" type="button" [ngClass]="{'btn-primary ': button?.active === 1 , 'btn-outline-primary' : button?.active !== 1 }" class="btn btn-outline-primary">{{button.name}}</button> -->
+            <app-pagination [itemCount]="getCountItems()" [pos]="pos" [pageCount]="this.tableCount"
+            (posChange)="update($event)"></app-pagination>
            
         </div>
     </div>

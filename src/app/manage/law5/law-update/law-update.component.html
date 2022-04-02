@@ -1,0 +1,66 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3 golbalflex">
+    ແກ້ໄຂ
+  </div>
+  <div class="card-body">
+
+    <div class="form-row">
+
+      <div class="col-md-4 mb-3">
+        <label>ຫົວຂໍ້</label>
+        <input type="text" class="form-control " placeholder="ຫົວຂໍ້" [(ngModel)]="modal.title">
+
+      </div>
+
+      <!-- <div class="col-md-4 mb-3">
+        <label>ປະເພດແບນເນີ</label>
+        <br>
+        <select class="form-select" aria-label="Disabled select example" id="sl1" [(ngModel)]="modal.refId">
+          <option [ngValue]="1">ກົດຫມາຍ</option>
+          <option [ngValue]="2">ດໍາລັດ</option>
+          <option [ngValue]="3">ຄໍາສັ່ງ</option>
+          <option [ngValue]="4">ຄໍາແນະນໍາ ຫຼື ບົດແນະນໍາ</option>
+          <option [ngValue]="5">ຂໍ້ຕົກລົງ</option>
+          <option [ngValue]="6">ແຈ້ງການ</option>
+        </select>
+
+      </div> -->
+
+    </div>
+
+
+    <div class="form-row">
+
+      <div class="col-md-8 mb-3">
+        <label>ລາຍລະອຽດ</label>
+        <textarea type="text" class="form-control " placeholder="ລາຍລະອຽດ" [(ngModel)]="modal.dsc"></textarea>
+
+      </div>
+
+    </div>
+
+    <div class="form-row">
+
+      <div class="col-md-4 mb-3">
+        <label>ເອກະສານພາສາລາວ</label>
+        <input type="file" class="form-control" placeholder="ເອກະສານ" (change)="handleFileInput($event.target)">
+
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label>ເອກະສານພາສາອັງກິດ</label>
+        <input type="file" class="form-control" placeholder="ເອກະສານ" (change)="handleFileInput2($event.target)">
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+  <div class="card-footer ">
+    <button type="button" class="btn btn-primary" (click)="updateFunc()"> ບັນທືກ </button>&nbsp;
+    <button [routerLink]="['/main/Manage/Law5/List']" type="button" class="btn btn-secondary "> ກັບຄືນ </button>
+  </div>
+</div>

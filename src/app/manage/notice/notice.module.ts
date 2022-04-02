@@ -7,6 +7,7 @@ import { NoticeListComponent } from './notice-list/notice-list.component';
 import { NoticeAddComponent } from './notice-add/notice-add.component';
 import { NoticeUpdateComponent } from './notice-update/notice-update.component';
 import { FormsModule } from '@angular/forms';
+import { PaginationModule } from 'src/app/share/pagination/pagination.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     NoticeRoutingModule,
-    FormsModule
+    FormsModule,
+    PaginationModule
   ]
 })
 export class NoticeModule { }

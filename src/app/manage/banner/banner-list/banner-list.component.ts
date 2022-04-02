@@ -4,6 +4,7 @@ import { publish } from 'rxjs/operators';
 import { SubSink } from 'subsink';
 import { VmService } from '../vm/vm.service';
 import { BannerApiService } from '../api/banner-api.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-banner-list',
@@ -82,7 +83,33 @@ export class BannerListComponent implements OnInit {
   }
 
   tableCountFunc(): any{
-    return (this.vm.bannerList)? this.vm.bannerList.slice(0, this.tableCount) : null;
+    return (this.vm.bannerList)? this.vm.bannerList.filter(f => f.ref_id === "1").slice(0, this.tableCount) : null;
    }
+
+   changeTableRow(po: number):void{
+    this.tableCount =  po;
+    this.getData()
+    this.pos = 0;
+  }
+
+  getData(): Observable<any[]> {
+    let dataList: any[] = [];
+
+    const copyItems = Object.assign([], this.vm.bannerList.filter(f => f.ref_id === "1"));
+    if (copyItems.length > 9) {
+      dataList = copyItems.splice(this.pos * this.tableCount, this.tableCount);
+    } else {
+      dataList = copyItems;
+    }
+    return of(dataList);
+  }
+
+  update(o){
+    this.pos = o;
+  }
+
+  getCountItems():number{
+    return this.vm.bannerList.filter(f => f.ref_id === "1").length;
+  }
 
 }

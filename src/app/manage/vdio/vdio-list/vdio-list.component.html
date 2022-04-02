@@ -1,7 +1,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3 golbalflex">
             <div>
-              <select class="form-control" [(ngModel)]="tableCount">
+              <select class="form-control" [(ngModel)]="tableCount" (change)="changeTableRow(tableCount)">
                   <option  value="10" >10 </option> 
                   <option  value="20" >20 </option> 
                   <option  value="50" >50 </option> 
@@ -32,8 +32,8 @@
                 </thead>
                
                 <tbody>
-                    <tr *ngFor="let item of tableCountFunc(); let i = index">
-                        <td>{{item.video_id}}</td>
+                    <tr *ngFor="let item of getData() | async; let i = index">
+                        <td>{{i + 1}}</td>
                         <td> <iframe  [src]="safeSrc[i]"  frameborder="0" allowfullscreen style="height: 150px;"></iframe></td>
                         <td>{{item.video_name}}</td>
                         <td>{{item.video_description}}</td>
@@ -53,7 +53,8 @@
     <div class="card-footer ">
         <div class="btn-group mr-2" role="group" aria-label="First group">
           
-            <!-- <button (click)="click_page(button?.page)" *ngFor="let button of pageingtations" type="button" [ngClass]="{'btn-primary ': button?.active === 1 , 'btn-outline-primary' : button?.active !== 1 }" class="btn btn-outline-primary">{{button.name}}</button> -->
+            <app-pagination [itemCount]="getCountItems()" [pos]="pos" [pageCount]="this.tableCount"
+            (posChange)="update($event)"></app-pagination>
            
         </div>
     </div>

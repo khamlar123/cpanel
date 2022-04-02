@@ -7,6 +7,7 @@ import { LawListComponent } from './law-list/law-list.component';
 import { LawAddComponent } from './law-add/law-add.component';
 import { LawUpdateComponent } from './law-update/law-update.component';
 import { FormsModule } from '@angular/forms';
+import { PaginationModule } from 'src/app/share/pagination/pagination.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     LawRoutingModule,
-    FormsModule
+    FormsModule,
+    PaginationModule
   ]
 })
 export class LawModule { }

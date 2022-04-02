@@ -25,7 +25,7 @@ export class VmService {
     bann_id: string;
     imgUrl: string
     orderIndex: string;
-    ref_id: number;
+    ref_id: string;
     web_id: number;
     dsc: string;
   }[] =[];
@@ -42,5 +42,17 @@ export class VmService {
 
     this.bannerDetail = reset;
 
+}
+
+reset():void{
+  const rs ={
+    bann_id:'',
+    imgUrl: '',
+    orderIndex: '',
+    ref_id: '',
+    web_id: '',
+    dsc : ''
+  }
+  this.bannerDetail = rs;
 }
 }

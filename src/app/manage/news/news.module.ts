@@ -7,6 +7,7 @@ import { NewsAddComponent } from './news-add/news-add.component';
 import { NewsUpdateComponent } from './news-update/news-update.component';
 import { NewsListComponent } from './news-list/news-list.component';
 import { FormsModule } from '@angular/forms';
+import { PaginationModule } from 'src/app/share/pagination/pagination.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     NewsRoutingModule,
-    FormsModule
+    FormsModule,
+    PaginationModule
   ]
 })
 export class NewsModule { }

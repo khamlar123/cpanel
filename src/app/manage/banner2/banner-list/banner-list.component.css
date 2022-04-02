@@ -1,0 +1,11 @@
+.img-wap{
+    width: 150px;
+    height: 60px;
+    overflow: hidden;
+
+}
+
+.img-wap img{
+    width: 100%;
+    height: 100%;
+}

@@ -51,6 +51,7 @@ export class BannerUpdateComponent implements OnInit, OnDestroy {
     
     
     this.vm.bannerDetail.imgUrl =(this.base64textString !== undefined)? map:[] ;
+    this.vm.bannerDetail.ref_id = "1";
     this.subs.sink = this.api.updateBanner(this.vm.bannerDetail, 'updateBanner').subscribe(res => {
       if(res.status == "1"){
    

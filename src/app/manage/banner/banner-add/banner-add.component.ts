@@ -85,7 +85,7 @@ export class BannerAddComponent implements OnInit {
       const modal = {
         imgUrl: map.map((m) => m),
         orderIndex: this.vm.bannerDetail.orderIndex,
-        ref_id: this.vm.bannerDetail.ref_id,
+        ref_id: 1,
         web_id: 1,
         isActive: 1,
         dsc: this.vm.bannerDetail.dsc,
@@ -101,6 +101,7 @@ export class BannerAddComponent implements OnInit {
             this.router.navigate(["/main/Manage/Banner/List"]);
 
             this.vm.bannerId = -1;
+            this.vm.reset();
           } else {
             alert("Add Data error");
           }
