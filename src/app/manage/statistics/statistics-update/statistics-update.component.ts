@@ -55,8 +55,8 @@ export class StatisticsUpdateComponent implements OnInit {
 
     var map2: string[] = [];
     map2.push(header + this.base64textString2);
-    this.modal.stLaoLink = map.map((m) => m);
-    this.modal.stEngLink = map2.map((m) => m);
+    this.modal.stLaoLink =  (this.base64textString !== undefined)? map.map((m) => m):[];
+    this.modal.stEngLink = (this.base64textString !== undefined)? map2.map((m) => m):[];
 
     this.api.updateStatistics(this.modal, 'updateStatistics').subscribe(res => {
       console.log(res);

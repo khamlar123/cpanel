@@ -24,9 +24,10 @@
                     <tr>
                         <th>ລະຫັດ</th>
                         <th>ຮູບພາບ</th>
+                        <td>ລາຍລະອຽດ</td>
                         <th>ອໍເດີອີນເດັກ</th>
         
-                        <th>Action</th>
+                        <th style="width: 200px;">Action</th>
                     </tr>
                 </thead>
                
@@ -38,6 +39,7 @@
                                 <img [src]="url + getImgUrl(item.imgUrl)" alt="img">
                             </div>
                         </td>
+                        <td>{{item.dsc}}</td>
                         <td>{{item.orderIndex}}</td>
                     
                         <td>

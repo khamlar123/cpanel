@@ -58,8 +58,8 @@ export class LawUpdateComponent implements OnInit {
     map2.push(header + this.base64textString2);
     const newData = new Date();
     this.modal.createDate = newData.getFullYear().toString() + '-' + (newData.getMonth() + 1).toString() + '-' + newData.getDate().toString();
-    this.modal.fileLa = map.map((m) => m);
-    this.modal.fileEn = map2.map((m) => m);
+    this.modal.fileLa =  (this.base64textString !== undefined)? map.map((m) => m):[];
+    this.modal.fileEn = (this.base64textString !== undefined)? map2.map((m) => m):[];
     this.api.updateLaw(this.modal, 'updateDocuments').subscribe(res => {
       if (res.status === "1") {
         alert('Edit Data Successfully.');

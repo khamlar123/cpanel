@@ -33,7 +33,7 @@ export class ApiService {
 
   deleteNew(method: string , id: string):Observable<any>{
     const pram = {
-      "dpcId":id
+      "news_id":id
     }
     return this.http.post(this.newsUrl,pram, {headers:this.header(method)})
     .pipe(catchError((err) => of ('server error')))
@@ -51,7 +51,7 @@ export class ApiService {
 
   getDetail(id: string , method: string):Observable<any>{
     const pram = {
-      "dpcId":id
+      "news_id":id
     }
     return this.http.post(this.newsUrl,pram, {headers:this.header(method)})
     .pipe(catchError((err) => of ('server error')))

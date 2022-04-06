@@ -89,6 +89,8 @@ export class NewsUpdateComponent implements OnInit {
         console.log(res);
         
         if(res.status === '1'){
+          alert('Edit Data Successfully.');
+          this.router.navigate(['/main/Manage/News/List']);
           this.vm.newsId = -1;
     
       }

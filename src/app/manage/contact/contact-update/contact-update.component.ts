@@ -34,6 +34,9 @@ export class ContactUpdateComponent implements OnInit {
   }
 
   update():void{
+    this.addModal.refId = 1;
+    const newData = new Date();
+    this.addModal.createDate = newData.getFullYear().toString() + '-' + (newData.getMonth() + 1).toString() + '-' + newData.getDate().toString();
     this.subs.sink = this.api.updateContact(this.addModal, 'updateDepartmentContact').subscribe(res => {
     alert('Edit Data Successfully.');
       this.route.navigate(['/main/Manage/Contact/List']);

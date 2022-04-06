@@ -14,7 +14,7 @@ export class ProcessUpdateComponent implements OnInit {
     prId:0,
     prDsc:'', 
     prTitle:'', 
-    refId:'',
+    refId:2,
     createDate: ''
   }
 

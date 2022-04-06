@@ -50,8 +50,8 @@ export class AssistanceUpdateComponent implements OnInit {
 
     var map2: string[] = [];
     map2.push(header + this.base64textString2);
-    this.modal.fileLa = map.map((m) => m);
-    this.modal.fileEn = map2.map((m) => m);
+    this.modal.fileLa =  (this.base64textString !== undefined)? map.map((m) => m):[];
+    this.modal.fileEn = (this.base64textString !== undefined)? map2.map((m) => m):[];
 
     this.api.updateAssistanceUrl(this.modal, 'updateAssistance').subscribe(res => {
       console.log(res);
