@@ -14,12 +14,14 @@ export class NoticeViewModueService {
     notice_id: number;
     title: string;
     web_id: number;
+    price: number;
 } = {
     dsc: "",
     imgUrl: "",
     notice_id: 0,
     title: "",
     web_id: 0,
+    price: 0,
   }
 
   constructor() { }
@@ -38,6 +40,7 @@ export class NoticeViewModueService {
       notice_id: 0,
       title: "",
       web_id: 0,
+      price: 0,
     }
     this.noticeDetail = reset;
 

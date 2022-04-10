@@ -14,8 +14,15 @@ export class DevelopmentUpdateComponent implements OnInit {
     fileEn : [''],
     fileLa: [''],
     createDate: '',
-    refId :1,
+    refId :2,
     dsc : '',
+    assisType:'',
+    recipient:'',
+    agent:'',
+    time:'',
+    totalPrice:0,
+    budgetEIF:0,
+    budgetAnother:0,
   }
   fileToUpload: File = null;
   imagePath;
@@ -52,7 +59,8 @@ export class DevelopmentUpdateComponent implements OnInit {
     map2.push(header + this.base64textString2);
     this.modal.fileLa =  (this.base64textString !== undefined)? map.map((m) => m):[];
     this.modal.fileEn = (this.base64textString !== undefined)? map2.map((m) => m):[];
-
+    const newData = new Date();
+    this.modal.createDate = newData.getFullYear().toString() + '-' + (newData.getMonth() + 1).toString() + '-' + newData.getDate().toString();
     this.api.updateAssistanceUrl(this.modal, 'updateAssistance').subscribe(res => {
       console.log(res);
 

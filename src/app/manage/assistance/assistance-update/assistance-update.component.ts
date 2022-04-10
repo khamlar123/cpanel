@@ -16,6 +16,13 @@ export class AssistanceUpdateComponent implements OnInit {
     createDate: '',
     refId :1,
     dsc : '',
+    assisType:'',
+    recipient:'',
+    agent:'',
+    time:'',
+    totalPrice:'',
+    budgetEIF:'',
+    budgetAnother:'',
   }
   fileToUpload: File = null;
   imagePath;

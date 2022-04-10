@@ -89,6 +89,7 @@ _handleReaderLoaded(readerEvt) {
       dsc: this.vm.noticeDetail.dsc,
       imgUrl: map.map(m => m),
       web_id: 1,
+      price: this.vm.noticeDetail.price,
     }
 
       this.subs.sink = this.api.addNotice(model,method).subscribe(res => {
@@ -96,6 +97,7 @@ _handleReaderLoaded(readerEvt) {
              console.log(res);
              alert('Add Data Successfully.');
              this.router.navigate(['/main/Manage/Notice/List']);
+             this.vm.resetNotice();
           }
       },err => console.log(),
       () => {

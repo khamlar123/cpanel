@@ -101,6 +101,7 @@ _handleReaderLoaded(readerEvt) {
         dsc: this.vm.noticeDetail.dsc,
         imgUrl:(this.base64textString !== undefined)? map.map(m => m): [],
         web_id: 1,
+        price: this.vm.noticeDetail.price,
       }
 
 

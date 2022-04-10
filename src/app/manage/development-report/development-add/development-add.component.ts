@@ -14,6 +14,13 @@ export class DevelopmentAddComponent implements OnInit {
     createDate: '',
     refId :3,
     dsc : '',
+    assisType:'',
+    recipient:'',
+    agent:'',
+    time:'',
+    totalPrice:0,
+    budgetEIF:0,
+    budgetAnother:0,
   }
 
   fileToUpload: File = null;

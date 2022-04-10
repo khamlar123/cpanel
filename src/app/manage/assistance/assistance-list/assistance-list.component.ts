@@ -14,23 +14,37 @@ export class AssistanceListComponent implements OnInit {
   tableCount = 10;
   searchValue = '';
   assistanceList: {
+    agent: string;
     asId: string;
+    assisType: string;
+    budgetAnother: string;
+    budgetEIF: string;
     createDate: string;
     dsc: string;
     fileEn: string;
     fileLa: string;
+    recipient: string;
     refId: string;
+    time: string;
     title: string;
+    totalPrice: string;
   }[] = [];
 
   masterAssistanceList: {
+    agent: string;
     asId: string;
+    assisType: string;
+    budgetAnother: string;
+    budgetEIF: string;
     createDate: string;
     dsc: string;
     fileEn: string;
     fileLa: string;
+    recipient: string;
     refId: string;
+    time: string;
     title: string;
+    totalPrice: string;
   }[] = [];
   url
   constructor(private api: ApiService, public main: MainService) { 

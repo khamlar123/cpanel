@@ -15,7 +15,7 @@ export class ContactUpdateComponent implements OnInit {
     dpcDsc: '',
     dpcId: '',
     dpcTitle: '',
-    refId: "1",
+    refId: 1,
   }
 
   id = 0

@@ -15,6 +15,13 @@ export class AssistanceAddComponent implements OnInit {
     createDate: '',
     refId :1,
     dsc : '',
+    assisType:'',
+    recipient:'',
+    agent:'',
+    time:'',
+    totalPrice:'',
+    budgetEIF:'',
+    budgetAnother:'',
   }
 
   fileToUpload: File = null;

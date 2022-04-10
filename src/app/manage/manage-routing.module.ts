@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from 'src/service/auth-guard.service';
 import { AssistanceModule } from './assistance/assistance.module';
 import { ContactModule } from './contact/contact.module';
+import { CouncilModule } from './council/council.module';
 import { DepamentInfoModule } from './depament-info/depament-info.module';
 import { DevelopmentPlanComponent } from './development-plan/development-plan.component';
 import { DevelopmentPlanModule } from './development-plan/development-plan.module';
@@ -80,6 +81,7 @@ const routes: Routes = [
       { path: 'Org1', loadChildren: () => import('./org1/org.module').then(m => Org1Module) },
       { path: 'Org2', loadChildren: () => import('./org2/org.module').then(m => Org2Module) },
       { path: 'Donor', loadChildren: () => import('./donor/donor.module').then(m => DonorModule) },
+      { path: 'council', loadChildren: () => import('./council/council.module').then(m => CouncilModule) },
     ]
 
   },

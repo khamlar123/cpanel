@@ -14,6 +14,13 @@ export class DevelopmentAddComponent implements OnInit {
     createDate: '',
     refId :2,
     dsc : '',
+    assisType:'',
+    recipient:'',
+    agent:'',
+    time:'',
+    totalPrice:0,
+    budgetEIF:0,
+    budgetAnother:0,
   }
 
   fileToUpload: File = null;
@@ -48,8 +55,11 @@ export class DevelopmentAddComponent implements OnInit {
 
 
     this.api.addAssistanceUrl(this.modal, 'addAssistance').subscribe(res => {
-      alert('Add Data Successfully.');
-      this.route.navigate(['/main/Manage/DevelopmentPlan/List']);
+      if(res.status === '1'){
+        alert('Add Data Successfully.');
+        this.route.navigate(['/main/Manage/DevelopmentPlan/List']);
+      }
+
       
     })
     

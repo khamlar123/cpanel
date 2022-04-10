@@ -9,13 +9,20 @@ import { ApiService } from '../api/api.service';
 export class DevelopmentUpdateComponent implements OnInit {
 
   modal = {
-    asId: 0,
     title : '',
     fileEn : [''],
     fileLa: [''],
     createDate: '',
-    refId :1,
+    refId :3,
     dsc : '',
+    assisType:'',
+    recipient:'',
+    agent:'',
+    time:'',
+    totalPrice:0,
+    budgetEIF:0,
+    budgetAnother:0,
+    asId : 0,
   }
   fileToUpload: File = null;
   imagePath;

@@ -1,18 +1,74 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3 golbalflex">
-        ແກ້ໄຂ
+        ເພີ້ມຂໍ້ມູນ
     </div>
     <div class="card-body">
 
         <div class="form-row">
 
             <div class="col-md-4 mb-3">
-                <label >ຫົວຂໍ້</label>
-                <input type="text" class="form-control "  placeholder="ຫົວຂໍ້" [(ngModel)]="modal.title">
+                <label >ຊື່ໂຄງການ</label>
+                <input type="text" class="form-control "  placeholder="ຊື່ໂຄງການ" [(ngModel)]="modal.title">
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >ປະເພດໂຄງການ</label>
+                <input type="text" class="form-control "  placeholder="ປະເພດໂຄງການ" [(ngModel)]="modal.assisType">
                 
             </div>
 
         </div>
+
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ຜູ້ໄດ້ຮັບທືນ</label>
+                <input type="text" class="form-control "  placeholder="ຜູ້ໄດ້ຮັບທືນ" [(ngModel)]="modal.recipient">
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >ຜູ້ຈັດຕັ້ງປະຕິບັດ</label>
+                <input type="text" class="form-control "  placeholder="ຜູ້ຈັດຕັ້ງປະຕິບັດ" [(ngModel)]="modal.agent">
+                
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ໄລຍະເວລາໂຄງການ</label>
+                <input type="text" class="form-control "  placeholder="ໄລຍະເວລາໂຄງການ" [(ngModel)]="modal.time">
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >ມູນຄ່າທັງໝົດ</label>
+                <input type="number" class="form-control "  placeholder="ມູນຄ່າທັງໝົດ" [(ngModel)]="modal.totalPrice">
+                
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ງົບປະມານຈາກ EIF</label>
+                <input type="number" class="form-control "  placeholder="ງົບປະມານຈາກ EIF" [(ngModel)]="modal.budgetEIF">
+                
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label >ງົບປະມານຈາກແຫຼ່ງອື່ນ</label>
+                <input type="number" class="form-control "  placeholder="ງົບປະມານຈາກແຫຼ່ງອື່ນ" [(ngModel)]="modal.budgetAnother">
+                
+            </div>
+
+        </div>
+
 
         <div class="form-row">
 
@@ -34,8 +90,8 @@
         <div class="form-row">
 
             <div class="col-md-8 mb-3">
-                <label >ລາຍລະອຽດ</label>
-                <textarea  type="text" class="form-control "  placeholder="ລາຍລະອຽດ"  [(ngModel)]="modal.dsc"></textarea>
+                <label >ເປົ້າໝາຍ</label>
+                <textarea  type="text" class="form-control "  placeholder="ເປົ້າໝາຍ"  [(ngModel)]="modal.dsc"></textarea>
                 
             </div>
 
@@ -47,6 +103,7 @@
 
     <div class="card-footer ">
         <button  type="button" class="btn btn-primary" (click)="updateFunc()"> ບັນທືກ </button>&nbsp;
-        <button [routerLink]="['/main/Manage/Assistance/List']" routerLinkActive="router-link-active" type="button" class="btn btn-secondary "> ກັບຄືນ </button>
+        <button  [routerLink]="['/main/Manage/Assistance/List']" type="button" class="btn btn-secondary "> ກັບຄືນ </button>
+
     </div>
 </div>
