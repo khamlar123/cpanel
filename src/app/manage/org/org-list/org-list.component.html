@@ -27,6 +27,7 @@
             <th>ຮູບພາບ</th>
             <th>ຊື່</th>
             <th>ຕໍາແໜ່ງ</th>
+            <th>ລາຍລະອຽດ</th>
 
             <th style="width: 200px;">Action</th>
           </tr>
@@ -37,13 +38,14 @@
             <td>{{i+1}}</td>
             <td>
               <div class="img-wap">
-                <img src="/assets/user/user1.png" alt="img">
+                <img src="{{getImgUrl(item.imgUrl)}}" alt="img">
               </div>
             </td>
             <td>{{item.name}}</td>
             <td>{{item.type}}</td>
+            <td>{{item.dsc}}</td>
             <td>
-              <button [routerLink]="['/main/Manage/Org1/Update',item.stId]" routerLinkActive="router-link-active"
+              <button [routerLink]="['/main/Manage/Org/Update',item.stId]" routerLinkActive="router-link-active"
                 type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button>
               &nbsp;
               <button type="button" class="btn btn-danger   btn-icon btn-pill" (click)="deleteFunc(item.stId)"><i

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { MainService } from 'src/service/main.service';
 import { ApiService } from '../api/api.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class OrgListComponent implements OnInit {
     parent: string;
     stId: string;
     type: string;
+    imgUrl: string;
   }[] = [];
   masterOrg: {
     createDate: string;
@@ -28,8 +30,11 @@ export class OrgListComponent implements OnInit {
     parent: string;
     stId: string;
     type: string;
+    imgUrl: string;
   }[] = [];
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private main: MainService) {
+    this.url = this.main.getEnpoin();
+  }
 
   ngOnInit(): void {
     this.loadOrg();
@@ -44,6 +49,8 @@ export class OrgListComponent implements OnInit {
       }
     });
   }
+
+  
 
 
   // tableCountFunc(): any {
@@ -71,12 +78,18 @@ export class OrgListComponent implements OnInit {
   }
 
   getImgUrl(url: string): string {
-    const str = JSON.parse(url)[0];
+    if(url !== null){
+      const str = JSON.parse(url)[0];
 
-    if (JSON.parse(url)[0] === null) {
-      return '';
+      if (JSON.parse(url)[0] === null) {
+        return '';
+      }
+  
+      return this.url + str.slice(7, str.length);
     }
-    return this.url + str.slice(7, str.length);
+
+    return '';
+  
   }
 
 
