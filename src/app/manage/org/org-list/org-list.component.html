@@ -24,7 +24,7 @@
         <thead>
           <tr>
             <th>ລໍາດັບ</th>
-            <!-- <th>ວັນທີ</th> -->
+            <th>ຮູບພາບ</th>
             <th>ຊື່</th>
             <th>ຕໍາແໜ່ງ</th>
 
@@ -32,10 +32,14 @@
           </tr>
         </thead>
 
-        <tbody >
+        <tbody>
           <tr *ngFor="let item of getData() | async; let i = index">
             <td>{{i+1}}</td>
-            <!-- <td>{{item.createDate}}</td> -->
+            <td>
+              <div class="img-wap">
+                <img src="/assets/user/user1.png" alt="img">
+              </div>
+            </td>
             <td>{{item.name}}</td>
             <td>{{item.type}}</td>
             <td>
@@ -57,7 +61,7 @@
   <div class="card-footer ">
     <div class="btn-group mr-2" role="group" aria-label="First group">
       <app-pagination [itemCount]="getCountItems()" [pos]="pos" [pageCount]="this.tableCount"
-      (posChange)="update($event)"></app-pagination>
+        (posChange)="update($event)"></app-pagination>
     </div>
   </div>
 </div>
