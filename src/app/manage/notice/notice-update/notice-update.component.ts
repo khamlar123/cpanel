@@ -32,6 +32,7 @@ export class NoticeUpdateComponent implements OnInit {
        this.vm.noticeDetail.notice_id = Number(mapData.notice_id);
        this.vm.noticeDetail.title = mapData.title;
        this.vm.noticeDetail.dsc = mapData.dsc;
+       this.vm.noticeDetail.gen_id = Number(mapData.gen_id);
     })
   }
 
@@ -96,11 +97,8 @@ _handleReaderLoaded(readerEvt) {
 
       const model = {
         
-        notice_id: this.vm.noticeDetail.notice_id,
-        title: this.vm.noticeDetail.title, 
-        dsc: this.vm.noticeDetail.dsc,
-        imgUrl:(this.base64textString !== undefined)? map.map(m => m): [],
-        web_id: 1,
+        gen_id: this.vm.noticeDetail.gen_id,
+        title: this.vm.noticeDetail.title,
         price: this.vm.noticeDetail.price,
       }
 
