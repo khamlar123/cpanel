@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { MainService } from 'src/service/main.service';
 import { SubSink } from 'subsink';
 import { SiteLinkService } from '../api/site-link.service';
 
@@ -26,7 +27,10 @@ export class SitelinkListComponent implements OnInit {
     slName: string;
     slid: string;
   }[] = [];
-  constructor(private api: SiteLinkService) { }
+  url = '';
+  constructor(private api: SiteLinkService, private main: MainService) {
+    this.url = this.main.getEnpoin();
+  }
 
 
 
@@ -35,40 +39,40 @@ export class SitelinkListComponent implements OnInit {
     this.loadSiteLink();
   }
 
-  loadSiteLink(): void{
+  loadSiteLink(): void {
     this.subs.sink = this.api.loadAllSiteLink('listAllSitelinks').subscribe(res => {
       this.siteLink = res.data;
       this.masterSiteLink = res.data;
     });
   }
 
-  tableCountFunc(): any{
-    return (this.siteLink)? this.siteLink.slice(0, this.tableCount) : null;
-   }
+  tableCountFunc(): any {
+    return (this.siteLink) ? this.siteLink.slice(0, this.tableCount) : null;
+  }
 
-   deleteFunc(id: string):void{
+  deleteFunc(id: string): void {
     this.subs.sink = this.api.deleteSiteLink(id, 'deleteSitelinks').subscribe(res => {
-      if(res.status === '1'){
+      if (res.status === '1') {
         this.siteLink = this.siteLink.filter(f => f.slid !== id);
       }
-    })
-   }
+    });
+  }
 
-   searchFunc():void{
-    if(this.searchValue !== ''){
-        this.siteLink =  this.masterSiteLink.filter(f => 
-          f.slName.includes(this.searchValue.toLowerCase()) || 
-          f.createDate.includes(this.searchValue.toLowerCase())
-        );
-    }else{
-      this.siteLink  =  this.masterSiteLink;
+  searchFunc(): void {
+    if (this.searchValue !== '') {
+      this.siteLink = this.masterSiteLink.filter(f =>
+        f.slName.includes(this.searchValue.toLowerCase()) ||
+        f.createDate.includes(this.searchValue.toLowerCase())
+      );
+    } else {
+      this.siteLink = this.masterSiteLink;
     }
   }
 
 
-  changeTableRow(po: number):void{
-    this.tableCount =  po;
-    this.getData()
+  changeTableRow(po: number): void {
+    this.tableCount = po;
+    this.getData();
     this.pos = 0;
   }
 
@@ -84,12 +88,25 @@ export class SitelinkListComponent implements OnInit {
     return of(dataList);
   }
 
-  update(o){
+  update(o) {
     this.pos = o;
   }
 
-  getCountItems():number{
+  getCountItems(): number {
     return this.siteLink.length;
+  }
+
+  getImgUrl(url: string): string {
+    if (url !== null) {
+      const str = JSON.parse(url)[0];
+
+      if (JSON.parse(url)[0] === null) {
+        return '';
+      }
+      return this.url + str.slice(7, str.length);
+    }
+
+    return '';
   }
 
 

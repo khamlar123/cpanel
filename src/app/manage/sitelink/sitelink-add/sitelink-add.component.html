@@ -1,38 +1,47 @@
 <div class="card shadow mb-4">
-    <div class="card-header py-3 golbalflex">
-        ເພີ້ມຂໍ້ມູນ
-    </div>
-    <div class="card-body">
+  <div class="card-header py-3 golbalflex">
+    ເພີ້ມຂໍ້ມູນ
+  </div>
+  <div class="card-body">
 
-        <div class="form-row">
+    <div class="form-row">
 
-            <div class="col-md-4 mb-3">
-                <label >ຊື່</label>
-                <input type="text" class="form-control "  placeholder="ຊື່" [(ngModel)]="addModal.slName">
-                
-            </div>
+      <div class="col-md-4 mb-3">
+        <label>ຊື່</label>
+        <input type="text" class="form-control " placeholder="ຊື່" [(ngModel)]="addModal.slName">
 
-      
-
-        
-        </div>
+      </div>
 
 
-        <div class="form-row">
 
-            <div class="col-md-8 mb-3">
-                <label >ລິ້ງ</label>
-                <textarea  type="text" class="form-control "  placeholder="ລິ້ງ" [(ngModel)]="addModal.slLink"></textarea>
-                
-            </div>
 
-        </div>
-
-       
     </div>
 
-    <div class="card-footer ">
-        <button  type="button" class="btn btn-primary" (click)="addSiteLink()"> ບັນທືກ </button>&nbsp;
-        <button routerLink="../" type="button" class="btn btn-secondary "> ກັບຄືນ </button>
+
+    <div class="form-row">
+
+      <div class="col-md-8 mb-3">
+        <label>ລິ້ງ</label>
+        <textarea type="text" class="form-control " placeholder="ລິ້ງ" [(ngModel)]="addModal.slLink"></textarea>
+
+      </div>
+
+
     </div>
+
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label>ຮູບພາບ</label>
+        <input type="file" class="form-control " placeholder="ເອກະສານ" (change)="handleFileInput($event.target)">
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="card-footer ">
+    <button type="button" class="btn btn-primary" (click)="addSiteLink()"> ບັນທືກ </button>&nbsp;
+    <button routerLink="../" type="button" class="btn btn-secondary "> ກັບຄືນ </button>
+  </div>
 </div>
