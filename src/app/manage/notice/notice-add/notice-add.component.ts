@@ -9,19 +9,19 @@ import { NoticeViewModueService } from '../vm/notice-view-modue.service';
   templateUrl: './notice-add.component.html',
   styleUrls: ['./notice-add.component.css']
 })
-export class NoticeAddComponent implements OnInit,OnDestroy {
+export class NoticeAddComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
   url = `http://216.127.173.163/`;
   fileToUpload: File = null;
   imagePath;
   imgURL: any;
   message: string;
-  base64textString:any;
+  base64textString: any;
 
   constructor(
-    public vm : NoticeViewModueService,
-    private router : Router,
-    public api : NoticeService,
+    public vm: NoticeViewModueService,
+    private router: Router,
+    public api: NoticeService,
   ) { }
   ngOnDestroy(): void {
     this.subs.unsubscribe();
@@ -30,8 +30,8 @@ export class NoticeAddComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
   }
 
-  getImgUrl(url: string):string{
-    return (JSON.parse(url)[0])?JSON.parse(url)[0]: JSON.parse(url);
+  getImgUrl(url: string): string {
+    return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
   }
 
   handleFileInput(el: any) {
@@ -41,69 +41,66 @@ export class NoticeAddComponent implements OnInit,OnDestroy {
   }
 
   preview(files) {
-    if (files.length === 0) return;
+    if (files.length === 0) { return; }
 
-    var mimeType = files.type;
+    const mimeType = files.type;
     if (mimeType.match(/image\/*/) == null) {
       this.message = 'Only images are supported.';
       return;
     }
-    var reader = new FileReader();
+    const reader = new FileReader();
     this.imagePath = files;
     reader.readAsDataURL(files);
+    // tslint:disable-next-line:variable-name
     reader.onload = (_event) => {
       this.imgURL = reader.result;
     };
- 
-    
   }
 
-  handleFileSelect(evt){
-    var files = evt.files;
-    var file = files[0];
+  handleFileSelect(evt) {
+    const files = evt.files;
+    const file = files[0];
 
-  if (files && file) {
-      var reader = new FileReader();
-
-      reader.onload =this._handleReaderLoaded.bind(this);
+    if (files && file) {
+      const reader = new FileReader();
+      reader.onload = this._handleReaderLoaded.bind(this);
 
       reader.readAsBinaryString(file);
-  }
-}
-
-_handleReaderLoaded(readerEvt) {
-   var binaryString = readerEvt.target.result;
-    this.base64textString= btoa(binaryString);    
+    }
   }
 
-  addNewNotice():void{
-   
+  _handleReaderLoaded(readerEvt) {
+    const binaryString = readerEvt.target.result;
+    this.base64textString = btoa(binaryString);
+  }
+
+  addNewNotice(): void {
     const method = 'addNotice';
-    var map:string[] = [];
+    const map: string[] = [];
 
     const header = 'data:image/jpeg;base64,';
-    map.push(header+ this.base64textString)
+    map.push(header + this.base64textString);
 
     const model = {
-      title: this.vm.noticeDetail.title, 
+      title: this.vm.noticeDetail.title,
       dsc: this.vm.noticeDetail.dsc,
       imgUrl: map.map(m => m),
       web_id: 1,
       price: this.vm.noticeDetail.price,
-    }
-
-      this.subs.sink = this.api.addNotice(model,method).subscribe(res => {
-          if(res.status === '1'){
-             console.log(res);
-             alert('Add Data Successfully.');
-             this.router.navigate(['/main/Manage/Notice/List']);
-             this.vm.resetNotice();
-          }
-      },err => console.log(),
-      () => {
-    
+      createDate: '',
+    };
+    const newData = new Date();
+    model.createDate = newData.getFullYear().toString() + '-' + (newData.getMonth() + 1).toString() + '-' + newData.getDate().toString();
+    this.subs.sink = this.api.addNotice(model, method).subscribe(res => {
+      if (res.status === '1') {
+        console.log(res);
+        alert('Add Data Successfully.');
+        this.router.navigate(['/main/Manage/Notice/List']);
+        this.vm.resetNotice();
       }
-      )
+    }, () => console.log(),
+      () => { }
+    );
   }
 
 }

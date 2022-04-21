@@ -14,49 +14,47 @@ export class NoticeService {
   constructor(
     private http: HttpClient,
     private service: MainService
-    ) { }
+  ) { }
 
-  protected header(method: string):any{
-    const token = localStorage.getItem("token")
-    const headers = new HttpHeaders({'content-type': 'application/json'})
-    .set('token', token+'')
-    .set('method', method);
+  protected header(method: string): any {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({ 'content-type': 'application/json' })
+      .set('token', token + '')
+      .set('method', method);
     return headers;
   }
 
 
-  notice(method: string):Observable<any>{
- 
+  notice(method: string): Observable<any> {
+    const pram = {};
+    return this.http.post(this.noticeUrl, pram, { headers: this.header(method) })
+      .pipe(catchError((err) => of('server error')));
+  }
+
+  deleteNotice(id: string, method: string): Observable<any> {
     const pram = {
-    }
-    return this.http.post(this.noticeUrl,pram, {headers:this.header(method)})
-    .pipe(catchError((err) => of ('server error')))
+      notice_id: id
+    };
+    return this.http.post(this.noticeUrl, pram, { headers: this.header(method) })
+      .pipe(catchError((err) => of('server error')));
   }
 
-  deleteNotice(id: string, method: string):Observable<any>{
+  updateNotice(modal, method: string): Observable<any> {
+    return this.http.post(this.noticeUrl, modal, { headers: this.header(method) })
+      .pipe(catchError((err) => of('server error')));
+  }
+
+  addNotice(modal, method: string): Observable<any> {
+    return this.http.post(this.noticeUrl, modal, { headers: this.header(method) })
+      .pipe(catchError((err) => of('server error')));
+  }
+
+  getDetailNotice(id, method: string): Observable<any> {
     const pram = {
-      "notice_id":id
-    }
-    return this.http.post(this.noticeUrl,pram, {headers:this.header(method)})
-    .pipe(catchError((err) => of ('server error')))
-  }
-
-  updateNotice(modal, method: string):Observable<any>{
-    return this.http.post(this.noticeUrl,modal, {headers:this.header(method)})
-    .pipe(catchError((err) => of ('server error')))
-  }
-
-  addNotice(modal, method: string):Observable<any>{
-    return this.http.post(this.noticeUrl,modal, {headers:this.header(method)})
-    .pipe(catchError((err) => of ('server error')))
-  }
-
-  getDetailNotice(id, method: string):Observable<any>{
-    const pram ={
-      "notice_id":id
-    }
-    return this.http.post(this.noticeUrl,pram, {headers:this.header(method)})
-    .pipe(catchError((err) => of ('server error')))
+      notice_id: id
+    };
+    return this.http.post(this.noticeUrl, pram, { headers: this.header(method) })
+      .pipe(catchError((err) => of('server error')));
   }
 
 

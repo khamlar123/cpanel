@@ -7,9 +7,9 @@ export class MainService {
 
   constructor() { }
 
-  getEnpoin(): string{
+  getEnpoin(): string {
     return 'http://216.127.173.163/website';
-     //return 'http://216.127.173.163/oudomxay';
-   // return 'http://216.127.173.163/louangnamtha';
+    // return 'http://216.127.173.163/oudomxay';
+    // return 'http://216.127.173.163/louangnamtha';
   }
 }

@@ -6,8 +6,8 @@ import { Injectable } from '@angular/core';
 export class NoticeViewModueService {
 
   noticeList: any[] = [];
-  noticeId: number = -1;
-  masterNotice : any[] = []; 
+  noticeId = -1;
+  masterNotice: any[] = [];
   noticeDetail: {
     dsc: string;
     imgUrl: any;
@@ -15,37 +15,37 @@ export class NoticeViewModueService {
     title: string;
     web_id: number;
     price: number;
-    gen_id: number;
+    gen_id: string;
 
-} = {
-    dsc: "",
-    imgUrl: "",
-    notice_id: 0,
-    title: "",
-    web_id: 0,
-    price: 0,
-    gen_id: 0,
-  }
+  } = {
+      dsc: '',
+      imgUrl: '',
+      notice_id: 0,
+      title: '',
+      web_id: 0,
+      price: 0,
+      gen_id: '',
+    };
 
   constructor() { }
 
-  setNotice(nt): void{
+  setNotice(nt): void {
     this.noticeList = [];
     this.noticeList = nt;
-    this.masterNotice = nt
+    this.masterNotice = nt;
   }
 
-  resetNotice():void{
-    
+  resetNotice(): void {
+
     const reset = {
-      dsc: "",
-      imgUrl: "",
+      dsc: '',
+      imgUrl: '',
       notice_id: 0,
-      title: "",
+      title: '',
       web_id: 0,
       price: 0,
-      gen_id: 0,
-    }
+      gen_id: '',
+    };
     this.noticeDetail = reset;
 
   }

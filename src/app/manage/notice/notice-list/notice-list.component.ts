@@ -18,7 +18,7 @@ export class NoticeListComponent implements OnInit, OnDestroy {
   tableCount = 10;
   searchValue = '';
   constructor(
-    public vm : NoticeViewModueService,
+    public vm: NoticeViewModueService,
     public api: NoticeService,
     public router: Router
   ) { }
@@ -28,74 +28,72 @@ export class NoticeListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getNotice();
-    const token = localStorage.getItem("token");
-    if(token === null){
+    const token = localStorage.getItem('token');
+    if (token === null) {
       alert('plese login');
       this.router.navigate(['/login']);
     }
   }
 
-  getNotice():void{
+  getNotice(): void {
     const method = 'listAllNotice';
     this.subs.sink = this.api.notice(method).subscribe(res => {
-        if(res.status === "1"){
-          console.log(res);
-          this.vm.setNotice(res.data);
-        }
-    },err => console.log(err),
-    () => {
-      
-    }
-    )
+      if (res.status === '1') {
+        this.vm.setNotice(res.data.filter(f => f.status !== '0'));
+      }
+    }, err => console.log(err),
+      () => {
+      }
+    );
   }
 
-  getImgUrl(url: string):string{
-    if(url){
-      return (JSON.parse(url)[0])?JSON.parse(url)[0]: JSON.parse(url);
-    }else{
+  getImgUrl(url: string): string {
+    if (url) {
+      return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
       return url;
     }
   }
 
 
-  deleteNotice(id: string){
-    if(confirm("ທ່ານແນ່ໃຈບໍ່ວ່າລຶບຂໍ້ແຈ້ງການລະຫັດ"+' '+id)) {
+  deleteNotice(id: string) {
+    if (confirm('ທ່ານແນ່ໃຈບໍ່ວ່າລຶບຂໍ້ແຈ້ງການລະຫັດ' + ' ' + id)) {
 
       const method = 'deleteNotice';
-      this.subs.sink = this.api.deleteNotice(id,method).subscribe(res => {
-        if(res.status == '1'){
-          this.vm.noticeList = this.vm.noticeList.filter(f => f.notice_id !== id)
-       
+      this.subs.sink = this.api.deleteNotice(id, method).subscribe(res => {
+        if (res.status === '1') {
+          this.vm.noticeList = this.vm.noticeList.filter(f => f.notice_id !== id);
+
         }
-  
-      },err => console.log(err),
-      () => {
- 
-      }
-      )
+
+      }, err => console.log(err),
+        () => {
+
+        }
+      );
     }
   }
 
 
-  tableCountFunc(): any{
-    return (this.vm.noticeList)? this.vm.noticeList.slice(0, this.tableCount) : null;
-   }
+  tableCountFunc(): any {
+    return (this.vm.noticeList) ? this.vm.noticeList.slice(0, this.tableCount) : null;
+  }
 
-   searchFunc():void{
-    if(this.searchValue !== ''){
-        this.vm.noticeList =  this.vm.masterNotice.filter(f => 
-          f.title.includes(this.searchValue.toLowerCase()) || 
-          f.dsc.includes(this.searchValue.toLowerCase())
-        );
-    }else{
-      this.vm.noticeList =  this.vm.masterNotice;
+  searchFunc(): void {
+    if (this.searchValue !== '') {
+      this.vm.noticeList = this.vm.masterNotice.filter(f =>
+        f.title.includes(this.searchValue.toLowerCase()) ||
+        f.dsc.includes(this.searchValue.toLowerCase())
+      );
+    } else {
+      this.vm.noticeList = this.vm.masterNotice;
     }
   }
 
-  
-  changeTableRow(po: number):void{
-    this.tableCount =  po;
-    this.getData()
+
+  changeTableRow(po: number): void {
+    this.tableCount = po;
+    this.getData();
     this.pos = 0;
   }
 
@@ -111,11 +109,11 @@ export class NoticeListComponent implements OnInit, OnDestroy {
     return of(dataList);
   }
 
-  update(o){
+  update(o) {
     this.pos = o;
   }
 
-  getCountItems():number{
+  getCountItems(): number {
     return this.vm.noticeList.length;
   }
 

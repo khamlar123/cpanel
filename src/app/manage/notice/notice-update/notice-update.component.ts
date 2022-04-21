@@ -16,33 +16,34 @@ export class NoticeUpdateComponent implements OnInit {
   imagePath;
   imgURL: any;
   message: string;
-  base64textString:any;
+  base64textString: any;
   noticeId = 0;
   constructor(
-    public vm : NoticeViewModueService,
-    private router : Router,
-    public api : NoticeService,
-    private route : ActivatedRoute,
+    public vm: NoticeViewModueService,
+    private router: Router,
+    public api: NoticeService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
     this.noticeId = Number(this.route.snapshot.paramMap.get('id'));
     this.api.getDetailNotice(this.route.snapshot.paramMap.get('id'), 'listOneNotice').subscribe(res => {
       const mapData = res.data[0];
-       this.vm.noticeDetail.notice_id = Number(mapData.notice_id);
-       this.vm.noticeDetail.title = mapData.title;
-       this.vm.noticeDetail.dsc = mapData.dsc;
-       this.vm.noticeDetail.gen_id = Number(mapData.gen_id);
-    })
+      this.vm.noticeDetail.notice_id = Number(mapData.notice_id);
+      this.vm.noticeDetail.title = mapData.title;
+      this.vm.noticeDetail.dsc = mapData.dsc;
+      this.vm.noticeDetail.gen_id = mapData.gen_id;
+    });
   }
 
+  // tslint:disable-next-line:use-lifecycle-interface
   ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
 
 
-  getImgUrl(url: string):string{
-    return (JSON.parse(url)[0])?JSON.parse(url)[0]: JSON.parse(url);
+  getImgUrl(url: string): string {
+    return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
   }
 
   handleFileInput(el: any) {
@@ -52,69 +53,65 @@ export class NoticeUpdateComponent implements OnInit {
   }
 
   preview(files) {
-    if (files.length === 0) return;
+    if (files.length === 0) { return; }
 
-    var mimeType = files.type;
+    const mimeType = files.type;
     if (mimeType.match(/image\/*/) == null) {
       this.message = 'Only images are supported.';
       return;
     }
-    var reader = new FileReader();
+    const reader = new FileReader();
     this.imagePath = files;
     reader.readAsDataURL(files);
+    // tslint:disable-next-line:variable-name
     reader.onload = (_event) => {
       this.imgURL = reader.result;
     };
- 
-    
   }
 
-  handleFileSelect(evt){
-    var files = evt.files;
-    var file = files[0];
+  handleFileSelect(evt) {
+    const files = evt.files;
+    const file = files[0];
 
-  if (files && file) {
-      var reader = new FileReader();
-
-      reader.onload =this._handleReaderLoaded.bind(this);
-
+    if (files && file) {
+      const reader = new FileReader();
+      reader.onload = this._handleReaderLoaded.bind(this);
       reader.readAsBinaryString(file);
-  }
-}
-
-_handleReaderLoaded(readerEvt) {
-   var binaryString = readerEvt.target.result;
-    this.base64textString= btoa(binaryString);    
+    }
   }
 
-  updateNotice():void{
-  
-      const method = 'updateNotice';
-      var map:string[] = [];
+  _handleReaderLoaded(readerEvt) {
+    const binaryString = readerEvt.target.result;
+    this.base64textString = btoa(binaryString);
+  }
 
-      const header = 'data:image/jpeg;base64,';
-      map.push(header+ this.base64textString)
+  updateNotice(): void {
+    const method = 'updateNotice';
+    const map: string[] = [];
 
-      const model = {
-        
-        gen_id: this.vm.noticeDetail.gen_id,
-        title: this.vm.noticeDetail.title,
-        price: this.vm.noticeDetail.price,
+    const header = 'data:image/jpeg;base64,';
+    map.push(header + this.base64textString);
+    const model = {
+      gen_id: this.vm.noticeDetail.gen_id,
+      title: this.vm.noticeDetail.title,
+      dsc: 'aabbccdd',
+      imgUrlString: map[0],
+      web_id: 1,
+      price: this.vm.noticeDetail.price,
+      createDate: '',
+    };
+
+    const newData = new Date();
+    model.createDate = newData.getFullYear().toString() + '-' + (newData.getMonth() + 1).toString() + '-' + newData.getDate().toString();
+
+    this.subs.sink = this.api.updateNotice(model, method).subscribe(res => {
+      if (res.status === '1') {
+        alert('Edit Data Successfully.');
+        this.router.navigate(['/main/Manage/Notice/List']);
       }
-
-
-
-        this.subs.sink = this.api.updateNotice(model,method).subscribe(res => {
-            if(res.status === '1'){
-              alert('Edit Data Successfully.');
-              this.router.navigate(['/main/Manage/Notice/List']);
-  
-            }
-        },err => console.log(),
-        () => {
-         
-        }
-        )
+    }, () => console.log(),
+      () => { }
+    );
   }
 
 }
