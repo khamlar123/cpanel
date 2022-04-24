@@ -8,7 +8,7 @@
 
             <div class="col-md-4 mb-3">
                 <label >Youtube Url</label>
-                <input type="text" class="form-control "  placeholder="Youtube Url" [(ngModel)]="addModal.video_url">
+                <input type="text" class="form-control "  placeholder="Youtube Url" [(ngModel)]="addModal.video_url" [readonly]="uploadFile">
             </div>
 
             <div class="col-md-4 mb-3">
@@ -29,6 +29,16 @@
                 <label >ລາຍລະອຽດ</label>
                 <textarea  type="text" class="form-control "  placeholder="ລາຍລະອຽດ" [(ngModel)]="addModal.video_description"></textarea>
             </div>
+        </div>
+
+        <div class="form-row">
+
+            <div class="col-md-4 mb-3">
+                <label >ວີດີໂອ</label>
+                <input type="file" class="form-control "  placeholder="Youtube Url"  (change)="handleFileInput($event.target);uploadFile = true">
+            </div>
+
+           
         </div>
 
     <div class="card-footer ">
