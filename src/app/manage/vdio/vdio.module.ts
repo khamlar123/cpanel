@@ -6,7 +6,7 @@ import { VdioListComponent } from './vdio-list/vdio-list.component';
 import { VdioAddComponent } from './vdio-add/vdio-add.component';
 import { VdioUpdateComponent } from './vdio-update/vdio-update.component';
 import { VdioComponent } from './vdio.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginationModule } from 'src/app/share/pagination/pagination.module';
 
 
@@ -16,7 +16,8 @@ import { PaginationModule } from 'src/app/share/pagination/pagination.module';
     CommonModule,
     VdioRoutingModule,
     FormsModule,
-    PaginationModule
+    PaginationModule,
+    ReactiveFormsModule,
   ]
 })
 export class VdioModule { }

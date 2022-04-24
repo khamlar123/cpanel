@@ -57,7 +57,7 @@ export class VdioApiService {
   }
 
 
-  addNewVdioFile(method: string, model):Observable<any>{
+  addNewVdioFile(method: string, model:FormData):Observable<any>{
     return this.http.post(this.vdioFileUrl,model, {headers:this.header(method)})
     .pipe(catchError((err) => of ('server error')));
   }

@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SubSink } from 'subsink';
 import { VdioApiService } from '../api/vdio-api.service';
@@ -30,12 +31,55 @@ export class VdioAddComponent implements OnInit,OnDestroy {
   imgURL: any;
   message: string;
 
+  updaloForm: FormGroup;
+
   constructor(
     private vdio: VdioApiService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private fb: FormBuilder,
+  ) { 
+    this.isForm();
+  }
   ngOnDestroy(): void {
    this.subs.unsubscribe();
+  }
+
+  isForm() {
+    this.updaloForm = this.fb.group({
+      file: [
+        '',
+        [
+          Validators.required],
+        ],
+      video_description: [
+        '',
+        [
+          Validators.required,
+        ],
+      ],
+      status: [
+        1,
+        [
+          Validators.required,
+        ],
+      ],
+      orderIndex: [
+        '',
+        [
+          Validators.required,
+        ],
+      ],
+      video_url: [''],
+
+      video_name: [
+        '',
+        [
+          Validators.required,
+        ]
+      ],
+  
+    
+    });
   }
 
   ngOnInit(): void {
@@ -45,7 +89,7 @@ export class VdioAddComponent implements OnInit,OnDestroy {
   addVdio():void{
     
     if(this.addModal.video_url !== ""){
-      alert(1)
+
       this.subs.sink = this.vdio.addNewVdio('insertVideo',this.addModal).subscribe(res => {
         if(res.status  === "1"){
           alert('Add Data Successfully.');
@@ -55,7 +99,7 @@ export class VdioAddComponent implements OnInit,OnDestroy {
       ()=> {}
       );
     }else{
-      alert(2);
+   
       const status = 1;
       const addNewModel = new FormData();
       addNewModel.append('file', this.fileToUpload);
@@ -63,7 +107,7 @@ export class VdioAddComponent implements OnInit,OnDestroy {
       addNewModel.append('status', status.toString());
       addNewModel.append('orderIndex', this.addModal.orderIndex.toString());
       addNewModel.append('video_url', this.addModal.video_url);
-  
+    
       this.subs.sink = this.vdio.addNewVdioFile('addVideo', addNewModel).subscribe(res => {
         if(res.status  === "1"){
           alert('Add Data Successfully.');
