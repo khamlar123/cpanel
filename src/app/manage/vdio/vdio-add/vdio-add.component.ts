@@ -104,6 +104,7 @@ export class VdioAddComponent implements OnInit,OnDestroy {
       const addNewModel = new FormData();
       addNewModel.append('file', this.fileToUpload);
       addNewModel.append('video_description', this.addModal.video_description);
+      addNewModel.append('video_name', this.addModal.video_name);
       addNewModel.append('status', status.toString());
       addNewModel.append('orderIndex', this.addModal.orderIndex.toString());
       addNewModel.append('video_url', this.addModal.video_url);

@@ -12,8 +12,7 @@ import { MainService } from 'src/service/main.service';
 export class VdioApiService {
   private vdioUrl = this.service.getEnpoin() + '/api/video.api.php';
 
-  private vdioFileUrl = this.service.getEnpoin() + '/api/video.api.php';
-
+ 
   constructor(
     private http: HttpClient,
     private service: MainService
@@ -57,8 +56,8 @@ export class VdioApiService {
   }
 
 
-  addNewVdioFile(method: string, model:FormData):Observable<any>{
-    return this.http.post(this.vdioFileUrl,model, {headers:this.header(method)})
+  addNewVdioFile(method: string, formData:FormData):Observable<any>{
+    return this.http.post(this.vdioUrl, formData, {headers:this.header(method)})
     .pipe(catchError((err) => of ('server error')));
   }
 
