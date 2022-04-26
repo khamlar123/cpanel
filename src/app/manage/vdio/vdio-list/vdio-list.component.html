@@ -2,10 +2,10 @@
     <div class="card-header py-3 golbalflex">
             <div>
               <select class="form-control" [(ngModel)]="tableCount" (change)="changeTableRow(tableCount)">
-                  <option  value="10" >10 </option> 
-                  <option  value="20" >20 </option> 
-                  <option  value="50" >50 </option> 
-                  <option  value="100" >100 </option> 
+                  <option  value="10" >10 </option>
+                  <option  value="20" >20 </option>
+                  <option  value="50" >50 </option>
+                  <option  value="100" >100 </option>
                </select>
             </div>
             <div >
@@ -26,36 +26,43 @@
                         <th>ວີດີໂອ</th>
                         <th>ຊື່ວີດີໂອ</th>
                         <th>ລາຍລະອຽດວີດີໂອ</th>
-    
+
                         <th>Action</th>
                     </tr>
                 </thead>
-               
+
                 <tbody>
                     <tr *ngFor="let item of getData() | async; let i = index">
                         <td>{{i + 1}}</td>
-                        <td> <iframe  [src]="safeSrc[i]"  frameborder="0" allowfullscreen style="height: 150px;"></iframe></td>
+                        <td>
+                          <iframe *ngIf="item.status == '0'"  [src]="safeSrc[i]"  frameborder="0" allowfullscreen style="height: 150px;"></iframe>
+                          <video *ngIf="item.status == '1'" width="300"  height="150" controls>
+                            <source src="{{getImgUrl() + item.video_url}}" type="video/mp4">
+                          </video>
+
+
+                        </td>
                         <td>{{item.video_name}}</td>
                         <td>{{item.video_description}}</td>
-                   
+
                         <td>
                             <!-- <button routerLink="../Update"   type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button> 	&nbsp; -->
                             <button (click)="deleteVdio(item.video_id)"  type="button" class="btn btn-danger   btn-icon btn-pill"><i class="fas fa-edit"></i> ລົບ</button> 	&nbsp;
                         </td>
                     </tr>
-                
+
                 </tbody>
             </table>
         </div>
-       
+
     </div>
 
     <div class="card-footer ">
         <div class="btn-group mr-2" role="group" aria-label="First group">
-          
+
             <app-pagination [itemCount]="getCountItems()" [pos]="pos" [pageCount]="this.tableCount"
             (posChange)="update($event)"></app-pagination>
-           
+
         </div>
     </div>
 </div>

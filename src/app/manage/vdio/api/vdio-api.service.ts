@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, take } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { MainService } from 'src/service/main.service';
 
@@ -12,7 +12,7 @@ import { MainService } from 'src/service/main.service';
 export class VdioApiService {
   private vdioUrl = this.service.getEnpoin() + '/api/video.api.php';
 
- 
+
   constructor(
     private http: HttpClient,
     private service: MainService
@@ -21,7 +21,8 @@ export class VdioApiService {
 
   protected header(method: string):any{
     const token = localStorage.getItem("token")
-    const headers = new HttpHeaders({'content-type': 'application/json'})
+    const headers = new HttpHeaders({'content-type': 'application/json', 'Content-Type': 'multipart/form-data;'})
+
     .set('token', token+'')
     .set('method', method);
     return headers;
@@ -56,9 +57,22 @@ export class VdioApiService {
   }
 
 
-  addNewVdioFile(method: string, formData:FormData):Observable<any>{
-    return this.http.post(this.vdioUrl, formData, {headers:this.header(method)})
-    .pipe(catchError((err) => of ('server error')));
+  addNewVdioFile(method: string, model:any, file: File):Observable<any>{
+
+    const status = 1;
+    const addNewModel = new FormData();
+    addNewModel.append('file', file);
+    addNewModel.append('video_description', model.video_description);
+    addNewModel.append('video_name', model.video_name);
+    addNewModel.append('status', status.toString());
+    addNewModel.append('orderIndex', model.orderIndex.toString());
+    addNewModel.append('video_url', model.video_url);
+
+    const token = localStorage.getItem("token")
+    const httpParams = new HttpHeaders().set('token' , `${token}`).set('Method', `${method}`)
+
+
+    return this.http.post<any>(this.vdioUrl, addNewModel,  {headers: httpParams}).pipe(take(1));
   }
 
 

@@ -37,58 +37,20 @@ export class VdioAddComponent implements OnInit,OnDestroy {
     private vdio: VdioApiService,
     private router: Router,
     private fb: FormBuilder,
-  ) { 
-    this.isForm();
-  }
+  ) { }
   ngOnDestroy(): void {
    this.subs.unsubscribe();
   }
 
-  isForm() {
-    this.updaloForm = this.fb.group({
-      file: [
-        '',
-        [
-          Validators.required],
-        ],
-      video_description: [
-        '',
-        [
-          Validators.required,
-        ],
-      ],
-      status: [
-        1,
-        [
-          Validators.required,
-        ],
-      ],
-      orderIndex: [
-        '',
-        [
-          Validators.required,
-        ],
-      ],
-      video_url: [''],
 
-      video_name: [
-        '',
-        [
-          Validators.required,
-        ]
-      ],
-  
-    
-    });
-  }
 
   ngOnInit(): void {
   }
 
 
   addVdio():void{
-    
-    if(this.addModal.video_url !== ""){
+
+    if(this.addModal.video_url !== ' '){
 
       this.subs.sink = this.vdio.addNewVdio('insertVideo',this.addModal).subscribe(res => {
         if(res.status  === "1"){
@@ -99,28 +61,23 @@ export class VdioAddComponent implements OnInit,OnDestroy {
       ()=> {}
       );
     }else{
-   
-      const status = 1;
-      const addNewModel = new FormData();
-      addNewModel.append('file', this.fileToUpload);
-      addNewModel.append('video_description', this.addModal.video_description);
-      addNewModel.append('video_name', this.addModal.video_name);
-      addNewModel.append('status', status.toString());
-      addNewModel.append('orderIndex', this.addModal.orderIndex.toString());
-      addNewModel.append('video_url', this.addModal.video_url);
-    
-      this.subs.sink = this.vdio.addNewVdioFile('addVideo', addNewModel).subscribe(res => {
+      this.subs.sink = this.vdio.addNewVdioFile('addVideo', this.addModal, this.fileToUpload).subscribe(res => {
         if(res.status  === "1"){
           alert('Add Data Successfully.');
           this.router.navigate(['/main/Manage/Vdio/List']);
         }
       },err => console.log(err),
       ()=> {
-      
+
       }
       );
     }
 
+  }
+
+  setAddFile():void{
+    this.uploadFile = true;
+    this.addModal.video_url = ' ';
   }
 
   handleFileInput(el: any) {

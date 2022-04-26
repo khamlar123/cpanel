@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Observable, of } from 'rxjs';
+import { MainService } from 'src/service/main.service';
 import { SubSink } from 'subsink';
 import { VdioApiService } from '../api/vdio-api.service';
 
@@ -33,8 +34,10 @@ export class VdioListComponent implements OnInit, OnDestroy {
     }
   ];
 
+  url = '';
+
   searchValue = ''
-  vdioUrl = "https://www.youtube.com/embed/"; 
+  vdioUrl = "https://www.youtube.com/embed/";
   safeSrc: SafeResourceUrl[] = [];
   pos = 0;
   pageNumber = 1;
@@ -55,8 +58,11 @@ export class VdioListComponent implements OnInit, OnDestroy {
   constructor(
     private vdio: VdioApiService,
     private sanitizer: DomSanitizer,
+    private Service: MainService
 
-  ) { }
+  ) {
+    this.url = this.Service.getEnpoin();
+  }
   ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
@@ -92,7 +98,7 @@ export class VdioListComponent implements OnInit, OnDestroy {
       if(res.status === "1"){
         this.vdioList =  this.vdioList.filter(f => f.video_id !== id)
       }
-        
+
       },(err) => err,
       ()=> {
 
@@ -112,8 +118,8 @@ export class VdioListComponent implements OnInit, OnDestroy {
     }
 
     this.vdioList.push(updateModal);
- 
-      
+
+
   }
 
   tableCountFunc(): any{
@@ -122,8 +128,8 @@ export class VdioListComponent implements OnInit, OnDestroy {
 
    searchFunc():void{
     if(this.searchValue !== ''){
-        this.vdioList =  this.masterVdioList.filter(f => 
-          f.video_name.includes(this.searchValue.toLocaleLowerCase()) || 
+        this.vdioList =  this.masterVdioList.filter(f =>
+          f.video_name.includes(this.searchValue.toLocaleLowerCase()) ||
           f.video_description.includes(this.searchValue.toLowerCase())
         );
     }else{
@@ -155,6 +161,12 @@ export class VdioListComponent implements OnInit, OnDestroy {
 
   getCountItems():number{
     return this.vdioList.length;
+  }
+
+  getImgUrl(): string {
+    console.log(this.url.split('/website'));
+
+    return this.url.split('/website')[0] + '/';
   }
 
 
