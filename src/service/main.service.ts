@@ -9,14 +9,16 @@ export class MainService {
 
   getEnpoin(): string {
     return 'http://psldoic.gov.la/website';
-    // return 'http://216.127.173.163/oudomxay';
-    // return 'http://216.127.173.163/louangnamtha';
+     //return 'http://odxdoic.gov.la/oudomxay';
+    // return 'http://lntdoic.gov.la/louangnamtha';
 
-    // http://psldoic.gov.la/backend/api/'
+
   }
 
 
   getImgUrl(): string{
-    return 'http://psldoic.gov.la/';
+      return 'http://psldoic.gov.la/';
+    //return 'http://odxdoic.gov.la/';
+     // return 'http://lntdoic.gov.la/';
   }
 }
