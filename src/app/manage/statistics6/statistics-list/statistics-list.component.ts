@@ -32,8 +32,8 @@ export class StatisticsListComponent implements OnInit {
     stTitle: string;
   }[] = [];
   url = ''
-  constructor(private api: ApiService, public main: MainService) { 
-    this.url = this.main.getEnpoin();
+  constructor(private api: ApiService, public main: MainService) {
+    this.url = this.main.getImgUrl();
   }
 
   ngOnInit(): void {
@@ -57,8 +57,8 @@ export class StatisticsListComponent implements OnInit {
 
    searchFunc():void{
     if(this.searchValue !== ''){
-        this.statisticsList =  this.masterStatisticsList.filter(f => 
-          f.stTitle.includes(this.searchValue.toLowerCase()) || 
+        this.statisticsList =  this.masterStatisticsList.filter(f =>
+          f.stTitle.includes(this.searchValue.toLowerCase()) ||
           f.spDsc.includes(this.searchValue.toLowerCase())
         );
     }else{
@@ -74,9 +74,18 @@ export class StatisticsListComponent implements OnInit {
     })
    }
 
-   getImgUrl(url: string):string{     
+   getImgUrl(url: string):string{
     let str = JSON.parse(url)[0];
     return this.url + str.slice(7, str.length);
+  }
+
+  imgUrl(url: string): string {
+
+    if (url) {
+      return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
+      return url;
+    }
   }
 
   getName(id : string): string{

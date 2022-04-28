@@ -37,7 +37,7 @@ export class LawListComponent implements OnInit {
   }[] = [];
 
   constructor(private api: ApiService, private main: MainService) {
-    this.url = this.main.getEnpoin();
+    this.url = this.main.getImgUrl();
   }
 
   ngOnInit(): void {

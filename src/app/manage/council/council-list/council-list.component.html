@@ -2,10 +2,10 @@
     <div class="card-header py-3 golbalflex">
             <div>
               <select class="form-control" [(ngModel)]="tableCount" (change)="changeTableRow(tableCount)">
-                  <option  value="10" >10 </option> 
-                  <option  value="20" >20 </option> 
-                  <option  value="50" >50 </option> 
-                  <option  value="100" >100 </option> 
+                  <option  value="10" >10 </option>
+                  <option  value="20" >20 </option>
+                  <option  value="50" >50 </option>
+                  <option  value="100" >100 </option>
                </select>
             </div>
             <div >
@@ -30,31 +30,31 @@
                         <th style="width: 200px;">Action</th>
                     </tr>
                 </thead>
-               
+
                 <tbody>
                     <tr *ngFor="let item of getData() | async; let i = index">
                         <td>{{i + 1}}</td>
                         <td>{{item.title}}</td>
                         <td>{{item.doc}}</td>
                         <td>{{item.createDate}}</td>
-                
+
                         <td>
                             <button [routerLink]="['/main/Manage/council/Update',item.cou_id]" type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button>     &nbsp;
                             <button  type="button" class="btn btn-danger   btn-icon btn-pill" (click)="deleteFunc(item.cou_id)"><i class="fas fa-edit"></i> ລົບ</button>     &nbsp;
                         </td>
                     </tr>
-                
+
                 </tbody>
             </table>
         </div>
-       
+
     </div>
 
     <div class="card-footer ">
         <div class="btn-group mr-2" role="group" aria-label="First group">
-          
-           
-           
+
+
+
         </div>
     </div>
 </div>

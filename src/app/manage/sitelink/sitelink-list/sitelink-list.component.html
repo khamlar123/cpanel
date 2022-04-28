@@ -36,7 +36,7 @@
           <tr *ngFor="let item of getData() | async; let i = index">
             <td>{{i+1}}</td>
             <div class="img-wap">
-              <img src="{{getImgUrl(item.imgUrl)}}" alt="img">
+              <img src="{{url + imgUrl(item.imgUrl)}}" alt="img">
             </div>
             <td>{{item.slName}}</td>
             <td>{{item.createDate}}</td>

@@ -44,8 +44,8 @@
             <td>{{item.phone}}</td>
             <td>{{item.stTitle}}</td>
             <td>
-              <a href="{{getImgUrl() + getImgUrl1(item.imgUrl)}}" target="_blank">ເອກະສານ</a>
-             
+              <a href="{{url + imgUrl(item.imgUrl)}}" target="_blank">ເອກະສານ</a>
+
             </td>
             <td>{{item.contactDsc}}</td>
             <td>
@@ -67,7 +67,7 @@
     <div class="btn-group mr-2" role="group" aria-label="First group">
 
       <app-pagination [itemCount]="getCountItems()" [pos]="pos" [pageCount]="this.tableCount"
-      (posChange)="update($event)"></app-pagination>  
+      (posChange)="update($event)"></app-pagination>
 
     </div>
   </div>

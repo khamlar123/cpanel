@@ -29,7 +29,7 @@ export class SitelinkListComponent implements OnInit {
   }[] = [];
   url = '';
   constructor(private api: SiteLinkService, private main: MainService) {
-    this.url = this.main.getEnpoin();
+    this.url = this.main.getImgUrl();
   }
 
 
@@ -96,17 +96,13 @@ export class SitelinkListComponent implements OnInit {
     return this.siteLink.length;
   }
 
-  getImgUrl(url: string): string {
-    if (url !== null) {
-      const str = JSON.parse(url)[0];
+  imgUrl(url: string): string {
 
-      if (JSON.parse(url)[0] === null) {
-        return '';
-      }
-      return this.url + str.slice(7, str.length);
+    if (url) {
+      return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
+      return url;
     }
-
-    return '';
   }
 
 

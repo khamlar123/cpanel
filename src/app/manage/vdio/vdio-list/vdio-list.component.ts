@@ -61,7 +61,7 @@ export class VdioListComponent implements OnInit, OnDestroy {
     private Service: MainService
 
   ) {
-    this.url = this.Service.getEnpoin();
+    this.url = this.Service.getImgUrl();
   }
   ngOnDestroy(): void {
     this.subs.unsubscribe();
@@ -167,6 +167,15 @@ export class VdioListComponent implements OnInit, OnDestroy {
     console.log(this.url.split('/website'));
 
     return this.url.split('/website')[0] + '/';
+  }
+
+  imgUrl(url: string): string {
+
+    if (url) {
+      return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
+      return url;
+    }
   }
 
 

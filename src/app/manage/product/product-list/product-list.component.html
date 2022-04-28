@@ -2,10 +2,10 @@
     <div class="card-header py-3 golbalflex">
             <div>
               <select class="form-control" [(ngModel)]="tableCount" (change)="changeTableRow(tableCount)">
-                  <option  value="10" >10 </option> 
-                  <option  value="20" >20 </option> 
-                  <option  value="50" >50 </option> 
-                  <option  value="100" >100 </option> 
+                  <option  value="10" >10 </option>
+                  <option  value="20" >20 </option>
+                  <option  value="50" >50 </option>
+                  <option  value="100" >100 </option>
                </select>
             </div>
             <div >
@@ -31,14 +31,14 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-               
+
                 <tbody>
                     <ng-container *ngFor="let item of getData() | async;">
                         <tr >
                             <td>{{item.prod_id}}</td>
-                            <td> 
+                            <td>
                                 <div class="img-wap">
-                                    <img src="{{url + getImgUrl(item.imgUrl)}}" alt="">
+                                    <img src="{{url + imgUrl(item.imgUrl)}}" alt="">
                                 </div>
                             </td>
                             <td>{{item.prodName}}</td>
@@ -51,21 +51,21 @@
                             </td>
                         </tr>
                     </ng-container>
-                    
-          
-                
+
+
+
                 </tbody>
             </table>
         </div>
-       
+
     </div>
 
     <div class="card-footer ">
         <div class="btn-group mr-2" role="group" aria-label="First group">
-          
+
             <app-pagination [itemCount]="getCountItems()" [pos]="pos" [pageCount]="this.tableCount"
-            (posChange)="update($event)"></app-pagination>   
-           
+            (posChange)="update($event)"></app-pagination>
+
         </div>
     </div>
 </div>

@@ -3,10 +3,10 @@
     <div class="card-header py-3 golbalflex">
             <div>
               <select class="form-control" [(ngModel)]="tableCount" (change)="changeTableRow(tableCount)">
-                  <option  value="10" >10 </option> 
-                  <option  value="20" >20 </option> 
-                  <option  value="50" >50 </option> 
-                  <option  value="100" >100 </option> 
+                  <option  value="10" >10 </option>
+                  <option  value="20" >20 </option>
+                  <option  value="50" >50 </option>
+                  <option  value="100" >100 </option>
                </select>
             </div>
             <div >
@@ -26,43 +26,43 @@
                         <th>ລໍາດັບ</th>
                         <th>ວັນທີສ້າງ</th>
                         <th>ຫົວຂໍ້</th>
-                   
+
                         <th>ລາຍລະອຽດ</th>
                         <th>ເອກະສານ</th>
                         <th style="width: 200px;">Action</th>
                     </tr>
                 </thead>
-               
+
                 <tbody>
                     <tr  *ngFor="let item of getData() | async; let i = index">
                         <td>{{i+1}}</td>
                         <td>{{item.createDate}}</td>
                         <td>{{item.stTitle}}</td>
-                      
+
                         <td>{{item.spDsc}}</td>
                         <td>
-                             <a href="{{getImgUrl(item.stLaoLink)}}" target="_blank" rel="noopener noreferrer">ພາສາລາວ</a> |
-                             <a href="{{getImgUrl(item.stEngLink)}}" target="_blank" rel="noopener noreferrer">ພາສາອັງກິດ</a>
+                          <a href="{{url + imgUrl(item.stLaoLink)}}" target="_blank" rel="noopener noreferrer">ພາສາລາວ</a> |
+                          <a href="{{url + imgUrl(item.stEngLink)}}" target="_blank" rel="noopener noreferrer">ພາສາອັງກິດ</a>
                         </td>
-                
+
                         <td>
                             <button   [routerLink]="['/main/Manage/Statistics4/Update',item.stId]" routerLinkActive="router-link-active"   type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button>     &nbsp;
                             <button (click)="deleteFunc(item.stId)" type="button" class="btn btn-danger   btn-icon btn-pill" ><i class="fas fa-edit"></i> ລົບ</button>     &nbsp;
                         </td>
                     </tr>
-                
+
                 </tbody>
             </table>
         </div>
-       
+
     </div>
 
     <div class="card-footer ">
         <div class="btn-group mr-2" role="group" aria-label="First group">
-          
+
             <app-pagination [itemCount]="getCountItems()" [pos]="pos" [pageCount]="this.tableCount"
-            (posChange)="update($event)"></app-pagination>   
-           
+            (posChange)="update($event)"></app-pagination>
+
         </div>
     </div>
 </div>

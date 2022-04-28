@@ -24,8 +24,8 @@ export class BannerListComponent implements OnInit {
     private api : BannerApiService,
     public vm : VmService,
     public main: MainService
-  ) { 
-    this.url = this.main.getEnpoin();
+  ) {
+    this.url = this.main.getImgUrl();
   }
 
   ngOnInit(): void {
@@ -64,14 +64,14 @@ export class BannerListComponent implements OnInit {
 
   deleteFunc(id: string):void{
     if(confirm("Are you sure to delete banner_id"+' '+id)) {
-    
+
       this.subs.sink = this.api.deleteBanner(id, 'deleteBanner').subscribe(res => {
         if(res.status > 0){
           this.vm.bannerList = this.vm.bannerList.filter(f => f.bann_id !== id);
         }
       },err => console.log(err),
       () => {
-      
+
       }
       )
     }
@@ -108,16 +108,14 @@ export class BannerListComponent implements OnInit {
     return this.vm.bannerList.filter(f => f.ref_id === "1").length;
   }
 
-  getImgUrl1(url: string): string {
-    if (url) {
-      return JSON.parse(url)[0] ? JSON.parse(url)[0] : JSON.parse(url);
-    } else {
-      return '';
-    }
-  }
 
-  getImgUrl(): string {
-    return this.url.split('/backend')[0];
+  imgUrl(url: string): string {
+
+    if (url) {
+      return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
+      return url;
+    }
   }
 
 }

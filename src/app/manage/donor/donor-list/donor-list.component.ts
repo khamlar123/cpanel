@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { MainService } from 'src/service/main.service';
 import { ApiService } from '../api/api.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class DonorListComponent implements OnInit {
   pos = 0;
   tableCount = 10;
   searchValue = '';
-  url = `http://216.127.173.163/`;
+  url = '';
   donorList: {
     donor_id: string;
     dsc: string;
@@ -27,7 +28,12 @@ export class DonorListComponent implements OnInit {
     orderIndex: string;
     title: string;
   }[] = [];
-  constructor(private api: ApiService) { }
+  constructor(
+    private api: ApiService,
+    public main: MainService
+    ) {
+      this.url = this.main.getImgUrl();
+     }
 
   ngOnInit(): void {
     this.loadDonor();
@@ -66,14 +72,7 @@ export class DonorListComponent implements OnInit {
     });
   }
 
-  imgUrl(url: string): string {
 
-    if (url) {
-      return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
-    } else {
-      return url;
-    }
-  }
 
   changeTableRow(po: number):void{
     this.tableCount =  po;
@@ -101,16 +100,13 @@ export class DonorListComponent implements OnInit {
     return this.donorList.length;
   }
 
-  getImgUrl1(url: string): string {
-    if (url) {
-      return JSON.parse(url)[0] ? JSON.parse(url)[0] : JSON.parse(url);
-    } else {
-      return '';
-    }
-  }
+  imgUrl(url: string): string {
 
-  getImgUrl(): string {
-    return this.url.split('/backend')[0];
+    if (url) {
+      return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
+      return url;
+    }
   }
 
 }

@@ -1,3 +1,4 @@
+import { MainService } from './../../../../service/main.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -12,7 +13,7 @@ import { NoticeViewModueService } from '../vm/notice-view-modue.service';
 })
 export class NoticeListComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
-  url = `http://216.127.173.163/`;
+  url = '';
   pos = 0;
   pageNumber = 1;
   tableCount = 10;
@@ -20,7 +21,8 @@ export class NoticeListComponent implements OnInit, OnDestroy {
   constructor(
     public vm: NoticeViewModueService,
     public api: NoticeService,
-    public router: Router
+    public router: Router,
+    public main: MainService
   ) { }
   ngOnDestroy(): void {
     this.subs.unsubscribe();
@@ -47,7 +49,8 @@ export class NoticeListComponent implements OnInit, OnDestroy {
     );
   }
 
-  getImgUrl(url: string): string {
+  imgUrl(url: string): string {
+
     if (url) {
       return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
     } else {

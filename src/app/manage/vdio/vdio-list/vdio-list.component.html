@@ -37,7 +37,7 @@
                         <td>
                           <iframe *ngIf="item.status == '0'"  [src]="safeSrc[i]"  frameborder="0" allowfullscreen style="height: 150px;"></iframe>
                           <video *ngIf="item.status == '1'" width="300"  height="150" controls>
-                            <source src="{{getImgUrl() + item.video_url}}" type="video/mp4">
+                            <source src="{{url + imgUrl(item.video_url) }}" type="video/mp4">
                           </video>
 
 

@@ -32,10 +32,10 @@ export class DevelopmentListComponent implements OnInit {
     title: string;
   }[] = [];
   url
-  constructor(private api: ApiService, public main: MainService) { 
-    this.url = this.main.getEnpoin();
+  constructor(private api: ApiService, public main: MainService) {
+    this.url = this.main.getImgUrl();
 
-    
+
   }
 
   ngOnInit(): void {
@@ -59,8 +59,8 @@ export class DevelopmentListComponent implements OnInit {
 
    searchFunc():void{
     if(this.searchValue !== ''){
-        this.assistanceList =  this.masterAssistanceList.filter(f => 
-          f.title.includes(this.searchValue.toLowerCase()) || 
+        this.assistanceList =  this.masterAssistanceList.filter(f =>
+          f.title.includes(this.searchValue.toLowerCase()) ||
           f.dsc.includes(this.searchValue.toLowerCase())
         );
     }else{
@@ -108,16 +108,13 @@ export class DevelopmentListComponent implements OnInit {
     return this.assistanceList.length;
   }
 
-  getImgUrl1(url: string): string {
-    if (url) {
-      return JSON.parse(url)[0] ? JSON.parse(url)[0] : JSON.parse(url);
-    } else {
-      return '';
-    }
-  }
+  imgUrl(url: string): string {
 
-  getImgUrl(): string {
-    return this.url.split('/backend')[0];
+    if (url) {
+      return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
+      return url;
+    }
   }
 
 }

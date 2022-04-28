@@ -1,3 +1,4 @@
+import { MainService } from './../../../../service/main.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -12,7 +13,7 @@ import { VmService } from '../view-model/vm.service';
 })
 export class ProductListComponent implements OnInit,OnDestroy {
   private subs = new SubSink();
-  url = `http://216.127.173.163/`;
+  url = ``;
   searchValue = '';
   pos = 0;
   pageNumber = 1;
@@ -21,8 +22,11 @@ export class ProductListComponent implements OnInit,OnDestroy {
   constructor(
     private api: ApiService,
     public vm : VmService,
-    private router: Router
-  ) { }
+    private router: Router,
+    public main: MainService
+  ) {
+      this.url = this.main.getImgUrl();
+  }
 
 
   ngOnDestroy(): void {
@@ -56,32 +60,33 @@ export class ProductListComponent implements OnInit,OnDestroy {
     this.vm.uploadImgModel = true;
   }
 
-  getImgUrl(url: string): string {
+  imgUrl(url: string): string {
+
     if (url) {
-      return JSON.parse(url)[0] ? JSON.parse(url)[0] : JSON.parse(url);
+      return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
     } else {
       return url;
     }
   }
 
   deleteProduct(id: string): void {
-  
+
     const method = "deleteProduct";
     if (confirm("Are you sure to delete product Id" + " " + id)) {
       this.subs.sink =   this.api.deletePRoduct(id, method).subscribe((res) => {
         if(res.status == '1'){
           this.vm.proList = this.vm.proList.filter(f => f.prod_id !== id);
-     
+
         }
       },err => console.log(err),
       () => {
- 
+
       });
     }
   }
 
   detailFunc(id: string): void {
-     
+
     const method = 'listOneProduct';
     this.subs.sink =   this.api.getProductDetail(id, method).subscribe(res => {
 
@@ -102,7 +107,7 @@ export class ProductListComponent implements OnInit,OnDestroy {
         this.vm.productId = +id;
         this.vm.productDetail.isActive = 1;
       }
-  
+
     },err => console.log(err),
     () => {
     }
@@ -123,8 +128,8 @@ export class ProductListComponent implements OnInit,OnDestroy {
 
   searchFunc():void{
     if(this.searchValue !== ''){
-        this.vm.proList =  this.vm.masterPtoduct.filter(f => 
-          f.prod_id.includes(this.searchValue) || 
+        this.vm.proList =  this.vm.masterPtoduct.filter(f =>
+          f.prod_id.includes(this.searchValue) ||
           f.prodName.includes(this.searchValue.toLowerCase())
         );
     }else{
@@ -133,8 +138,8 @@ export class ProductListComponent implements OnInit,OnDestroy {
   }
 
   tableCountFunc(): any{
-    
-    
+
+
     return (this.vm.proList)? this.vm.proList.slice(0, this.tableCount) : null;
    }
 

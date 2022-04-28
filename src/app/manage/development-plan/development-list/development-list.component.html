@@ -2,10 +2,10 @@
     <div class="card-header py-3 golbalflex">
             <div>
               <select class="form-control" [(ngModel)]="tableCount" (change)="changeTableRow(tableCount)">
-                  <option  value="10" >10 </option> 
-                  <option  value="20" >20 </option> 
-                  <option  value="50" >50 </option> 
-                  <option  value="100" >100 </option> 
+                  <option  value="10" >10 </option>
+                  <option  value="20" >20 </option>
+                  <option  value="50" >50 </option>
+                  <option  value="100" >100 </option>
                </select>
             </div>
             <div >
@@ -30,7 +30,7 @@
                         <th style="width: 200px;">Action</th>
                     </tr>
                 </thead>
-               
+
                 <tbody>
                     <tr  *ngFor="let item of getData() | async; let i = index">
                         <td>{{i+1}}</td>
@@ -38,28 +38,28 @@
                         <td>{{item.title}}</td>
                         <td>{{item.dsc}}</td>
                         <td>
-                             <a href="{{getImgUrl() + getImgUrl1(item.fileLa)}}" target="_blank" rel="noopener noreferrer">ພາສາລາວ</a> |
-                             <a href="{{getImgUrl() + getImgUrl1(item.fileEn)}}" target="_blank" rel="noopener noreferrer">ພາສາອັງກິດ</a>
+                             <a href="{{url + imgUrl(item.fileLa)}}" target="_blank" rel="noopener noreferrer">ພາສາລາວ</a> |
+                             <a href="{{url + imgUrl(item.fileEn)}}" target="_blank" rel="noopener noreferrer">ພາສາອັງກິດ</a>
                         </td>
-                
+
                         <td>
                             <button   [routerLink]="['/main/Manage/DevelopmentPlan/Update',item.asId]" routerLinkActive="router-link-active"   type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button>     &nbsp;
                             <button (click)="deleteFunc(item.asId)" type="button" class="btn btn-danger   btn-icon btn-pill" ><i class="fas fa-edit"></i> ລົບ</button>     &nbsp;
                         </td>
                     </tr>
-                
+
                 </tbody>
             </table>
         </div>
-       
+
     </div>
 
     <div class="card-footer ">
         <div class="btn-group mr-2" role="group" aria-label="First group">
-          
+
             <app-pagination [itemCount]="getCountItems()" [pos]="pos" [pageCount]="this.tableCount"
-            (posChange)="update($event)"></app-pagination>  
-           
+            (posChange)="update($event)"></app-pagination>
+
         </div>
     </div>
 </div>

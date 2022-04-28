@@ -9,7 +9,7 @@ import { ApiService } from '../api/api.service';
   styleUrls: ['./assistance-list.component.css']
 })
 export class AssistanceListComponent implements OnInit {
-  
+
   pos = 0;
   tableCount = 10;
   searchValue = '';
@@ -47,8 +47,10 @@ export class AssistanceListComponent implements OnInit {
     totalPrice: string;
   }[] = [];
   url = '';
-  constructor(private api: ApiService, public main: MainService) { 
-    this.url = this.main.getEnpoin();
+  constructor(
+    private api: ApiService,
+    public main: MainService) {
+    this.url = this.main.getImgUrl();
   }
 
   ngOnInit(): void {
@@ -72,8 +74,8 @@ export class AssistanceListComponent implements OnInit {
 
    searchFunc():void{
     if(this.searchValue !== ''){
-        this.assistanceList =  this.masterAssistanceList.filter(f => 
-          f.title.includes(this.searchValue.toLowerCase()) || 
+        this.assistanceList =  this.masterAssistanceList.filter(f =>
+          f.title.includes(this.searchValue.toLowerCase()) ||
           f.dsc.includes(this.searchValue.toLowerCase())
         );
     }else{
@@ -89,17 +91,13 @@ export class AssistanceListComponent implements OnInit {
     })
    }
 
-   getImgUrl1(url: string): string {
+   imgUrl(url: string): string {
+
     if (url) {
-      return JSON.parse(url)[0] ? JSON.parse(url)[0] : JSON.parse(url);
+      return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
     } else {
-      return '';
+      return url;
     }
-  }
-
-
-  getImgUrl(): string {
-    return this.url.split('/backend')[0];
   }
 
 

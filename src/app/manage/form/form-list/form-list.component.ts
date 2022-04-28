@@ -14,11 +14,11 @@ export class FormListComponent implements OnInit {
   searchValue = '';
   formList: {
       prpId: string;
-      stTitle: string; 
-      contactDsc: string; 
-      proposName: string; 
-      proposeLastName: string; 
-      phone:string; 
+      stTitle: string;
+      contactDsc: string;
+      proposName: string;
+      proposeLastName: string;
+      phone:string;
       age:string;
       createDate: string;
       imgUrl : string[];
@@ -26,18 +26,18 @@ export class FormListComponent implements OnInit {
 
   masterFormList: {
     prpId: string;
-    stTitle: string; 
-    contactDsc: string; 
-    proposName: string; 
-    proposeLastName: string; 
-    phone:string; 
+    stTitle: string;
+    contactDsc: string;
+    proposName: string;
+    proposeLastName: string;
+    phone:string;
     age:string;
     createDate: string;
     imgUrl : string[];
 }[] =[];
   url ='';
-  constructor(private api: ApiService, private main: MainService) { 
-    this.url = this.main.getEnpoin();
+  constructor(private api: ApiService, private main: MainService) {
+    this.url = this.main.getImgUrl();
   }
 
   ngOnInit(): void {
@@ -65,8 +65,8 @@ export class FormListComponent implements OnInit {
 
    searchFunc():void{
     if(this.searchValue !== ''){
-        this.formList =  this.masterFormList.filter(f => 
-          f.proposName.includes(this.searchValue.toLowerCase()) || 
+        this.formList =  this.masterFormList.filter(f =>
+          f.proposName.includes(this.searchValue.toLowerCase()) ||
           f.stTitle.includes(this.searchValue.toLowerCase())
         );
     }else{
@@ -110,16 +110,15 @@ export class FormListComponent implements OnInit {
     return this.formList.length;
   }
 
-  getImgUrl1(url: string): string {
+  imgUrl(url: string): string {
+
     if (url) {
-      return JSON.parse(url)[0] ? JSON.parse(url)[0] : JSON.parse(url);
+      return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
     } else {
-      return '';
+      return url;
     }
   }
 
-  getImgUrl(): string {
-    return this.url.split('/backend')[0];
-  }
+
 
 }

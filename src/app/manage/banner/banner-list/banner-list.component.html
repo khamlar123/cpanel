@@ -2,10 +2,10 @@
     <div class="card-header py-3 golbalflex">
             <div>
               <select class="form-control" [(ngModel)]="tableCount" (change)="changeTableRow(tableCount)">
-                  <option  value="10" >10 </option> 
-                  <option  value="20" >20 </option> 
-                  <option  value="50" >50 </option> 
-                  <option  value="100" >100 </option> 
+                  <option  value="10" >10 </option>
+                  <option  value="20" >20 </option>
+                  <option  value="50" >50 </option>
+                  <option  value="100" >100 </option>
                </select>
             </div>
             <div >
@@ -25,39 +25,40 @@
                         <th>ລະຫັດ</th>
                         <th>ຮູບພາບ</th>
                         <th>ອໍເດີອີນເດັກ</th>
-                  
+
                         <th>Action</th>
                     </tr>
                 </thead>
-               
+
                 <tbody>
                     <tr *ngFor="let item of getData() | async; let i = index">
                         <td>{{i + 1}}</td>
                         <td>
                             <div class="img-wap">
-                                <img [src]="getImgUrl() + getImgUrl1(item.imgUrl)" alt="img">
+                                <img [src]="url + imgUrl(item.imgUrl)" alt="img">
                             </div>
+
                         </td>
                         <td>{{item.orderIndex}}</td>
-                   
+
                         <td>
                             <button [routerLink]="['/main/Manage/Banner/Update', item.bann_id]" routerLinkActive="router-link-active"    type="button" class="btn btn-primary  btn-icon btn-pill"><i class="fas fa-edit"></i> ແກ້ໄຂ</button> 	&nbsp;
                             <button  type="button" class="btn btn-danger   btn-icon btn-pill" (click)="deleteFunc(item.bann_id)"><i class="fas fa-edit"></i> ລົບ</button> 	&nbsp;
                         </td>
                     </tr>
-                
+
                 </tbody>
             </table>
         </div>
-       
+
     </div>
 
     <div class="card-footer ">
         <div class="btn-group mr-2" role="group" aria-label="First group">
-          
+
             <app-pagination [itemCount]="getCountItems()" [pos]="pos" [pageCount]="this.tableCount"
             (posChange)="update($event)"></app-pagination>
-           
+
         </div>
     </div>
 </div>

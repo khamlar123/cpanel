@@ -33,7 +33,7 @@ export class OrgListComponent implements OnInit {
     imgUrl: string;
   }[] = [];
   constructor(private api: ApiService, private main: MainService) {
-    this.url = this.main.getEnpoin();
+    this.url = this.main.getImgUrl();
   }
 
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class OrgListComponent implements OnInit {
     });
   }
 
-  
+
 
 
   // tableCountFunc(): any {
@@ -84,12 +84,12 @@ export class OrgListComponent implements OnInit {
       if (JSON.parse(url)[0] === null) {
         return '';
       }
-  
+
       return this.url + str.slice(7, str.length);
     }
 
     return '';
-  
+
   }
 
 

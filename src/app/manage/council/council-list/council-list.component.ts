@@ -27,7 +27,7 @@ export class CouncilListComponent implements OnInit {
     doc: string;
     title: string;
   }[] = []
-  constructor(private api: ApiService, private main: MainService) { 
+  constructor(private api: ApiService, private main: MainService) {
     this.url = this.main.getEnpoin();
   }
 
@@ -67,16 +67,6 @@ export class CouncilListComponent implements OnInit {
       }
     });
   }
-
-  getImgUrl(url: string): string {
-    const str = JSON.parse(url)[0];
-
-    if (JSON.parse(url)[0] === null) {
-      return '';
-    }
-    return this.url + str.slice(7, str.length);
-  }
-
 
   imgUrl(url: string): string {
 

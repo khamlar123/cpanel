@@ -32,7 +32,7 @@ export class ProductTeaListComponent implements OnInit {
     createDate: string;
   }[] = [];
   constructor(private api: ApiService, private main: MainService) {
-    this.url = this.main.getEnpoin();
+    this.url = this.main.getImgUrl();
   }
 
   ngOnInit(): void {
@@ -77,9 +77,7 @@ export class ProductTeaListComponent implements OnInit {
   imgUrl(url: string): string {
 
     if (url) {
-      const str = (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
-
-      return str.slice(7, str.length);
+      return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
     } else {
       return url;
     }

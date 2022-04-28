@@ -20,8 +20,10 @@ export class NewsListComponent implements OnInit {
     public vm : NewsService,
     private router : Router,
     public main : MainService,
-  
-  ) { }
+
+  ) {
+    this.url = this.main.getImgUrl();
+  }
 
   ngOnInit(): void {
     const token = localStorage.getItem("token");
@@ -39,18 +41,18 @@ export class NewsListComponent implements OnInit {
     })
   }
 
-  getImgUrl(url: string):string{
-    if(url){
-      return (JSON.parse(url)[0])?JSON.parse(url)[0]: JSON.parse(url);
-    }else{
-      return url
+  imgUrl(url: string): string {
+
+    if (url) {
+      return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
+      return url;
     }
-    
   }
 
   deleteNews(id:string):void{
     if(confirm("ທ່ານແນ່ໃຈບໍ່ວ່າລຶບຂ່າວລະຫັດ"+' '+id)) {
-  
+
       const method = 'deleteNews'
       this.api.deleteNew(method, id).subscribe(res => {
         if(res.status > 0){
@@ -58,7 +60,7 @@ export class NewsListComponent implements OnInit {
         }
       },err => console.log(err),
       () => {
-    
+
       }
       )
     }
@@ -75,8 +77,8 @@ export class NewsListComponent implements OnInit {
 
    searchFunc():void{
     if(this.searchValue !== ''){
-        this.vm.newsList =  this.vm.masterNew.filter(f => 
-          f.web_id.includes(this.searchValue) || 
+        this.vm.newsList =  this.vm.masterNew.filter(f =>
+          f.web_id.includes(this.searchValue) ||
           f.title.includes(this.searchValue.toLowerCase())
         );
     }else{
