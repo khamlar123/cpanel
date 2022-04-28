@@ -5,6 +5,7 @@ import { SubSink } from 'subsink';
 import { VmService } from '../vm/vm.service';
 import { BannerApiService } from '../api/banner-api.service';
 import { Observable, of } from 'rxjs';
+import { MainService } from 'src/service/main.service';
 
 @Component({
   selector: 'app-banner-list',
@@ -13,7 +14,7 @@ import { Observable, of } from 'rxjs';
 })
 export class BannerListComponent implements OnInit {
   private subs = new SubSink();
-  url = `http://216.127.173.163/`;
+  url = ``;
   pos = 0;
   pageNumber = 1;
   tableCount = 10;
@@ -21,8 +22,11 @@ export class BannerListComponent implements OnInit {
   constructor(
     private router : Router,
     private api : BannerApiService,
-    public vm : VmService
-  ) { }
+    public vm : VmService,
+    public main: MainService
+  ) { 
+    this.url = this.main.getEnpoin();
+  }
 
   ngOnInit(): void {
     const token = localStorage.getItem("token");
@@ -42,15 +46,7 @@ export class BannerListComponent implements OnInit {
   }
 
 
-  getImgUrl(url: string):string{
 
-    if(url){
-      return (JSON.parse(url)[0])?JSON.parse(url)[0]: JSON.parse(url);
-    }else{
-      return url
-    }
-    
-  }
 
   sorting(array: any, field: string): any[] {
     if (!Array.isArray(array)) {
@@ -110,6 +106,18 @@ export class BannerListComponent implements OnInit {
 
   getCountItems():number{
     return this.vm.bannerList.filter(f => f.ref_id === "1").length;
+  }
+
+  getImgUrl1(url: string): string {
+    if (url) {
+      return JSON.parse(url)[0] ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
+      return '';
+    }
+  }
+
+  getImgUrl(): string {
+    return this.url.split('/backend')[0];
   }
 
 }

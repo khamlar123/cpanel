@@ -46,11 +46,9 @@ export class AssistanceListComponent implements OnInit {
     title: string;
     totalPrice: string;
   }[] = [];
-  url
+  url = '';
   constructor(private api: ApiService, public main: MainService) { 
     this.url = this.main.getEnpoin();
-
-    
   }
 
   ngOnInit(): void {
@@ -91,9 +89,17 @@ export class AssistanceListComponent implements OnInit {
     })
    }
 
-   getImgUrl(url: string):string{
-    let str = JSON.parse(url)[0];
-    return this.url + str.slice(7, str.length);
+   getImgUrl1(url: string): string {
+    if (url) {
+      return JSON.parse(url)[0] ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
+      return '';
+    }
+  }
+
+
+  getImgUrl(): string {
+    return this.url.split('/backend')[0];
   }
 
 

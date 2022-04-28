@@ -11,7 +11,7 @@ import { NoticeViewModueService } from '../vm/notice-view-modue.service';
 })
 export class NoticeUpdateComponent implements OnInit {
   private subs = new SubSink();
-  url = `http://216.127.173.163/`;
+  url = ``;
   fileToUpload: File = null;
   imagePath;
   imgURL: any;
@@ -23,6 +23,7 @@ export class NoticeUpdateComponent implements OnInit {
     private router: Router,
     public api: NoticeService,
     private route: ActivatedRoute,
+   
   ) { }
 
   ngOnInit(): void {
@@ -42,9 +43,9 @@ export class NoticeUpdateComponent implements OnInit {
   }
 
 
-  getImgUrl(url: string): string {
-    return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
-  }
+  // getImgUrl(url: string): string {
+  //   return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
+  // }
 
   handleFileInput(el: any) {
     this.fileToUpload = el.files.item(0);
@@ -112,6 +113,18 @@ export class NoticeUpdateComponent implements OnInit {
     }, () => console.log(),
       () => { }
     );
+  }
+
+  getImgUrl1(url: string): string {
+    if (url) {
+      return JSON.parse(url)[0] ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
+      return '';
+    }
+  }
+
+  getImgUrl(): string {
+    return this.url.split('/backend')[0];
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { MainService } from 'src/service/main.service';
 import { ApiService } from '../api/api.service';
 import { NewsService } from '../vm/news.service';
 
@@ -13,11 +14,13 @@ export class NewsListComponent implements OnInit {
   pos = 0;
   searchValue = '';
   tableCount = 10
-  url = `http://216.127.173.163/`;
+  url = '';
   constructor(
     public api : ApiService,
     public vm : NewsService,
     private router : Router,
+    public main : MainService,
+  
   ) { }
 
   ngOnInit(): void {

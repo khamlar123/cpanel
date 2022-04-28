@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { MainService } from 'src/service/main.service';
 import { ApiService } from '../api/api.service';
 
 @Component({
@@ -34,7 +35,14 @@ masterEmployeeData: {
   emPosition: string;
   businessType : string;
 }[] = [];
-  constructor(private api: ApiService) { }
+
+url = '';
+  constructor(
+    private api: ApiService,
+    public main: MainService
+    ) {
+      this.url = this.main.getEnpoin();
+     }
 
   ngOnInit(): void {
     this.loadEmployee();
@@ -108,6 +116,18 @@ masterEmployeeData: {
 
   getCountItems():number{
     return this.EmployeeData.length;
+  }
+
+  getImgUrl1(url: string): string {
+    if (url) {
+      return JSON.parse(url)[0] ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
+      return '';
+    }
+  }
+
+  getImgUrl(): string {
+    return this.url.split('/backend')[0];
   }
 
 }

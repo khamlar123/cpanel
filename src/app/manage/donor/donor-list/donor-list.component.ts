@@ -101,4 +101,16 @@ export class DonorListComponent implements OnInit {
     return this.donorList.length;
   }
 
+  getImgUrl1(url: string): string {
+    if (url) {
+      return JSON.parse(url)[0] ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
+      return '';
+    }
+  }
+
+  getImgUrl(): string {
+    return this.url.split('/backend')[0];
+  }
+
 }

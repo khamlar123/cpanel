@@ -76,10 +76,10 @@ export class DevelopmentListComponent implements OnInit {
     })
    }
 
-   getImgUrl(url: string):string{
-    let str = JSON.parse(url)[0];
-    return this.url + str.slice(7, str.length);
-  }
+  //  getImgUrl(url: string):string{
+  //   let str = JSON.parse(url)[0];
+  //   return this.url + str.slice(7, str.length);
+  // }
 
 
   changeTableRow(po: number):void{
@@ -106,6 +106,18 @@ export class DevelopmentListComponent implements OnInit {
 
   getCountItems():number{
     return this.assistanceList.length;
+  }
+
+  getImgUrl1(url: string): string {
+    if (url) {
+      return JSON.parse(url)[0] ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
+      return '';
+    }
+  }
+
+  getImgUrl(): string {
+    return this.url.split('/backend')[0];
   }
 
 }

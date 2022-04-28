@@ -77,14 +77,7 @@ export class LawListComponent implements OnInit {
     });
   }
 
-  getImgUrl(url: string): string {
-    const str = JSON.parse(url)[0];
 
-    if (JSON.parse(url)[0] === null) {
-      return '';
-    }
-    return this.url + str.slice(7, str.length);
-  }
 
 
   imgUrl(url: string): string {
@@ -148,6 +141,19 @@ export class LawListComponent implements OnInit {
   getCountItems():number{
     return this.lawList.filter(f => f.refId === "3").length;
   }
+
+  getImgUrl1(url: string): string {
+    if (url) {
+      return JSON.parse(url)[0] ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
+      return '';
+    }
+  }
+
+  getImgUrl(): string {
+    return this.url.split('/backend')[0];
+  }
+
 
 
 }

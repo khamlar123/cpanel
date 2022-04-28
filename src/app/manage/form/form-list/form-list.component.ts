@@ -74,14 +74,14 @@ export class FormListComponent implements OnInit {
     }
   }
 
-  getImgUrl(url: string): string {
-    const str = JSON.parse(url)[0];
+  // getImgUrl(url: string): string {
+  //   const str = JSON.parse(url)[0];
 
-    if (JSON.parse(url)[0] === null) {
-      return '';
-    }
-    return this.url + str.slice(7, str.length);
-  }
+  //   if (JSON.parse(url)[0] === null) {
+  //     return '';
+  //   }
+  //   return this.url + str.slice(7, str.length);
+  // }
 
 
      changeTableRow(po: number):void{
@@ -108,6 +108,18 @@ export class FormListComponent implements OnInit {
 
   getCountItems():number{
     return this.formList.length;
+  }
+
+  getImgUrl1(url: string): string {
+    if (url) {
+      return JSON.parse(url)[0] ? JSON.parse(url)[0] : JSON.parse(url);
+    } else {
+      return '';
+    }
+  }
+
+  getImgUrl(): string {
+    return this.url.split('/backend')[0];
   }
 
 }
