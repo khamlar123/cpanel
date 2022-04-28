@@ -77,20 +77,7 @@ export class OrgListComponent implements OnInit {
     });
   }
 
-  getImgUrl(url: string): string {
-    if(url !== null){
-      const str = JSON.parse(url)[0];
 
-      if (JSON.parse(url)[0] === null) {
-        return '';
-      }
-
-      return this.url + str.slice(7, str.length);
-    }
-
-    return '';
-
-  }
 
 
   imgUrl(url: string): string {
