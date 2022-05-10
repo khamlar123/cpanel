@@ -18,6 +18,15 @@ export class NoticeAddComponent implements OnInit, OnDestroy {
   message: string;
   base64textString: any;
 
+    addModel = {
+      title:'',
+      dsc: '',
+      imgUrl: [],
+      web_id: 1,
+      price: 0,
+      createDate: '',
+    };
+
   constructor(
     public vm: NoticeViewModueService,
     private router: Router,
@@ -81,19 +90,21 @@ export class NoticeAddComponent implements OnInit, OnDestroy {
     const header = 'data:image/jpeg;base64,';
     map.push(header + this.base64textString);
 
-    const model = {
-      title: this.vm.noticeDetail.title,
-      dsc: this.vm.noticeDetail.dsc,
-      imgUrl: map.map(m => m),
-      web_id: 1,
-      price: this.vm.noticeDetail.price,
-      createDate: '',
-    };
+    // const model = {
+    //   title: this.vm.noticeDetail.title,
+    //   dsc: this.vm.noticeDetail.dsc,
+    //   imgUrl: map.map(m => m),
+    //   web_id: 1,
+    //   price: this.vm.noticeDetail.price,
+    //   createDate: '',
+    // };
+    this.addModel.imgUrl = map.map(m => m);
+
     const newData = new Date();
-    model.createDate = newData.getFullYear().toString() + '-' + (newData.getMonth() + 1).toString() + '-' + newData.getDate().toString();
-    this.subs.sink = this.api.addNotice(model, method).subscribe(res => {
+    this.addModel.createDate = newData.getFullYear().toString() + '-' + (newData.getMonth() + 1).toString() + '-' + newData.getDate().toString();
+    this.subs.sink = this.api.addNotice(this.addModel, method).subscribe(res => {
       if (res.status === '1') {
-        console.log(res);
+
         alert('Add Data Successfully.');
         this.router.navigate(['/main/Manage/Notice/List']);
         this.vm.resetNotice();
