@@ -165,6 +165,8 @@ export class VdioListComponent implements OnInit, OnDestroy {
 
   imgUrl(url: string): string {
     if (url) {
+      console.log(JSON.parse(url)[0]);
+      
       return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
     } else {
       return url;
