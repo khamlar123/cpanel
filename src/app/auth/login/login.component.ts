@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { SubSink } from 'subsink';
 import { LoginApiService } from './API/login-api.service';
+import { MainService } from 'src/service/main.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +14,7 @@ import { LoginApiService } from './API/login-api.service';
 })
 export class LoginComponent implements OnInit {
   private subs = new SubSink();
-  constructor(@Inject(DOCUMENT) private documents: Document,private authService:AuthService,private SpinnerService:NgxSpinnerService,private router: Router,private api: LoginApiService) { }
+  constructor(@Inject(DOCUMENT) private documents: Document,private authService:AuthService,private SpinnerService:NgxSpinnerService,private router: Router,private api: LoginApiService,private service: MainService) { }
 
   ngOnInit(): void {
     this.documents.body.classList.add('sidebar-toggled');
@@ -27,12 +28,8 @@ export class LoginComponent implements OnInit {
     }
   }
 
-
-  
   public username: string="";
   public password: string="";
-
-  
 
   keypassword(event: KeyboardEvent) {
     this.password = (event.target as HTMLInputElement).value;
@@ -42,12 +39,6 @@ export class LoginComponent implements OnInit {
     this.username = (event.target as HTMLInputElement).value;
 
   }
-
-  
-  
-
-
-
 
   loginFunc():void{
     if(this.username == ''){
@@ -62,7 +53,7 @@ export class LoginComponent implements OnInit {
       username: this.username,
       password: this.password,
     }
- 
+
    this.subs.sink = this.api.login(lofinModal).subscribe(res => {
      if(res.status > 0) {
       localStorage.setItem('token',res.data.token);
@@ -71,18 +62,20 @@ export class LoginComponent implements OnInit {
      }else{
       alert('Invalid user');
      }
-  
+
     }),err => {
       console.log(err);
       this.router.navigate(['/login']);
     },
     () => {}
-    
+
   }
 
- 
 
 
+  checkWeb(): string{
+    return (this.service.getEnpoin() === 'http://psldoic.gov.la/website')? './assets/logo_ponsaly.jpeg': (this.service.getEnpoin() === 'http://odxdoic.gov.la/oudomxay')? './assets/logo_oudomsai.png': './assets/logo_leunumthar.jpeg';
+  }
 
 
 }

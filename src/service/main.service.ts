@@ -9,16 +9,14 @@ export class MainService {
 
   getEnpoin(): string {
     return 'http://psldoic.gov.la/website';
-     //return 'http://odxdoic.gov.la/oudomxay';
+    // return 'http://odxdoic.gov.la/oudomxay';
     // return 'http://lntdoic.gov.la/louangnamtha';
-
-
   }
 
 
   getImgUrl(): string{
-      return 'http://psldoic.gov.la/';
+    return 'http://psldoic.gov.la/';
     //return 'http://odxdoic.gov.la/';
-     // return 'http://lntdoic.gov.la/';
+    // return 'http://lntdoic.gov.la/';
   }
 }
