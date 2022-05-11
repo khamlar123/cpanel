@@ -163,14 +163,7 @@ export class VdioListComponent implements OnInit, OnDestroy {
     return this.vdioList.length;
   }
 
-  getImgUrl(): string {
-    console.log(this.url.split('/website'));
-
-    return this.url.split('/website')[0] + '/';
-  }
-
   imgUrl(url: string): string {
-
     if (url) {
       return (JSON.parse(url)[0]) ? JSON.parse(url)[0] : JSON.parse(url);
     } else {
