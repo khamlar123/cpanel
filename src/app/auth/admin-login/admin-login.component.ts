@@ -4,6 +4,7 @@ import { AuthService } from "src/service/auth.service";
 import { NgxSpinnerService } from "ngx-spinner";
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { MainService } from 'src/service/main.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -12,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class AdminLoginComponent implements OnInit {
 
-  constructor(@Inject(DOCUMENT) private document: Document,private authService:AuthService,private SpinnerService:NgxSpinnerService,private router: Router) { }
+  constructor(@Inject(DOCUMENT) private document: Document,private authService:AuthService,private SpinnerService:NgxSpinnerService,private router: Router,private service: MainService) { }
 
   ngOnInit(): void {
     this.document.body.classList.add('sidebar-toggled');
@@ -23,7 +24,7 @@ export class AdminLoginComponent implements OnInit {
   public username: string="";
   public password: string="";
 
-  
+
 
   keypassword(event: KeyboardEvent) {
     this.password = (event.target as HTMLInputElement).value;
@@ -35,14 +36,12 @@ export class AdminLoginComponent implements OnInit {
   }
 
   login(){
-    
 
-    
     const login_obj = {
       username : this.username,
       password : this.password
     };
-   
+
     this.SpinnerService.show();
 
     this.authService.login(login_obj).subscribe(
@@ -53,30 +52,30 @@ export class AdminLoginComponent implements OnInit {
           localStorage.setItem('token',res.Token);
           localStorage.setItem('User',res.data.name);
           localStorage.setItem('Permistion','admin');
-         
-       
+
+
         this.router.navigate(['/main']);
         }else{
           Swal.fire('Alert', res.message, 'error');
         }
 
-     
-       
+
+
       },
       err=>{
         console.log('err',err);
-        
+
         this.SpinnerService.hide();
       }
     )
- 
- 
-    
+
+
+
   }
 
- 
 
-
-
+  checkWeb(): string{
+    return (this.service.getEnpoin() === 'http://psldoic.gov.la/website')? './assets/logo_ponsaly.jpeg': (this.service.getEnpoin() === 'http://odxdoic.gov.la/oudomxay')? './assets/logo_oudomsai.png': './assets/logo_leunumthar.jpeg';
+  }
 
 }

@@ -90,14 +90,6 @@ export class NoticeAddComponent implements OnInit, OnDestroy {
     const header = 'data:image/jpeg;base64,';
     map.push(header + this.base64textString);
 
-    // const model = {
-    //   title: this.vm.noticeDetail.title,
-    //   dsc: this.vm.noticeDetail.dsc,
-    //   imgUrl: map.map(m => m),
-    //   web_id: 1,
-    //   price: this.vm.noticeDetail.price,
-    //   createDate: '',
-    // };
     this.addModel.imgUrl = map.map(m => m);
 
     const newData = new Date();
